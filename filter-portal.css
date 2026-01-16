@@ -1,0 +1,158 @@
+/* Filter Trigger Button */
+.filter-trigger-btn {
+    background: var(--white);
+    border: 1px solid rgba(136, 13, 30, 0.1);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--crushed-berry);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    margin-right: 15px;
+}
+
+.filter-trigger-btn:hover {
+    background: var(--raspberry);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(221, 45, 74, 0.2);
+}
+
+/* Filter Portal Styles */
+.filter-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.filter-portal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.portal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.portal-content {
+    position: absolute;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background: var(--white);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-portal.active .portal-content {
+    right: 0;
+}
+
+.portal-header {
+    padding: 30px;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portal-header h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--crushed-berry);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.close-portal {
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.close-portal:hover {
+    color: var(--raspberry);
+    transform: rotate(90deg);
+}
+
+#portal-filter-container {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+#portal-filter-container .sidebar-inner {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+}
+
+@media (max-width: 477px) {
+    .portal-content {
+        width: 100%;
+        right: -100%;
+    }
+}
+/* Portal Filter Content Tweaks */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--raspberry);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+.apply-selection-btn {
+    width: 100%;
+    background: var(--crushed-berry);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.apply-selection-btn:hover {
+    background: var(--raspberry);
+    transform: translateY(-2px);
+}

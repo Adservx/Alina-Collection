@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsiveHome.css" />
+    <link rel="stylesheet" href="blog.css" />
+    <link rel="stylesheet" href="shop.css" />
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <section id="header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+      <div class="header-search">
+        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="cart.html" class="active cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+          </li>
+          <li class="nav-select">
+            <select name="currency" id="currency-select">
+                <option value="NPR">NPR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+          </li>
+          <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <i class="fas fa-search" id="mobile-search-btn"></i>
+        <i id="bar" class="fas fa-bars"></i>
+      </div>
+    </section>
+
+    <div class="back-btn-container">
+        <a href="javascript:history.back()" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <div id="search-popup">
+        <div class="search-box">
+            <input type="text" placeholder="Search here...">
+            <button><i class="fas fa-search"></i></button>
+            <i class="fas fa-times" id="close-search"></i>
+        </div>
+    </div>
+
+    <section id="cart" class="section-p1">
+      <table width="100%">
+        <thead>
+          <tr>
+            <td>REMOVE</td>
+            <td>IMAGES</td>
+            <td>PRODUCTS</td>
+            <td>PRICE</td>
+            <td>QUANTITY</td>
+            <td>SUBTOTAL</td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Cart items injected by JS -->
+        </tbody>
+      </table>
+    </section>
+    <section id="cart-add" class="section-p1">
+      <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+          <input type="text" placeholder="Enter Your Coupon Code" />
+          <button class="normal">Apply</button>
+        </div>
+      </div>
+      <div id="sub-total">
+        <h3>Cart Totals</h3>
+        <table>
+          <tr>
+            <td>Cart Subtotal</td>
+            <td>NPR 0</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td>Free</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>NPR 0</strong></td>
+          </tr>
+        </table>
+        <button class="normal" onclick="window.location.href='checkout.html'">Proceed to checkout</button>
+      </div>
+    </section>
+    <footer class="section-p1">
+      <div class="col">
+        <img src="image/Logo/logo.png" alt="Vanji" />
+        <h4>Contact</h4>
+        <p><strong>Address:</strong> Ithari BP Chowk, Nepal</p>
+        <p><strong>Phone:</strong> +977 970-5978322 / +977 9811561225</p>
+        <p><strong>Hours:</strong> 8:00AM - 6:00PM, Sun - Fry</p>
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-tiktok"></i>
+            <i class="fab fa-twitter"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="shop.html">The Collection</a>
+        <a href="blog.html">Our Journal</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="flash-sale.html">Exclusive Offers</a>
+      </div>
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In</a>
+        <a href="cart.html">View Cart</a>
+        <a href="user-dashboard.html">Account Dashboard</a>
+        <a href="shop.html?cat=nepali">Nepali Collection</a>
+        <a href="support.html">Help & Support</a>
+      </div>
+
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

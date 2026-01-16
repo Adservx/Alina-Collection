@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Alina Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <section id="header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+      <div class="header-search">
+        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" onclick="logoutUser()">Logout <i class="fa-solid fa-sign-out-alt"></i></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="dashboard-container">
+        <!-- Main Content -->
+        <main class="main-content fade-in" style="margin-left: 0; width: 100%; max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+            
+            <!-- 1. Profile Header (Welcome) -->
+            <div class="profile-header-card">
+                <div class="profile-info-main">
+                    <div class="avatar-container">
+                        <div class="profile-avatar" id="avatar-preview">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <label for="profile-upload" class="avatar-edit-btn">
+                            <i class="fa-solid fa-camera"></i>
+                            <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+                        </label>
+                    </div>
+                    <div class="profile-text">
+                        <h2 id="user-greeting-large">Hello, User!</h2>
+                        <p id="user-email-small">user@example.com</p>
+                        <span class="role-badge" id="user-role-badge"><i class="fa-solid fa-user"></i> User</span>
+                    </div>
+                </div>
+                <div class="profile-stats-summary">
+                    <div class="summary-item">
+                        <span class="summary-value" id="count-orders">0</span>
+                        <span class="summary-label">Orders</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-value" id="count-wishlist">0</span>
+                        <span class="summary-label">Wishlist</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-value" id="count-spent">NPR 0</span>
+                        <span class="summary-label">Total Spent</span>
+                    </div>
+                    <div class="summary-item premium-points">
+                        <span class="summary-value" id="loyalty-points">0</span>
+                        <span class="summary-label">Alina Points</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loyalty Program Section -->
+            <div class="dash-card loyalty-card fade-in">
+                <div class="loyalty-content">
+                    <div class="loyalty-text">
+                        <h3><i class="fas fa-crown"></i> Alina Insider Rewards</h3>
+                        <p>You're earning 1 point for every NPR 100 spent. Redeem points for exclusive discounts!</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="points-progress" style="width: 0%;"></div>
+                        </div>
+                        <span id="points-needed">Spend NPR 500 more to reach Silver tier</span>
+                    </div>
+                    <button class="normal gold-btn">Redeem Points</button>
+                </div>
+            </div>
+
+            <!-- 2. Settings Section (Account Setting) -->
+            <div id="settings-section" class="section-wrapper">
+                <div class="dash-card advanced-settings">
+                    <div class="settings-header">
+                        <h3><i class="fa-solid fa-user-gear"></i> Personal Information</h3>
+                        <p>Keep your profile up to date for a better shopping experience.</p>
+                    </div>
+                    
+                    <form id="profile-form">
+                        <div class="settings-grid">
+                            <!-- Personal Details -->
+                            <div class="settings-section">
+                                <h4 class="section-title">General Details</h4>
+                                <div class="input-group">
+                                    <label><i class="fa-solid fa-signature"></i> Full Name</label>
+                                    <input type="text" id="set-name" placeholder="Enter full name">
+                                </div>
+                                <div class="input-group">
+                                    <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                                    <input type="email" id="set-email" disabled>
+                                    <small>Locked for security</small>
+                                </div>
+                                <div class="input-group">
+                                    <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                                    <input type="tel" id="set-phone" placeholder="Enter phone number">
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+                                        <input type="date" id="set-dob">
+                                    </div>
+                                    <div class="input-group">
+                                        <label><i class="fa-solid fa-venus-mars"></i> Gender</label>
+                                        <select id="set-gender">
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address Information -->
+                            <div class="settings-section">
+                                <h4 class="section-title">Delivery Details</h4>
+                                <div class="input-row">
+                                    <div class="input-group" style="flex: 1;">
+                                        <label><i class="fa-solid fa-house-user"></i> House No.</label>
+                                        <input type="text" id="set-house" placeholder="House/Flat No.">
+                                    </div>
+                                    <div class="input-group" style="flex: 2;">
+                                        <label><i class="fa-solid fa-house"></i> Street Address</label>
+                                        <input type="text" id="set-address" placeholder="Street name">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label><i class="fa-solid fa-city"></i> City</label>
+                                        <input type="text" id="set-city" placeholder="City">
+                                    </div>
+                                    <div class="input-group">
+                                        <label><i class="fa-solid fa-map"></i> Province</label>
+                                        <input type="text" id="set-province" placeholder="Province">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label><i class="fa-solid fa-earth-americas"></i> Country</label>
+                                        <select id="set-country">
+                                            <option value="Nepal">Nepal</option>
+                                            <option value="India">India</option>
+                                            <option value="USA">USA</option>
+                                            <option value="UK">UK</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-modern">
+                            <button type="submit" class="normal btn-save-modern"><i class="fa-solid fa-check"></i> Save Profile Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 3. Orders Section (Purchase History) -->
+            <div id="orders-section" class="section-wrapper">
+                <div class="dash-card">
+                    <div class="dash-header-modern">
+                        <h3><i class="fa-solid fa-clock-rotate-left"></i> Purchase History</h3>
+                        <p>Track and manage your recent orders.</p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="order-table-modern" id="user-order-table">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Date</th>
+                                    <th>Product Details</th>
+                                    <th>Amount</th>
+                                    <th>Tracking Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Orders injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Dashboard Overview Sections (My Cart, My Wishlist, Track Order) -->
+            <div class="dashboard-grid-3">
+                <!-- My Cart Section -->
+                <div id="cart-section" class="section-wrapper-mini">
+                    <div class="dash-card">
+                        <div class="dash-header-modern">
+                            <h3><i class="fa-solid fa-cart-shopping"></i> My Cart</h3>
+                            <a href="cart.html" class="view-link">View Full Cart</a>
+                        </div>
+                        <div class="mini-list" id="mini-cart-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Wishlist Section -->
+                <div id="wishlist-section" class="section-wrapper-mini">
+                    <div class="dash-card">
+                        <div class="dash-header-modern">
+                            <h3><i class="fa-solid fa-heart"></i> My Wishlist</h3>
+                            <a href="shop.html" class="view-link">Add More</a>
+                        </div>
+                        <div class="mini-list" id="mini-wishlist-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track Order Section -->
+                <div id="track-section" class="section-wrapper-mini">
+                    <div class="dash-card">
+                        <div class="dash-header-modern">
+                            <h3><i class="fa-solid fa-truck-fast"></i> Track Order</h3>
+                        </div>
+                        <div class="track-box">
+                            <p>Enter your Order ID to see real-time status.</p>
+                            <div class="track-input-group">
+                                <input type="text" id="track-id-input" placeholder="e.g. #1001">
+                                <button onclick="trackOrder()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                            <div id="track-result" class="track-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const user = JSON.parse(localStorage.getItem('currentUser'));
+             if (!user || user.role !== 'user') {
+                 window.location.href = 'login.html';
+                 return;
+             }
+             
+             // Initial greeting
+             document.getElementById('user-greeting-large').innerText = `Hello, ${user.name}!`;
+             document.getElementById('user-email-small').innerText = user.email;
+
+             // Set Role Badge
+             const roleBadge = document.getElementById('user-role-badge');
+             if (user.role === 'admin') {
+                 roleBadge.innerHTML = `<i class="fa-solid fa-user-shield"></i> Admin`;
+                 roleBadge.className = 'role-badge role-admin';
+             } else {
+                 roleBadge.innerHTML = `<i class="fa-solid fa-user"></i> User`;
+                 roleBadge.className = 'role-badge role-user';
+             }
+
+             // Load Profile Picture
+             if (user.profilePic) {
+                 document.getElementById('avatar-preview').innerHTML = `<img src="${user.profilePic}" alt="Profile">`;
+             }
+             
+             // Update Stats Summary
+             const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+             const userOrders = allOrders.filter(o => o.userEmail === user.email);
+             const wishlistCount = JSON.parse(localStorage.getItem('wishlist'))?.length || 0;
+             const totalSpent = userOrders.reduce((sum, o) => sum + o.total, 0);
+
+             document.getElementById('count-orders').innerText = userOrders.length;
+             document.getElementById('count-wishlist').innerText = wishlistCount;
+             document.getElementById('count-spent').innerText = `NPR ${totalSpent}`;
+             
+             // Loyalty System Logic
+             const points = Math.floor(totalSpent / 100);
+             document.getElementById('loyalty-points').innerText = points;
+             const progress = (points % 500) / 5;
+             document.getElementById('points-progress').style.width = progress + "%";
+             const needed = 500 - (points % 500);
+             document.getElementById('points-needed').innerText = `Earn ${needed} more points to reach the next tier!`;
+
+             // Fill settings form
+             document.getElementById('set-name').value = user.name || "";
+             document.getElementById('set-email').value = user.email || "";
+             document.getElementById('set-phone').value = user.phone || "";
+             document.getElementById('set-dob').value = user.dob || "";
+             document.getElementById('set-gender').value = user.gender || "";
+             document.getElementById('set-house').value = user.house || "";
+             document.getElementById('set-address').value = user.address || "";
+             document.getElementById('set-city').value = user.city || "";
+             document.getElementById('set-province').value = user.province || "";
+             document.getElementById('set-country').value = user.country || "Nepal";
+
+             // Profile Form Submission
+             const profileForm = document.getElementById('profile-form');
+             profileForm.addEventListener('submit', (e) => {
+                 e.preventDefault();
+                 
+                 const updatedUser = {
+                     ...user,
+                     name: document.getElementById('set-name').value,
+                     phone: document.getElementById('set-phone').value,
+                     dob: document.getElementById('set-dob').value,
+                     gender: document.getElementById('set-gender').value,
+                     house: document.getElementById('set-house').value,
+                     address: document.getElementById('set-address').value,
+                     city: document.getElementById('set-city').value,
+                     province: document.getElementById('set-province').value,
+                     country: document.getElementById('set-country').value
+                 };
+
+                 localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+                 
+                 let allUsers = JSON.parse(localStorage.getItem('users')) || [];
+                 const userIndex = allUsers.findIndex(u => u.email === updatedUser.email);
+                 if (userIndex !== -1) {
+                     allUsers[userIndex] = updatedUser;
+                     localStorage.setItem('users', JSON.stringify(allUsers));
+                 }
+
+                 showToast('Profile updated successfully!');
+                 document.getElementById('user-greeting-large').innerText = `Hello, ${updatedUser.name}!`;
+             });
+
+             // Profile Picture Upload Logic
+             const profileUpload = document.getElementById('profile-upload');
+             profileUpload.addEventListener('change', function(e) {
+                 const file = e.target.files[0];
+                 if (file) {
+                     const reader = new FileReader();
+                     reader.onload = function(event) {
+                         const dataUrl = event.target.result;
+                         document.getElementById('avatar-preview').innerHTML = `<img src="${dataUrl}" alt="Profile">`;
+                         
+                         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                         currentUser.profilePic = dataUrl;
+                         localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                         
+                         let allUsers = JSON.parse(localStorage.getItem('users')) || [];
+                         const userIndex = allUsers.findIndex(u => u.email === currentUser.email);
+                         if (userIndex !== -1) {
+                             allUsers[userIndex].profilePic = dataUrl;
+                             localStorage.setItem('users', JSON.stringify(allUsers));
+                         }
+                         showToast('Profile picture updated!');
+                     };
+                     reader.readAsDataURL(file);
+                 }
+             });
+
+             renderUserOrders(user.email);
+             renderDashboardCart();
+             renderDashboardWishlist();
+        });
+
+        function renderDashboardCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('mini-cart-list');
+            if (!container) return;
+
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your cart is empty.</p>';
+                return;
+            }
+
+            container.innerHTML = cartItems.slice(0, 3).map(item => `
+                <div class="mini-item">
+                    <img src="${item.image}" alt="">
+                    <div class="mini-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${item.quantity} x NPR ${item.price}</p>
+                    </div>
+                </div>
+            `).join('');
+            if (cartItems.length > 3) {
+                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${cartItems.length - 3} more items</p>`;
+            }
+        }
+
+        function renderDashboardWishlist() {
+            const wishlistIds = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const container = document.getElementById('mini-wishlist-list');
+            if (!container) return;
+
+            if (wishlistIds.length === 0) {
+                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your wishlist is empty.</p>';
+                return;
+            }
+
+            const allProducts = JSON.parse(localStorage.getItem('products')) || [];
+            const wishlistItems = wishlistIds.map(id => allProducts.find(p => p.id === id)).filter(p => p);
+
+            container.innerHTML = wishlistItems.slice(0, 3).map(item => `
+                <div class="mini-item">
+                    <img src="${item.image}" alt="">
+                    <div class="mini-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${item.brand}</p>
+                    </div>
+                </div>
+            `).join('');
+            if (wishlistItems.length > 3) {
+                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${wishlistItems.length - 3} more items</p>`;
+            }
+        }
+
+        function trackOrder() {
+            const trackId = document.getElementById('track-id-input').value.trim().replace('#', '');
+            const resultArea = document.getElementById('track-result');
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = allOrders.find(o => o.id.toString() === trackId);
+
+            if (!order) {
+                resultArea.innerHTML = '<p style="color: #ef4444; font-size: 13px; margin-top: 15px;">Order ID not found.</p>';
+                return;
+            }
+
+            const steps = ['placed', 'shipped', 'completed'];
+            const currentIdx = steps.indexOf(order.status.toLowerCase());
+
+            resultArea.innerHTML = `
+                <div class="tracking-visual">
+                    <div class="track-step ${currentIdx >= 0 ? 'active' : ''}">Placed</div>
+                    <div class="track-step ${currentIdx >= 1 ? 'active' : ''}">Shipped</div>
+                    <div class="track-step ${currentIdx >= 2 ? 'active' : ''}">Delivered</div>
+                </div>
+                <p style="font-size: 13px; margin-top: 15px; font-weight: 600;">Status: ${order.status.toUpperCase()}</p>
+            `;
+        }
+
+        function renderUserOrders(userEmail) {
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = allOrders.filter(o => o.userEmail === userEmail);
+            const tableBody = document.querySelector('#user-order-table tbody');
+
+            if (userOrders.length === 0) {
+                if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: #999;">You haven\'t placed any orders yet.</td></tr>';
+                return;
+            }
+
+            tableBody.innerHTML = userOrders.map(o => `
+                <tr>
+                    <td><strong>#${o.id}</strong></td>
+                    <td>${o.date}</td>
+                    <td>${o.items.length} Product(s)</td>
+                    <td><span class="price-text">NPR ${o.total}</span></td>
+                    <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

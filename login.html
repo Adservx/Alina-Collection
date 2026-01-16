@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Register - Alina Collection</title>
+    <link rel="shortcut icon" href="image/icon/icon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsiveHome.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <section id="header">
+      <a href="index.html"
+        ><img src="image/Logo/logo.png" class="logo" alt="Vanji"
+      /></a>
+      <div class="header-search">
+        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+          </li>
+          <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Auth Section -->
+    <section id="auth-section" class="section-p1">
+        <div class="container fade-in" id="container">
+            <div class="form-container sign-up-container">
+                <form id="registerForm">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span id="reg-hint">or use your email for registration</span>
+                    <input type="text" id="reg-name" placeholder="Name" required />
+                    <input type="email" id="reg-email" placeholder="Email" required />
+                    <input type="tel" id="reg-phone" placeholder="Phone Number" style="display: none;" />
+                    <div class="password-container">
+                        <input type="password" id="reg-pass" placeholder="Password" required />
+                        <i class="fa-solid fa-eye password-toggle" onclick="togglePassword('reg-pass', this)"></i>
+                    </div>
+                    <div class="verify-method">
+                        <label>Verify via:</label>
+                        <select id="reg-method">
+                            <option value="email">Email</option>
+                            <option value="sms">SMS</option>
+                            <option value="whatsapp">WhatsApp</option>
+                        </select>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                    <button type="button" class="mobile-toggle" id="mobile-login-btn">Already have an account? Sign In</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form id="loginForm">
+                    <h1>Sign in</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" id="login-email" placeholder="Email" required />
+                    <div class="password-container">
+                        <input type="password" id="login-pass" placeholder="Password" required />
+                        <i class="fa-solid fa-eye password-toggle" onclick="togglePassword('login-pass', this)"></i>
+                    </div>
+                    <a href="#">Forgot your password?</a>
+                    <button type="submit">Sign In</button>
+                    <button type="button" class="mobile-toggle" id="mobile-register-btn">New here? Create Account</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Modal -->
+    <div id="verify-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="verify-title">Verify Your Account</h2>
+            <p id="verify-desc">We've sent a 6-digit verification code. Please enter it below to complete registration.</p>
+            <div class="otp-inputs">
+                <input type="text" maxlength="1" class="otp-field" />
+                <input type="text" maxlength="1" class="otp-field" />
+                <input type="text" maxlength="1" class="otp-field" />
+                <input type="text" maxlength="1" class="otp-field" />
+                <input type="text" maxlength="1" class="otp-field" />
+                <input type="text" maxlength="1" class="otp-field" />
+            </div>
+            <button id="confirm-verify" class="normal">Verify & Register</button>
+            <p class="resend">Didn't receive code? <a href="#" id="resend-otp">Resend OTP</a></p>
+            <i class="fas fa-times" id="close-verify"></i>
+        </div>
+    </div>
+
+    <!-- Social Auth Simulation Modal -->
+    <div id="social-auth-modal">
+        <div class="social-auth-content">
+            <div class="social-auth-header" id="social-header">
+                Sign in with Google
+            </div>
+            <div class="social-auth-body">
+                <input type="text" placeholder="Email or Phone" id="social-email" />
+                <input type="password" placeholder="Password" id="social-pass" />
+                <button id="social-login-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Inline script for UI toggle animation specific to this page
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        
+        // Mobile Toggle Buttons
+        const mobileRegisterBtn = document.getElementById('mobile-register-btn');
+        const mobileLoginBtn = document.getElementById('mobile-login-btn');
+
+        // Desktop Overlay Toggles
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+        
+        // Mobile Toggles (reuse the same class logic)
+        mobileRegisterBtn.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+        
+        mobileLoginBtn.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+
+        // Password Toggle Function
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+  </body>
+</html>

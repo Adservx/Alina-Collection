@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help & Support | Alina Collection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsiveHome.css" />
+    <link rel="stylesheet" href="support.css" />
+  </head>
+  <body>
+    <section id="header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+      <div class="header-search">
+        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+          </li>
+          <li class="nav-select">
+            <select name="currency" id="currency-select">
+                <option value="NPR">NPR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+          </li>
+          <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <i class="fas fa-search" id="mobile-search-btn"></i>
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fas fa-bars"></i>
+      </div>
+    </section>
+
+    <div class="back-btn-container" style="margin-top: 40px;">
+        <a href="javascript:history.back()" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <section id="support-hero" class="section-p1">
+        <h2>How can we help you?</h2>
+        <p>Find answers to frequently asked questions or get in touch with our support team.</p>
+    </section>
+
+    <section id="faq-section" class="section-p1">
+        <div class="faq-container">
+            <h3>Frequently Asked Questions</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I track my order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can track your order by visiting the "Account Dashboard" and clicking on "Order History". You will also receive an email with tracking details once your order is shipped.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your return policy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer a 7-day return policy for most items. The product must be in its original condition with tags intact. Please visit our returns portal for more details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer international shipping?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently, we primarily serve Nepal. However, we are expanding our services. Please contact our support team for specific international delivery requests.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I pay for my order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept various payment methods including Cash on Delivery, eSewa, Khalti, and major Credit/Debit cards through our secured payment gateway.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support-options" class="section-p1">
+        <h3>Contact Support</h3>
+        <div class="support-grid">
+            <div class="support-card">
+                <i class="fas fa-envelope"></i>
+                <h4>Email Us</h4>
+                <p>support@alinacollection.com</p>
+                <span>Typical response: 24 hours</span>
+            </div>
+            <div class="support-card">
+                <i class="fab fa-whatsapp"></i>
+                <h4>WhatsApp Support</h4>
+                <p>+977 970-5978322</p>
+                <span>Available: 9 AM - 6 PM</span>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-phone-alt"></i>
+                <h4>Call Center</h4>
+                <p>+977 9811561225</p>
+                <span>Available: Sun - Fri</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+      <div class="col">
+        <img src="image/Logo/logo.png" alt="Vanji" />
+        <h4>Contact</h4>
+        <p><strong>Address:</strong> Ithari BP Chowk, Nepal</p>
+        <p><strong>Phone:</strong> +977 970-5978322</p>
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-tiktok"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="shop.html">The Collection</a>
+        <a href="blog.html">Our Journal</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="flash-sale.html">Exclusive Offers</a>
+      </div>
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In</a>
+        <a href="cart.html">View Cart</a>
+        <a href="user-dashboard.html">Account Dashboard</a>
+        <a href="support.html">Help & Support</a>
+      </div>
+      <div class="copyright">
+          <p>© 2026, Alina Collection - Premium Fashion E-commerce</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+  </body>
+</html>

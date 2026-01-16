@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - Alina Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container { display: flex; padding: 60px 80px; gap: 50px; background: var(--bg-light); min-height: 100vh; }
+        .checkout-form { flex: 2; background: var(--white); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-strong); }
+        .order-summary { flex: 1; background: var(--white); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-strong); height: fit-content; position: sticky; top: 120px; }
+        .checkout-form h2 { font-size: 28px; margin-bottom: 30px; border-bottom: 2px solid var(--primary-light); padding-bottom: 10px; display: inline-block; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 14px; color: var(--text-color); }
+        .form-group input, .form-group select { width: 100%; padding: 15px; border: 1.5px solid #eee; border-radius: 10px; outline: none; transition: var(--transition); background: #fcfcfc; }
+        .form-group input:focus { border-color: var(--primary-color); background: #fff; box-shadow: 0 0 0 4px rgba(8, 129, 120, 0.05); }
+        .checkout-row { display: flex; gap: 20px; }
+        .checkout-row .form-group { flex: 1; }
+        .payment-options { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .payment-method { border: 2px solid #eee; padding: 20px; border-radius: 15px; display: flex; align-items: center; cursor: pointer; transition: var(--transition); position: relative; }
+        .payment-method input { position: absolute; opacity: 0; }
+        .payment-method span { font-weight: 700; color: var(--text-muted); }
+        .payment-method:hover { border-color: var(--primary-color); transform: translateY(-2px); }
+        .payment-method.active { border-color: var(--primary-color); background: rgba(8, 129, 120, 0.02); }
+        .payment-method.active span { color: var(--primary-color); }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 15px; color: var(--text-muted); }
+        .summary-total { border-top: 2px dashed #eee; padding-top: 20px; margin-top: 20px; font-weight: 800; font-size: 22px; color: var(--primary-color); display: flex; justify-content: space-between; }
+        @media (max-width: 992px) { .checkout-container { flex-direction: column; padding: 40px 20px; } .order-summary { position: static; } }
+    </style>
+</head>
+<body class="reveal-on-scroll reveal-active">
+    <section id="header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+      <div id="mobile">
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+      </div>
+    </section>
+
+    <div class="checkout-container">
+        <div class="checkout-form fade-in">
+            <h2>Shipping Architecture</h2>
+            <form id="checkout-form">
+                <div class="checkout-row">
+                    <div class="form-group">
+                        <label>Given Name</label>
+                        <input type="text" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Family Name</label>
+                        <input type="text" placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Electronic Mail</label>
+                    <input type="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Street Residency</label>
+                    <input type="text" id="checkout-address" placeholder="Street name / Area" required>
+                </div>
+                <div class="checkout-row">
+                    <div class="form-group">
+                        <label>Unit / House</label>
+                        <input type="text" id="checkout-house" placeholder="House/Flat No." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Municipality</label>
+                        <input type="text" id="checkout-city" placeholder="Itahari" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Province / State</label>
+                    <input type="text" id="checkout-province" placeholder="Province Name" required>
+                </div>
+
+                <h2 style="margin-top: 40px;">Payment Protocol</h2>
+                <div class="payment-options">
+                    <label class="payment-method active" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="cod" checked>
+                        <span>Cash on Delivery</span>
+                    </label>
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="esewa">
+                        <span>eSewa Digital</span>
+                    </label>
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="khalti">
+                        <span>Khalti Wallet</span>
+                    </label>
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="card">
+                        <span>Credit / Debit</span>
+                    </label>
+                </div>
+                <button type="submit" id="final-place-order" class="normal" style="width: 100%; margin-top: 40px; background: var(--primary-color); color: white; border-radius: 50px; padding: 20px; font-weight: 800; font-size: 16px;">SECURE PLACEMENT</button>
+            </form>
+        </div>
+
+        <div class="order-summary fade-in delay-1">
+            <h3 style="font-size: 22px; margin-bottom: 25px;">Investment Summary</h3>
+            <div id="summary-items">
+                <!-- Items injected by JS -->
+            </div>
+            <div class="summary-total">
+                <span>Total Amount</span>
+                <span id="summary-total-amount">NPR 0</span>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 20px; text-align: center;"><i class="fas fa-shield-alt"></i> SSL Encrypted & Secure Checkout</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function selectPayment(el) {
+            document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+            el.classList.add('active');
+            el.querySelector('input').checked = true;
+        }
+
+        // Specific summary renderer for checkout page
+        document.addEventListener('DOMContentLoaded', () => {
+            const summaryContainer = document.getElementById('summary-items');
+            const totalEl = document.getElementById('summary-total-amount');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = 0;
+
+            if (cart.length === 0) {
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                summaryContainer.innerHTML += `
+                    <div class="summary-item">
+                        <span>${item.name} <strong>x ${item.quantity}</strong></span>
+                        <span>NPR ${item.price * item.quantity}</span>
+                    </div>
+                `;
+            });
+            totalEl.innerText = `NPR ${total}`;
+
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                showToast('Order Placed Successfully! Redirecting to dashboard...');
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                const user = JSON.parse(localStorage.getItem('currentUser')) || { email: 'guest@user.com' };
+                
+                const newOrder = {
+                    id: Math.floor(1000 + Math.random() * 9000),
+                    date: new Date().toLocaleDateString(),
+                    total: total,
+                    status: 'placed',
+                    items: cart,
+                    userEmail: user.email
+                };
+                
+                orders.push(newOrder);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                localStorage.removeItem('cart');
+                
+                setTimeout(() => window.location.href = 'user-dashboard.html', 2000);
+            });
+        });
+    </script>
+</body>
+</html>

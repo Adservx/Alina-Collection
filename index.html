@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alina Collection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsiveHome.css" />
+  </head>
+  <body>
+    <!--  ====== Navigation Bar ======-->
+    <section id="header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+      
+      <div class="header-search">
+        <input type="text" placeholder="Search premium fashion..." id="header-search-input" autocomplete="off">
+        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+
+      <div>
+        <ul id="navbar">
+          <li><a class="active" href="index.html">Home</a></li>
+          <li>
+            <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="blog.html">Journal <i class="fas fa-angle-down"></i></a>
+             <ul class="dropdown-menu">
+                <li><a href="blog.html#trends">Latest Trends</a></li>
+                <li><a href="blog.html#tips">Styling Tips</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="lg-bag">
+            <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+          </li>
+          <li class="nav-select">
+            <select name="currency" id="currency-select">
+                <option value="NPR">NPR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+          </li>
+          <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+      </div>
+
+      <div id="mobile">
+        <i class="fas fa-search" id="mobile-search-btn"></i>
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fas fa-bars"></i>
+      </div>
+    </section>
+    <div id="search-popup">
+        <div class="search-box">
+            <input type="text" placeholder="Search here...">
+            <button><i class="fas fa-search"></i></button>
+            <i class="fas fa-times" id="close-search"></i>
+        </div>
+    </div>
+
+    <!-- == For hero section == -->
+    <section id="hero">
+      <h4 class="fade-in">SOPHISTICATED ATTIRE</h4>
+      <h1 class="fade-in delay-1">Elevate Your <br>Everyday Aesthetic</h1>
+      <h2 class="fade-in delay-2">Uncompromising Quality. Timeless Design.</h2>
+      <p class="fade-in delay-3">Experience the perfect harmony of luxury and comfort with our latest collection, <br>specifically tailored for the discerning modern wardrobe.</p>
+      <button class="fade-in delay-4" onclick="window.location.href='shop.html'">
+        DISCOVER THE EDIT <i class="fa-solid fa-arrow-right-long"></i>
+      </button>
+    </section>
+
+    <!-- == Flash Sale Highlight Section == -->
+    <section id="flash-highlight" class="section-p1">
+        <div class="flash-banner fade-in">
+            <div class="sweep"></div>
+            <div class="flash-text">
+                <span class="badge badge-sale">Limited Time Only</span>
+                <h2>Flash Sale Highlight</h2>
+                <p>Exclusive deals on seasonal favorites. Grab them before they vanish!</p>
+                
+                <div id="countdown" class="small-countdown">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <p>D</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <p>H</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <p>M</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <p>S</p>
+                    </div>
+                </div>
+                <button class="normal" onclick="window.location.href='flash-sale.html'">View All Deals <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="flash-products-mini" id="dynamic-flash-mini">
+                <!-- Highlighted products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- == For Category Sub-Navbar == -->
+    <div class="category-container fade-in">
+        <h2 class="category-header">Trending Categories</h2>
+        <section id="sub-navbar">
+            <ul>
+                <li><a href="shop.html?cat=Tshirts">Essentials</a></li>
+                <li><a href="shop.html?cat=Jeans">Premium Denim</a></li>
+                <li><a href="shop.html?cat=Dresses">Luxury Evening</a></li>
+                <li><a href="shop.html?cat=Jackets">Outerwear</a></li>
+                <li><a href="shop.html?cat=Footwear">Signature Footwear</a></li>
+                <li><a href="shop.html?cat=Accessories">Artisan Accessories</a></li>
+            </ul>
+        </section>
+    </div>
+    <!-- == For feature ==-->
+    <section id="feature" class="section-p1">
+      <div class="section-title" style="width: 100%; text-align: center; margin-bottom: 40px;">
+          <h2 class="fade-in">Elevating Your Experience</h2>
+          <p class="fade-in delay-1">Discover the pillars of our commitment to excellence and customer satisfaction.</p>
+      </div>
+      
+      <div class="fe-box fade-in delay-2">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h6>Complimentary Shipping</h6>
+        <p>On all orders above NPR 2000, delivered directly to your doorstep.</p>
+      </div>
+      <div class="fe-box fade-in delay-2">
+        <i class="fa-solid fa-globe"></i>
+        <h6>Seamless Online Experience</h6>
+        <p>Intuitive browsing and secure checkout designed for your convenience.</p>
+      </div>
+      <div class="fe-box fade-in delay-3">
+        <i class="fa-solid fa-tags"></i>
+        <h6>Exclusive Value</h6>
+        <p>Uncompromising quality at prices that respect your investment.</p>
+      </div>
+      <div class="fe-box fade-in delay-3">
+        <i class="fa-solid fa-layer-group"></i>
+        <h6>Curated Collections</h6>
+        <p>Stay ahead of trends with our expertly selected seasonal arrivals.</p>
+      </div>
+      <div class="fe-box fade-in delay-4">
+        <i class="fa-solid fa-gem"></i>
+        <h6>Premium Craftsmanship</h6>
+        <p>Every piece is vetted for material integrity and modern aesthetics.</p>
+      </div>
+      <div class="fe-box fade-in delay-4">
+        <i class="fa-solid fa-headset"></i>
+        <h6>Dedicated Support</h6>
+        <p>Our expert team is available around the clock to assist your journey.</p>
+      </div>
+    </section>
+    <!-- == For product ==-->
+    <section id="product1" class="section-p1">
+      <h2>Featured Products</h2>
+      <p>Summer Collection New Modern Design</p>
+      <div class="pro-container" id="dynamic-featured-pro">
+          <!-- Products injected by JS -->
+      </div>
+    </section>
+    <!-- == For banner == -->
+    <section id="banner" class="section-m1">
+      <h4>The Seasonal Edit</h4>
+      <h2>Redefine Your Wardrobe with Our <br><span>70% OFF</span> Signature Curation</h2>
+      <button class="normal">DISCOVER THE COLLECTION</button>
+    </section>
+    <!-- == For new arrival == -->
+    <section id="product1" class="section-p1">
+      <h2>New Arrivals</h2>
+      <p>Summer Collection New Modern Design</p>
+      <div class="pro-container" id="dynamic-new-pro">
+          <!-- Products injected by JS -->
+      </div>
+    </section>
+
+    <!-- == Category Showcase == -->
+    <div id="home-categories-showcase"></div>
+
+    <!-- == For semi banner == -->
+    <section id="sm-banner" class="section-p1">
+      <div class="banner-box">
+        <h4>Exclusive Artistry</h4>
+        <h2>The Feminine Silhouette</h2>
+        <span>Curated elegance for the modern woman. Discover our signature artisanal dress collection.</span>
+        <button class="white" onclick="window.location.href='shop.html?cat=Dresses'">Explore the Edit</button>
+      </div>
+      <div class="banner-box banner-box2">
+        <h4>Sophisticated Grace</h4>
+        <h2>The Vanguard Series</h2>
+        <span>Define your presence with our premium selection of tailored essentials and seasonal favorites.</span>
+        <button class="white" onclick="window.location.href='shop.html?cat=Tops'">View Collection</button>
+      </div>
+    </section>
+    <!-- == text banner ==-->
+    <section id="banner3">
+      <div class="banner-box" onclick="window.location.href='shop.html?cat=Accessories'" style="cursor: pointer;">
+        <h2>THE ACCESSORY ARCHIVE</h2>
+        <h3>Timeless accents for every occasion.</h3>
+      </div>
+      <div class="banner-box banner-box2" onclick="window.location.href='shop.html?cat=Dresses'" style="cursor: pointer;">
+        <h2>ETHEREAL EVENING</h2>
+        <h3>Luxury gowns for unforgettable moments.</h3>
+      </div>
+      <div class="banner-box banner-box3" onclick="window.location.href='shop.html?cat=Bottoms'" style="cursor: pointer;">
+        <h2>URBAN ESSENTIALS</h2>
+        <h3>Contemporary tailoring for daily grace.</h3>
+      </div>
+    </section>
+    <!-- == Newsletter == -->
+    <section id="newsletter" class="section-p1 section-m1">
+      <div class="newstext">
+        <h4>Sign Up For Newsletters</h4>
+        <p>
+          Get E-mail updates about our latest shop and
+          <span>special offers.</span>
+        </p>
+      </div>
+      <div class="form">
+        <input type="text" id="newsletter-email" placeholder="Your email address" />
+        <button class="normal" id="newsletter-btn">Sign Up <i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </section>
+    <!-- == Footer == -->
+    <footer class="section-p1">
+      <div class="col">
+        <img src="image/Logo/logo.png" alt="Vanji" />
+        <h4>Contact</h4>
+        <p><strong>Address:</strong> Ithari BP Chowk, Nepal</p>
+        <p><strong>Phone:</strong> +977 970-5978322 / +977 9811561225</p>
+        <p><strong>Hours:</strong> 8:00AM - 6:00PM, Sun - Fri</p>
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-tiktok"></i>
+            <i class="fab fa-twitter"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="shop.html">The Collection</a>
+        <a href="blog.html">Our Journal</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="flash-sale.html">Exclusive Offers</a>
+      </div>
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In</a>
+        <a href="cart.html">View Cart</a>
+        <a href="user-dashboard.html">Account Dashboard</a>
+        <a href="shop.html?cat=nepali">Nepali Collection</a>
+        <a href="support.html">Help & Support</a>
+      </div>
+
+
+      <div class="copyright">
+          <p>© 2026, Alina Collection - Premium Fashion E-commerce</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
