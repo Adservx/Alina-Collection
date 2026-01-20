@@ -1882,6 +1882,26 @@ body.dark-mode #search-popup {
 
 .small-countdown .time-box span { font-size: 24px; }
 
+#navbar li a i {
+    font-size: 16px;
+}
+
+#navbar li a.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#navbar li a.cart-link span {
+    font-size: 13px;
+}
+
+@media screen and (max-width: 900px) {
+    #navbar li a.cart-link span {
+        display: none;
+    }
+}
+
 /* Side Cart Drawer */
 #side-cart {
     position: fixed;
