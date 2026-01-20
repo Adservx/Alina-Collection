@@ -1745,10 +1745,6 @@ body.dark-mode #search-popup {
     background-color: var(--white);
 }
 
-#flash-highlight {
-    padding: 60px 40px;
-}
-
 .flash-banner {
     background: hsla(61, 81%, 88%, 1);
     background: linear-gradient(90deg, hsla(61, 81%, 88%, 1) 0%, hsla(310, 65%, 85%, 1) 50%, hsla(7, 89%, 69%, 1) 100%);
@@ -1782,7 +1778,7 @@ body.dark-mode #search-popup {
 }
 
 .flash-text {
-    width: 25%;
+    width: 35%;
     z-index: 2;
 }
 
@@ -1823,7 +1819,7 @@ body.dark-mode #search-popup {
 }
 
 .flash-products-mini {
-    width: 75%;
+    width: 65%;
     display: flex;
     gap: 15px;
     overflow-x: auto;
@@ -1835,12 +1831,11 @@ body.dark-mode #search-popup {
 .flash-products-mini::-webkit-scrollbar { display: none; }
 
 .flash-products-mini .pro {
-    min-width: 180px;
-    padding: 10px;
+    min-width: 250px;
+    padding: 15px;
     background: rgba(255,255,255,0.6);
     border: 1px solid rgba(255,255,255,0.8);
     backdrop-filter: blur(10px);
-    transform: scale(0.9);
     margin: 0;
 }
 
