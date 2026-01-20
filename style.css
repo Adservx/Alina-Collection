@@ -1225,61 +1225,166 @@ body.dark-mode .stock-amount { color: #34d399; }
 #sm-banner h2 { color: #fff; font-size: 38px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 #sm-banner span { color: #fff; font-size: 16px; font-weight: 500; padding-bottom: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 
-#banner3 { display: flex; justify-content: space-between; flex-wrap: wrap; padding: 0 80px; }
+/* Advanced Promotional Banners (Senior UI/UX Design) */
+#banner3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 60px 80px;
+}
+
 #banner3 .banner-box {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     background-image: url("image/banner/b7.jpg");
-    min-width: 30%;
-    height: 30vh;
+    flex: 1 1 300px;
+    height: 45vh;
     background-size: cover;
     background-position: center;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+    padding: 40px;
+    border-radius: 24px;
+    transition: var(--transition);
+    overflow: hidden;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#banner3 .banner-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.2) 100%);
+    z-index: 1;
     transition: var(--transition);
 }
-#banner3 .banner-box:hover { transform: translateY(-5px); box-shadow: var(--shadow-strong); }
+
+#banner3 .banner-box:hover::before {
+    background: linear-gradient(135deg, rgba(221, 45, 74, 0.6) 0%, rgba(15, 23, 42, 0.3) 100%);
+}
+
+#banner3 .banner-box > * {
+    position: relative;
+    z-index: 2;
+}
+
+#banner3 .banner-box h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+#banner3 .banner-box h3 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    font-weight: 500;
+    max-width: 250px;
+}
+
+#banner3 .banner-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
 #banner3 .banner-box2 { background-image: url("image/banner/b4.jpg"); }
 #banner3 .banner-box3 { background-image: url("image/banner/b18.jpg"); }
 
-/* Newsletter */
+/* Newsletter Section (Senior UI/UX & Copywriting) */
 #newsletter {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url("image/banner/b14.png");
-    background-repeat: no-repeat;
-    background-position: 20% 30%;
-    background-color: #041e42;
-    border-radius: 4px;
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url("image/banner/b14.png");
+    background-size: cover;
+    background-position: center;
+    padding: 80px;
+    margin: 40px 80px;
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
 }
 
-#newsletter h4 { font-size: 22px; font-weight: 700; color: #fff; }
-#newsletter p { font-size: 14px; font-weight: 600; color: #818ea0; }
-#newsletter p span { color: #ffbd27; }
+#newsletter .newstext {
+    flex: 1;
+    max-width: 550px;
+}
 
-#newsletter .form { display: flex; width: 40%; }
+#newsletter h4 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+#newsletter p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+#newsletter p span {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+#newsletter .form {
+    display: flex;
+    width: 450px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+#newsletter .form:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(221, 45, 74, 0.2);
+}
+
 #newsletter input {
-    height: 3.125rem;
-    padding: 0 1.25rem;
-    font-size: 14px;
+    height: 60px;
+    padding: 0 25px;
+    font-size: 15px;
     width: 100%;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: #fff;
     outline: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
+
+#newsletter input::placeholder {
+    color: #64748b;
+}
+
 #newsletter button {
+    height: 60px;
+    padding: 0 40px;
     background-color: var(--primary-color);
     color: #fff;
     white-space: nowrap;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+#newsletter button:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.05);
 }
 
 /* Footer */
