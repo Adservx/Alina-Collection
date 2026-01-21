@@ -297,11 +297,30 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
              const user = JSON.parse(localStorage.getItem('currentUser'));
-             if (!user || user.role !== 'user') {
+             if (!user) {
                  window.location.href = 'login.html';
                  return;
              }
              
+             // If admin is visiting, show the Admin Panel link
+             if (user.role === 'admin') {
+                 const dashboardGrid = document.querySelector('.dashboard-grid-3');
+                 const adminCard = document.createElement('div');
+                 adminCard.className = 'section-wrapper-mini';
+                 adminCard.innerHTML = `
+                    <div class="dash-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border: none; box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);">
+                        <div class="dash-header-modern">
+                            <h3 style="color: #fff;"><i class="fa-solid fa-shield-halved" style="color: var(--primary-color);"></i> Sovereign Access</h3>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">You have administrative authority. Access the inventory vault and order management systems.</p>
+                            <button onclick="window.location.href='admin-dashboard.html'" class="normal" style="width: 100%; background: var(--primary-color); border: none; font-weight: 800; letter-spacing: 1px;">ADMIN PANEL</button>
+                        </div>
+                    </div>
+                 `;
+                 if (dashboardGrid) dashboardGrid.prepend(adminCard);
+             }
+
              // Initial greeting
              document.getElementById('user-greeting-large').innerText = `Hello, ${user.name}!`;
              document.getElementById('user-email-small').innerText = user.email;

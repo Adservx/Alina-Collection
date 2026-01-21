@@ -214,7 +214,7 @@ function handleAuth() {
             if (email === "davidscot8786@gmail.com" && password === "David123#") {
                 const adminUser = { name: "David Scot", email, role: "admin" };
                 localStorage.setItem('currentUser', JSON.stringify(adminUser));
-                window.location.href = 'admin-dashboard.html';
+                window.location.href = 'user-dashboard.html';
                 return;
             }
 
