@@ -722,6 +722,12 @@ function updateCartTotals(sub) {
 }
 
 // === 6. Sovereign Admin Panel CRUD & Intelligence ===
+function getStockStatus(stock) {
+    if (stock <= 0) return '<span style="color:#ef4444; font-weight:800;">DEPLETED</span>';
+    if (stock < 10) return `<span style="color:#f59e0b; font-weight:800;">CRITICAL (${stock})</span>`;
+    return `<span style="color:#22c55e; font-weight:800;">STABLE (${stock})</span>`;
+}
+
 function renderAdminDashboard() {
     // 1. Executive Metrics
     const totalSales = allOrders.reduce((sum, o) => sum + o.total, 0);
@@ -748,8 +754,8 @@ function renderAdminDashboard() {
                 </td>
                 <td><span class="price-text">${convertPrice(p.price)}</span></td>
                 <td>
-                    <div class="stock-status ${p.stock < 10 ? 'low' : 'healthy'}">
-                        ${p.stock} units
+                    <div class="stock-status">
+                        ${getStockStatus(p.stock)}
                     </div>
                 </td>
                 <td>

@@ -743,8 +743,86 @@ td:last-child { border-radius: 0 16px 16px 0; }
 .role-badge.role-admin { background: #0f172a; color: #fff; }
 .role-badge.role-user { background: #f1f5f9; color: #64748b; }
 
-@media (max-width: 1200px) {
-    .dashboard-split-grid { grid-template-columns: 1fr; }
+/* --- Executive Intelligence Enhancements --- */
+.inventory-performance-viz {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
-/* --- Responsive --- */
+.chart-mock {
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.chart-mock .bar {
+    flex: 1;
+    background: linear-gradient(to top, var(--dash-primary), #ff6b81);
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.chart-mock .bar:hover {
+    filter: brightness(1.1);
+    transform: scaleX(1.05);
+}
+
+.chart-mock .bar::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.mt-4 { margin-top: 2rem; }
+
+/* Refined Table Interactions */
+table tbody tr {
+    cursor: pointer;
+}
+
+table tbody tr:hover td {
+    color: var(--dash-primary);
+}
+
+.price-text {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+/* Badge Styles */
+.badge-cat {
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Scrollbar refinement for Admin */
+.admin-main::-webkit-scrollbar { width: 6px; }
+.admin-main::-webkit-scrollbar-track { background: #f1f1f1; }
+.admin-main::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+.admin-main::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 80px;
+        padding: 40px 10px;
+    }
+    .sidebar-header h3, .sidebar-nav li span, .sidebar-footer { display: none; }
+    .sidebar-nav li { justify-content: center; padding: 15px; }
+}
