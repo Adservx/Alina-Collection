@@ -762,9 +762,9 @@ function updateCartTotals(sub) {
 
 // === 6. Sovereign Admin Panel CRUD & Intelligence ===
 function getStockStatus(stock) {
-    if (stock <= 0) return '<span style="color:#ef4444; font-weight:800;">DEPLETED</span>';
-    if (stock < 10) return `<span style="color:#f59e0b; font-weight:800;">CRITICAL (${stock})</span>`;
-    return `<span style="color:#22c55e; font-weight:800;">STABLE (${stock})</span>`;
+    if (stock <= 0) return '<span style="color:#ef4444; font-weight:800;">OUT OF STOCK</span>';
+    if (stock < 10) return `<span style="color:#f59e0b; font-weight:800;">LOW STOCK (${stock})</span>`;
+    return `<span style="color:#22c55e; font-weight:800;">IN STOCK (${stock})</span>`;
 }
 
 function renderAdminDashboard() {
@@ -785,11 +785,11 @@ function renderAdminDashboard() {
                 <td><img src="${p.image}" class="inventory-img" onerror="this.onerror=null;this.src='${UNIVERSAL_FALLBACK_IMAGE}';"></td>
                 <td>
                     <div style="font-weight:800;">${p.name}</div>
-                    <div style="font-size:11px; color:var(--text-muted);">ID: #ALN-${p.id}</div>
+                    <div style="font-size:11px; color:var(--text-muted);">Product ID: #${p.id}</div>
                 </td>
                 <td>
                     <span class="badge-cat">${p.cat}</span>
-                    <div style="font-size:11px; margin-top:4px;">${p.brand}</div>
+                    <div style="font-size:11px; margin-top:4px;">Brand: ${p.brand}</div>
                 </td>
                 <td><span class="price-text">${convertPrice(p.price)}</span></td>
                 <td>
@@ -799,8 +799,8 @@ function renderAdminDashboard() {
                 </td>
                 <td>
                     <div class="action-flex">
-                        <button class="action-btn btn-edit" onclick="openProductModal(${p.id})"><i class="fas fa-edit"></i> Refine</button>
-                        <button class="action-btn btn-delete" onclick="deleteProduct(${p.id})"><i class="fas fa-trash-alt"></i> Expunge</button>
+                        <button class="action-btn btn-edit" onclick="openProductModal(${p.id})"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="action-btn btn-delete" onclick="deleteProduct(${p.id})"><i class="fas fa-trash-alt"></i> Delete</button>
                     </div>
                 </td>
             </tr>`).join('');
@@ -893,27 +893,27 @@ function renderAdminUsers() {
             <td>${u.phone || 'Contact Private'}</td>
             <td><span class="role-badge role-${u.role}">${u.role}</span></td>
             <td>
-                ${u.name !== 'David Scot' ? `<button class="action-btn btn-delete" onclick="expungeUser('${u.email}')">Expunge Access</button>` : '<span style="font-size:11px; color:#22c55e; font-weight:800;"><i class="fas fa-crown"></i> SOVEREIGN</span>'}
+                ${u.name !== 'David Scot' ? `<button class="action-btn btn-delete" onclick="expungeUser('${u.email}')">Remove User</button>` : '<span style="font-size:11px; color:#22c55e; font-weight:800;"><i class="fas fa-crown"></i> OWNER</span>'}
             </td>
         </tr>
     `).join('');
 }
 
 function expungeUser(email) {
-    if (confirm('Permanently revoke all access for this user?')) {
+    if (confirm('Are you sure you want to remove this user from the list?')) {
         allUsers = allUsers.filter(u => u.email !== email);
         localStorage.setItem('users', JSON.stringify(allUsers));
         renderAdminDashboard();
-        showToast('User access revoked');
+        showToast('User removed');
     }
 }
 
 function deleteProduct(id) {
-    if(confirm('Permanently expunge this product from the inventory vault?')) {
+    if(confirm('Are you sure you want to delete this product?')) {
         allProducts = allProducts.filter(p => p.id !== id);
         localStorage.setItem('products', JSON.stringify(allProducts));
         renderAdminDashboard();
-        showToast('Product Expunged');
+        showToast('Product Deleted');
     }
 }
 
@@ -924,7 +924,7 @@ function openProductModal(id = null) {
     
     if (id) {
         const p = allProducts.find(prod => prod.id == id);
-        document.getElementById('modal-title').innerText = "Refine Asset Configuration";
+        document.getElementById('modal-title').innerText = "Edit Product Details";
         document.getElementById('edit-id').value = p.id;
         document.getElementById('edit-name').value = p.name;
         document.getElementById('edit-brand').value = p.brand || "";
@@ -933,7 +933,7 @@ function openProductModal(id = null) {
         document.getElementById('edit-stock').value = p.stock;
         document.getElementById('edit-image').value = p.image;
     } else {
-        document.getElementById('modal-title').innerText = "Authorize New Inventory Addition";
+        document.getElementById('modal-title').innerText = "Add New Product";
         document.getElementById('product-form').reset();
         document.getElementById('edit-id').value = "";
     }
