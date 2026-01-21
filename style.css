@@ -2225,14 +2225,31 @@ body.dark-mode #search-popup {
     text-align: center;
 }
 
+#auth-section .password-container {
+    position: relative;
+    width: 100%;
+}
+
+#auth-section .password-container input {
+    width: 100%;
+}
+
+#auth-section .password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
 #auth-section input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
-    border-radius: 8px;
-    outline: none;
 }
 
 #auth-section button {
