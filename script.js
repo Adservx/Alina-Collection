@@ -780,7 +780,9 @@ function renderAdminDashboard() {
     // 2. Inventory Vault (Products)
     const pTable = document.querySelector('#admin-product-table tbody');
     if (pTable) {
-        pTable.innerHTML = allProducts.map(p => `
+        // Sort by ID descending to show latest additions first
+        const sortedProducts = [...allProducts].reverse();
+        pTable.innerHTML = sortedProducts.map(p => `
             <tr>
                 <td><img src="${p.image}" class="inventory-img" onerror="this.onerror=null;this.src='${UNIVERSAL_FALLBACK_IMAGE}';"></td>
                 <td>
