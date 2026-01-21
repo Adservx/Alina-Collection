@@ -35,10 +35,10 @@
         <main class="main-content fade-in">
             <div class="section-header-modern" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
                 <div>
-                    <h1>Inventory Vault</h1>
-                    <p>Comprehensive management of the Alina Collection inventory.</p>
+                    <h1>Store Inventory</h1>
+                    <p>Manage all the products, prices, and stock levels in your shop.</p>
                 </div>
-                <button class="premium-btn" onclick="openProductModal()">+ Authorize New Addition</button>
+                <button class="premium-btn" onclick="openProductModal()">+ Add New Product</button>
             </div>
 
             <div class="dash-card">
@@ -46,11 +46,11 @@
                     <table id="admin-product-table">
                         <thead>
                             <tr>
-                                <th>Visual</th>
-                                <th>Designation</th>
+                                <th>Photo</th>
+                                <th>Product Name</th>
                                 <th>Category</th>
-                                <th>Valuation</th>
-                                <th>Reserves</th>
+                                <th>Price</th>
+                                <th>Stock Left</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -66,17 +66,17 @@
     <!-- Product Modal -->
     <div id="product-modal" class="modal-overlay">
         <div class="modal-content admin-modal">
-            <div class="modal-header"><h2>Product Configuration</h2><button class="close-modal" onclick="closeProductModal()">&times;</button></div>
+            <div class="modal-header"><h2>Product Details</h2><button class="close-modal" onclick="closeProductModal()">&times;</button></div>
             <form id="product-form" onsubmit="saveProduct(event)">
                 <input type="hidden" id="edit-id">
                 <div class="modal-body">
                     <div class="input-grid">
-                        <div class="input-group"><label>Designation</label><input type="text" id="edit-name" required></div>
-                        <div class="input-group"><label>House / Brand</label><input type="text" id="edit-brand" required></div>
+                        <div class="input-group"><label>Product Name</label><input type="text" id="edit-name" placeholder="e.g. Silk Saree" required></div>
+                        <div class="input-group"><label>Brand Name</label><input type="text" id="edit-brand" placeholder="e.g. Alina" required></div>
                     </div>
                     <div class="input-grid">
-                        <div class="input-group"><label>Price (NPR)</label><input type="number" id="edit-price" required></div>
-                        <div class="input-group"><label>Reserves</label><input type="number" id="edit-stock" required></div>
+                        <div class="input-group"><label>Price (NPR)</label><input type="number" id="edit-price" placeholder="0" required></div>
+                        <div class="input-group"><label>Stock Quantity</label><input type="number" id="edit-stock" placeholder="0" required></div>
                     </div>
                     <div class="input-group">
                         <label>Category</label>
@@ -90,11 +90,11 @@
                             <option value="Nepali Heritage">Nepali Heritage</option>
                         </select>
                     </div>
-                    <div class="input-group"><label>Imagery URL</label><input type="text" id="edit-image"></div>
+                    <div class="input-group"><label>Image Link (URL)</label><input type="text" id="edit-image" placeholder="Paste image address here"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-cancel" onclick="closeProductModal()">Discard</button>
-                    <button type="submit" class="btn-confirm">Authorize Changes</button>
+                    <button type="button" class="btn-cancel" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="btn-confirm">Save Changes</button>
                 </div>
             </form>
         </div>
