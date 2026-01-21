@@ -84,8 +84,8 @@
                     <div class="loyalty-content">
                         <div class="loyalty-icon"><i class="fas fa-shield-halved" style="color: var(--primary-color);"></i></div>
                         <div class="loyalty-text">
-                            <h3>Administrative Sovereign Suite</h3>
-                            <p>You are logged in with supreme authority. Manage the inventory vault and monitor system intelligence below.</p>
+                            <h3>Administrative Overview</h3>
+                            <p>Global system intelligence and sovereign control modules.</p>
                         </div>
                         <div class="stats-grid" style="display: flex; gap: 30px; margin: 0;">
                             <div class="stat-mini">
@@ -97,6 +97,36 @@
                                 <p style="font-size:10px; opacity:0.7;">Low Stock</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Sovereign Control Modules (Overview Grid) -->
+                <div class="dashboard-grid-3">
+                    <!-- Inventory Module -->
+                    <div class="dash-card module-card">
+                        <div class="dash-header-modern">
+                            <h3><i class="fa-solid fa-boxes-stacked"></i> Inventory Vault</h3>
+                        </div>
+                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Manage premium assets, refine configurations, and monitor reserves.</p>
+                        <button onclick="window.location.href='admin-inventory.html'" class="normal" style="width:100%; border-radius:12px;">Manage Vault</button>
+                    </div>
+
+                    <!-- Fulfillment Module -->
+                    <div class="dash-card module-card">
+                        <div class="dash-header-modern">
+                            <h3><i class="fa-solid fa-receipt"></i> Order Fulfillment</h3>
+                        </div>
+                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Track transaction lifecycles, update fulfillment status, and audit history.</p>
+                        <button onclick="window.location.href='admin-orders.html'" class="normal" style="width:100%; border-radius:12px;">Manage Orders</button>
+                    </div>
+
+                    <!-- Registry Module -->
+                    <div class="dash-card module-card">
+                        <div class="dash-header-modern">
+                            <h3><i class="fa-solid fa-user-shield"></i> Citizen Registry</h3>
+                        </div>
+                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Monitor member access, manage authorities, and review circle growth.</p>
+                        <button onclick="window.location.href='admin-users.html'" class="normal" style="width:100%; border-radius:12px;">Manage Registry</button>
                     </div>
                 </div>
 
@@ -128,52 +158,6 @@
                                 <div class="bar" style="height: 60%;" data-label="Heritage"></div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Product Vault -->
-                <div class="dash-card">
-                    <div class="section-header-modern">
-                        <h3><i class="fa-solid fa-boxes-stacked"></i> Inventory Vault</h3>
-                        <button class="premium-btn" onclick="openProductModal()">+ New Product</button>
-                    </div>
-                    <div class="table-responsive">
-                        <table id="admin-product-table">
-                            <thead>
-                                <tr><th>Visual</th><th>Designation</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Full Order Management -->
-                <div class="dash-card">
-                    <div class="section-header-modern">
-                        <h3><i class="fa-solid fa-receipt"></i> Global Order Fulfillment</h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table id="admin-full-order-table">
-                            <thead>
-                                <tr><th>Ref</th><th>Date</th><th>Client</th><th>Amount</th><th>Status</th><th>Control</th></tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Citizen Registry -->
-                <div class="dash-card">
-                    <div class="section-header-modern">
-                        <h3><i class="fa-solid fa-user-shield"></i> Citizen Registry</h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table id="admin-user-table">
-                            <thead>
-                                <tr><th>Identifier</th><th>Contact</th><th>Authority</th><th>Control</th></tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Vault - Sovereign Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+    <!-- Premium Navigation -->
+    <section id="header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection"/></a>
+      <div class="header-search">
+        <input type="text" placeholder="Search inventory..." id="header-search-input">
+        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="user-dashboard.html">My Account</a></li>
+          <li><a href="#" onclick="logoutUser()">Logout <i class="fa-solid fa-sign-out-alt"></i></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="dashboard-container">
+        <div class="back-btn-container" style="margin-bottom: 30px;">
+            <a href="user-dashboard.html" class="normal outline-dark" style="text-decoration:none; padding: 10px 20px; border-radius: 50px;">
+                <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+
+        <main class="main-content fade-in">
+            <div class="section-header-modern" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <div>
+                    <h1>Inventory Vault</h1>
+                    <p>Comprehensive management of the Alina Collection inventory.</p>
+                </div>
+                <button class="premium-btn" onclick="openProductModal()">+ Authorize New Addition</button>
+            </div>
+
+            <div class="dash-card">
+                <div class="table-responsive">
+                    <table id="admin-product-table">
+                        <thead>
+                            <tr>
+                                <th>Visual</th>
+                                <th>Designation</th>
+                                <th>Category</th>
+                                <th>Valuation</th>
+                                <th>Reserves</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content admin-modal">
+            <div class="modal-header"><h2>Product Configuration</h2><button class="close-modal" onclick="closeProductModal()">&times;</button></div>
+            <form id="product-form" onsubmit="saveProduct(event)">
+                <input type="hidden" id="edit-id">
+                <div class="modal-body">
+                    <div class="input-grid">
+                        <div class="input-group"><label>Designation</label><input type="text" id="edit-name" required></div>
+                        <div class="input-group"><label>House / Brand</label><input type="text" id="edit-brand" required></div>
+                    </div>
+                    <div class="input-grid">
+                        <div class="input-group"><label>Price (NPR)</label><input type="number" id="edit-price" required></div>
+                        <div class="input-group"><label>Reserves</label><input type="number" id="edit-stock" required></div>
+                    </div>
+                    <div class="input-group">
+                        <label>Category</label>
+                        <select id="edit-cat">
+                            <option value="Tops">Tops</option>
+                            <option value="Bottoms">Bottoms</option>
+                            <option value="Dresses">Dresses</option>
+                            <option value="Outerwear">Outerwear</option>
+                            <option value="Footwear">Footwear</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Nepali Heritage">Nepali Heritage</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label>Imagery URL</label><input type="text" id="edit-image"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeProductModal()">Discard</button>
+                    <button type="submit" class="btn-confirm">Authorize Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const user = JSON.parse(localStorage.getItem('currentUser'));
+             if (!user || user.role !== 'admin') { window.location.href = 'index.html'; return; }
+             renderAdminDashboard();
+        });
+    </script>
+</body>
+</html>

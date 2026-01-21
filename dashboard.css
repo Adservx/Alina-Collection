@@ -485,6 +485,26 @@ td:last-child { border-radius: 0 12px 12px 0; }
 .mini-item-info p { font-size: 12px; color: var(--dash-text-muted); font-weight: 600; }
 .view-link { font-size: 12px; font-weight: 700; color: var(--dash-primary); text-decoration: none; }
 
+.module-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px;
+    border: 1px solid var(--dash-border);
+}
+
+.module-card h3 {
+    font-size: 18px;
+    color: var(--dash-text);
+}
+
+.module-card .normal:hover {
+    background: var(--dash-primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(221, 45, 74, 0.2);
+}
+
 /* Helper Classes */
 .premium-btn { background: var(--dash-primary); color: #fff; border: none; padding: 10px 20px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 .premium-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(221, 45, 74, 0.3); }
