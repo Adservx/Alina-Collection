@@ -32,8 +32,7 @@
 }
 
 .filter-sidebar {
-    width: 300px;
-    flex-shrink: 0;
+    display: none;
 }
 
 .sidebar-inner {
@@ -78,6 +77,12 @@
     box-shadow: var(--shadow-soft);
 }
 
+.results-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .count-pill {
     background: var(--primary-light);
     color: var(--primary-dark);
@@ -88,10 +93,37 @@
 }
 
 .sort-wrapper { display: flex; align-items: center; gap: 10px; }
-.sort-wrapper select { border: none; font-weight: 700; font-size: 14px; outline: none; background: transparent; cursor: pointer; }
+.sort-wrapper select { 
+    border: none; 
+    font-weight: 700; 
+    font-size: 14px; 
+    outline: none; 
+    background: transparent; 
+    cursor: pointer; 
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.sort-wrapper select:hover {
+    background: var(--primary-light);
+}
+
+.sort-wrapper select option {
+    background: var(--bg-card);
+    color: var(--text-color);
+    padding: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+}
+
+body.dark-mode .sort-wrapper select:hover {
+    background: var(--secondary-light);
+}
 
 @media (max-width: 992px) {
     #shop-container { flex-direction: column; padding: 40px 20px; }
-    .filter-sidebar { width: 100%; display: none; } /* Hidden, shown via Portal */
     .gallery-controls { flex-direction: column; gap: 15px; border-radius: 20px; }
 }
