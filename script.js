@@ -931,6 +931,7 @@ function openProductModal(id = null) {
         document.getElementById('edit-price').value = p.price;
         document.getElementById('edit-cat').value = p.cat;
         document.getElementById('edit-stock').value = p.stock;
+        document.getElementById('edit-desc').value = p.description || "";
         document.getElementById('edit-image').value = p.image;
     } else {
         document.getElementById('modal-title').innerText = "Add New Product";
@@ -949,14 +950,15 @@ function saveProduct(e) {
     const price = parseInt(document.getElementById('edit-price').value);
     const cat = document.getElementById('edit-cat').value;
     const stock = parseInt(document.getElementById('edit-stock').value);
+    const description = document.getElementById('edit-desc').value;
     const image = document.getElementById('edit-image').value || 'image/product/f1.jpg';
 
     if (id) {
         const idx = allProducts.findIndex(p => p.id == id);
-        allProducts[idx] = { ...allProducts[idx], name, brand, price, cat, stock, image };
+        allProducts[idx] = { ...allProducts[idx], name, brand, price, cat, stock, description, image };
     } else {
         const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
-        allProducts.push({ id: newId, name, brand, price, cat, stock, image, rating: "5.0", reviewCount: 0 });
+        allProducts.push({ id: newId, name, brand, price, cat, stock, description, image, rating: "5.0", reviewCount: 0 });
     }
     
     localStorage.setItem('products', JSON.stringify(allProducts));

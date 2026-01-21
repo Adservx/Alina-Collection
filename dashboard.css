@@ -659,10 +659,13 @@ td:last-child { border-radius: 0 12px 12px 0; }
 .admin-modal { 
     width: 100%;
     max-width: 700px !important; 
+    max-height: 90vh;
     border-radius: 30px !important; 
     padding: 0 !important; 
     background: var(--dash-card-bg) !important;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
     transform: translateY(30px);
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -710,7 +713,11 @@ td:last-child { border-radius: 0 12px 12px 0; }
     transform: rotate(90deg);
 }
 
-.modal-body { padding: 40px; }
+.modal-body { 
+    padding: 40px; 
+    overflow-y: auto;
+    flex: 1;
+}
 
 .input-grid { 
     display: grid; 
