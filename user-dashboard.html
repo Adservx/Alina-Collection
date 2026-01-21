@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Dashboard - Alina Collection</title>
+    <title>Dashboard - Alina Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
-<body>
-    <!-- Navigation -->
+<body class="dashboard-body">
+    <!-- Premium Navigation -->
     <section id="header">
-      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection"/></a>
       <div class="header-search">
         <input type="text" placeholder="Search premium fashion..." id="header-search-input">
         <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
@@ -37,253 +37,459 @@
       </div>
     </section>
 
-    <div class="dashboard-container">
-        <!-- Main Content -->
+    <div class="dashboard-layout-container">
+        <!-- Optional Admin Sidebar (Visible only to David Scot) -->
+        <aside id="admin-sidebar" class="admin-sidebar" style="display: none;">
+            <div class="sidebar-header">
+                <h3>Executive Control</h3>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="active" onclick="switchDashboardView('personal')">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Personal View</span>
+                </li>
+                <li onclick="switchDashboardView('admin-overview')">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>System Intelligence</span>
+                </li>
+                <li onclick="switchDashboardView('admin-inventory')">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <span>Inventory Vault</span>
+                </li>
+                <li onclick="switchDashboardView('admin-orders')">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Order Fulfillment</span>
+                </li>
+                <li onclick="switchDashboardView('admin-users')">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>Citizen Registry</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>© 2026 Sovereign Access</p>
+            </div>
+        </aside>
+
         <main class="main-content fade-in">
             
-            <!-- 1. Profile Header (Welcome) -->
-            <div class="profile-header-card">
-                <div class="profile-bg-overlay"></div>
-                <div class="profile-info-main">
-                    <div class="avatar-container">
-                        <div class="profile-avatar" id="avatar-preview">
-                            <i class="fa-solid fa-user"></i>
+            <!-- SECTION: Personal Dashboard (Standard User View) -->
+            <div id="personal-view" class="dashboard-section">
+                <!-- 1. Profile Header (Welcome) -->
+                <div class="profile-header-card">
+                    <div class="profile-bg-overlay"></div>
+                    <div class="profile-info-main">
+                        <div class="avatar-container">
+                            <div class="profile-avatar" id="avatar-preview">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <label for="profile-upload" class="avatar-edit-btn">
+                                <i class="fa-solid fa-camera"></i>
+                                <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+                            </label>
                         </div>
-                        <label for="profile-upload" class="avatar-edit-btn">
-                            <i class="fa-solid fa-camera"></i>
-                            <input type="file" id="profile-upload" accept="image/*" style="display: none;">
-                        </label>
-                    </div>
-                    <div class="profile-text">
-                        <h2 id="user-greeting-large">Hello, User!</h2>
-                        <p id="user-email-small">user@example.com</p>
-                        <span class="role-badge" id="user-role-badge"><i class="fa-solid fa-user"></i> User</span>
-                    </div>
-                </div>
-                <div class="profile-stats-summary">
-                    <div class="summary-item">
-                        <span class="summary-value" id="count-orders">0</span>
-                        <span class="summary-label">Orders</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-value" id="count-wishlist">0</span>
-                        <span class="summary-label">Wishlist</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-value" id="count-spent">NPR 0</span>
-                        <span class="summary-label">Total Spent</span>
-                    </div>
-                    <div class="summary-item premium-points">
-                        <span class="summary-value" id="loyalty-points">0</span>
-                        <span class="summary-label">Alina Points</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Loyalty Program Section -->
-            <div class="dash-card loyalty-card fade-in">
-                <div class="loyalty-content">
-                    <div class="loyalty-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <div class="loyalty-text">
-                        <h3>Alina Insider Rewards</h3>
-                        <p>You're earning 1 point for every NPR 100 spent. Redeem points for exclusive discounts!</p>
-                        <div class="progress-container">
-                            <div class="progress-bar" id="points-progress" style="width: 0%;"></div>
+                        <div class="profile-text">
+                            <h2 id="user-greeting-large">Hello, User!</h2>
+                            <p id="user-email-small">user@example.com</p>
+                            <span class="role-badge" id="user-role-badge"><i class="fa-solid fa-user"></i> User</span>
                         </div>
-                        <span id="points-needed">Spend NPR 500 more to reach Silver tier</span>
                     </div>
-                    <button class="normal gold-btn" onclick="showToast('Feature coming soon!!!')">Redeem Points</button>
+                    <div class="profile-stats-summary">
+                        <div class="summary-item">
+                            <span class="summary-value" id="count-orders">0</span>
+                            <span class="summary-label">Orders</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-value" id="count-wishlist">0</span>
+                            <span class="summary-label">Wishlist</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-value" id="count-spent">NPR 0</span>
+                            <span class="summary-label">Total Spent</span>
+                        </div>
+                        <div class="summary-item premium-points">
+                            <span class="summary-value" id="loyalty-points">0</span>
+                            <span class="summary-label">Alina Points</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Dashboard Overview Sections (My Cart, My Wishlist, Track Order) -->
-            <div class="dashboard-grid-3">
-                <!-- My Cart Section -->
-                <div id="cart-section" class="section-wrapper-mini">
+                <!-- Loyalty Program Section -->
+                <div class="dash-card loyalty-card fade-in">
+                    <div class="loyalty-content">
+                        <div class="loyalty-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="loyalty-text">
+                            <h3>Alina Insider Rewards</h3>
+                            <p>You're earning 1 point for every NPR 100 spent. Redeem points for exclusive discounts!</p>
+                            <div class="progress-container">
+                                <div class="progress-bar" id="points-progress" style="width: 0%;"></div>
+                            </div>
+                            <span id="points-needed">Spend NPR 500 more to reach Silver tier</span>
+                        </div>
+                        <button class="normal gold-btn" onclick="showToast('Feature coming soon!!!')">Redeem Points</button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Overview Sections (My Cart, My Wishlist, Track Order) -->
+                <div class="dashboard-grid-3">
+                    <!-- My Cart Section -->
+                    <div id="cart-section" class="section-wrapper-mini">
+                        <div class="dash-card">
+                            <div class="dash-header-modern">
+                                <h3><i class="fa-solid fa-cart-shopping"></i> My Cart</h3>
+                                <a href="cart.html" class="view-link">View Full Cart</a>
+                            </div>
+                            <div class="mini-list" id="mini-cart-list">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Wishlist Section -->
+                    <div id="wishlist-section" class="section-wrapper-mini">
+                        <div class="dash-card">
+                            <div class="dash-header-modern">
+                                <h3><i class="fa-solid fa-heart"></i> My Wishlist</h3>
+                                <a href="shop.html" class="view-link">Add More</a>
+                            </div>
+                            <div class="mini-list" id="mini-wishlist-list">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Track Order Section -->
+                    <div id="track-section" class="section-wrapper-mini">
+                        <div class="dash-card">
+                            <div class="dash-header-modern">
+                                <h3><i class="fa-solid fa-truck-fast"></i> Track Order</h3>
+                            </div>
+                            <div class="track-box">
+                                <p>Enter your Order ID to see real-time status.</p>
+                                <div class="track-input-group">
+                                    <input type="text" id="track-id-input" placeholder="e.g. #1001">
+                                    <button onclick="trackOrder()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <div id="track-result" class="track-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section (Account Setting) -->
+                <div id="settings-section" class="section-wrapper">
+                    <div class="dash-card advanced-settings">
+                        <div class="settings-header">
+                            <h3><i class="fa-solid fa-user-gear"></i> Personal Configuration</h3>
+                            <p>Keep your profile up to date for a better shopping experience.</p>
+                        </div>
+                        
+                        <form id="profile-form">
+                            <div class="settings-grid">
+                                <!-- Personal Details -->
+                                <div class="settings-section">
+                                    <h4 class="section-title">Identity</h4>
+                                    <div class="input-group">
+                                        <label>Full Name</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-signature"></i>
+                                            <input type="text" id="set-name" placeholder="Enter your full name">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Email Address</label>
+                                        <div class="input-wrapper disabled">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            <input type="email" id="set-email" disabled>
+                                            <i class="fa-solid fa-lock lock-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Phone Number</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-phone"></i>
+                                            <input type="tel" id="set-phone" placeholder="Enter phone number">
+                                        </div>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label>Date of Birth</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-calendar"></i>
+                                                <input type="date" id="set-dob">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Gender</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-venus-mars"></i>
+                                                <select id="set-gender">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Address Information -->
+                                <div class="settings-section">
+                                    <h4 class="section-title">Delivery Address</h4>
+                                    <div class="input-row">
+                                        <div class="input-group" style="flex: 1;">
+                                            <label>House / Flat No.</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-house-user"></i>
+                                                <input type="text" id="set-house" placeholder="#101">
+                                            </div>
+                                        </div>
+                                        <div class="input-group" style="flex: 2;">
+                                            <label>Street Address</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-road"></i>
+                                                <input type="text" id="set-address" placeholder="e.g. Main Street, Ward 4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label>City</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-city"></i>
+                                                <input type="text" id="set-city" placeholder="e.g. Kathmandu">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Province / State</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-map"></i>
+                                                <input type="text" id="set-province" placeholder="e.g. Bagmati">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label>Country</label>
+                                            <div class="input-wrapper">
+                                                <i class="fa-solid fa-earth-americas"></i>
+                                                <select id="set-country">
+                                                    <option value="Nepal">Nepal</option>
+                                                    <option value="India">India</option>
+                                                    <option value="USA">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions-modern">
+                                <button type="submit" class="normal btn-save-modern">
+                                    <span>Save Changes</span>
+                                    <i class="fa-solid fa-check"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Purchase History -->
+                <div id="orders-section" class="section-wrapper">
                     <div class="dash-card">
                         <div class="dash-header-modern">
-                            <h3><i class="fa-solid fa-cart-shopping"></i> My Cart</h3>
-                            <a href="cart.html" class="view-link">View Full Cart</a>
+                            <h3><i class="fa-solid fa-clock-rotate-left"></i> Purchase History</h3>
+                            <p>Track and manage your recent orders.</p>
                         </div>
-                        <div class="mini-list" id="mini-cart-list">
+                        <div class="table-responsive">
+                            <table class="order-table-modern" id="user-order-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Date</th>
+                                        <th>Product Details</th>
+                                        <th>Amount</th>
+                                        <th>Tracking Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Orders injected by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Admin Intelligence -->
+            <div id="admin-overview" class="dashboard-section" style="display: none;">
+                <div class="section-header-modern">
+                    <div>
+                        <h1>System Intelligence</h1>
+                        <p>Real-time analytics and performance metrics for Alina Collection.</p>
+                    </div>
+                    <div class="date-display" id="current-date">January 21, 2026</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card premium">
+                        <div class="stat-icon"><i class="fa-solid fa-coins"></i></div>
+                        <div class="stat-info">
+                            <p>Gross Revenue</p>
+                            <h3 id="stat-total-sales">NPR 0</h3>
+                        </div>
+                        <div class="stat-trend positive">+12.5%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-shopping-bag"></i></div>
+                        <div class="stat-info">
+                            <p>Total Acquisitions</p>
+                            <h3 id="stat-total-orders">0</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-info">
+                            <p>Global Members</p>
+                            <h3 id="stat-total-users">0</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card alert">
+                        <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="stat-info">
+                            <p>Low Stock Alerts</p>
+                            <h3 id="stat-low-stock">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-split-grid">
+                    <div class="data-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent Activity Log</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="admin-recent-order-table">
+                                <thead>
+                                    <tr>
+                                        <th>Log ID</th>
+                                        <th>Client</th>
+                                        <th>Asset Value</th>
+                                        <th>Fulfillment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Injected by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> Inventory Velocity</h3>
+                        </div>
+                        <div class="inventory-performance-viz">
+                            <div class="chart-mock">
+                                <div class="bar" style="height: 80%;" data-label="Tops"></div>
+                                <div class="bar" style="height: 45%;" data-label="Bottoms"></div>
+                                <div class="bar" style="height: 95%;" data-label="Dresses"></div>
+                                <div class="bar" style="height: 30%;" data-label="Outerwear"></div>
+                                <div class="bar" style="height: 60%;" data-label="Heritage"></div>
+                            </div>
+                        </div>
+                        <div id="inventory-summary-list" class="mt-4">
                             <!-- Injected by JS -->
                         </div>
                     </div>
                 </div>
-
-                <!-- My Wishlist Section -->
-                <div id="wishlist-section" class="section-wrapper-mini">
-                    <div class="dash-card">
-                        <div class="dash-header-modern">
-                            <h3><i class="fa-solid fa-heart"></i> My Wishlist</h3>
-                            <a href="shop.html" class="view-link">Add More</a>
-                        </div>
-                        <div class="mini-list" id="mini-wishlist-list">
-                            <!-- Injected by JS -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track Order Section -->
-                <div id="track-section" class="section-wrapper-mini">
-                    <div class="dash-card">
-                        <div class="dash-header-modern">
-                            <h3><i class="fa-solid fa-truck-fast"></i> Track Order</h3>
-                        </div>
-                        <div class="track-box">
-                            <p>Enter your Order ID to see real-time status.</p>
-                            <div class="track-input-group">
-                                <input type="text" id="track-id-input" placeholder="e.g. #1001">
-                                <button onclick="trackOrder()"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </div>
-                            <div id="track-result" class="track-result"></div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- 2. Settings Section (Account Setting) -->
-            <div id="settings-section" class="section-wrapper">
-                <div class="dash-card advanced-settings">
-                    <div class="settings-header">
-                        <h3><i class="fa-solid fa-user-gear"></i> Personal Information</h3>
-                        <p>Keep your profile up to date for a better shopping experience.</p>
+            <!-- SECTION: Inventory Vault -->
+            <div id="admin-inventory" class="dashboard-section" style="display: none;">
+                <div class="section-header-modern">
+                    <div>
+                        <h1>Inventory Vault</h1>
+                        <p>Curate, add, or refine the Alina Collection catalogue.</p>
                     </div>
-                    
-                    <form id="profile-form">
-                        <div class="settings-grid">
-                            <!-- Personal Details -->
-                            <div class="settings-section">
-                                <h4 class="section-title">Identity</h4>
-                                <div class="input-group">
-                                    <label>Full Name</label>
-                                    <div class="input-wrapper">
-                                        <i class="fa-solid fa-signature"></i>
-                                        <input type="text" id="set-name" placeholder="Enter your full name">
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label>Email Address</label>
-                                    <div class="input-wrapper disabled">
-                                        <i class="fa-solid fa-envelope"></i>
-                                        <input type="email" id="set-email" disabled>
-                                        <i class="fa-solid fa-lock lock-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label>Phone Number</label>
-                                    <div class="input-wrapper">
-                                        <i class="fa-solid fa-phone"></i>
-                                        <input type="tel" id="set-phone" placeholder="Enter phone number">
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label>Date of Birth</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-calendar"></i>
-                                            <input type="date" id="set-dob">
-                                        </div>
-                                    </div>
-                                    <div class="input-group">
-                                        <label>Gender</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-venus-mars"></i>
-                                            <select id="set-gender">
-                                                <option value="">Select Gender</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Address Information -->
-                            <div class="settings-section">
-                                <h4 class="section-title">Delivery Address</h4>
-                                <div class="input-row">
-                                    <div class="input-group" style="flex: 1;">
-                                        <label>House / Flat No.</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-house-user"></i>
-                                            <input type="text" id="set-house" placeholder="#101">
-                                        </div>
-                                    </div>
-                                    <div class="input-group" style="flex: 2;">
-                                        <label>Street Address</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-road"></i>
-                                            <input type="text" id="set-address" placeholder="e.g. Main Street, Ward 4">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label>City</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-city"></i>
-                                            <input type="text" id="set-city" placeholder="e.g. Kathmandu">
-                                        </div>
-                                    </div>
-                                    <div class="input-group">
-                                        <label>Province / State</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-map"></i>
-                                            <input type="text" id="set-province" placeholder="e.g. Bagmati">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label>Country</label>
-                                        <div class="input-wrapper">
-                                            <i class="fa-solid fa-earth-americas"></i>
-                                            <select id="set-country">
-                                                <option value="Nepal">Nepal</option>
-                                                <option value="India">India</option>
-                                                <option value="USA">USA</option>
-                                                <option value="UK">UK</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-actions-modern">
-                            <button type="submit" class="normal btn-save-modern">
-                                <span>Save Changes</span>
-                                <i class="fa-solid fa-check"></i>
-                            </button>
-                        </div>
-                    </form>
+                    <button class="premium-btn" onclick="openProductModal()">
+                        <i class="fas fa-plus"></i> New Addition
+                    </button>
                 </div>
-            </div>
 
-            <!-- 3. Orders Section (Purchase History) -->
-            <div id="orders-section" class="section-wrapper">
-                <div class="dash-card">
-                    <div class="dash-header-modern">
-                        <h3><i class="fa-solid fa-clock-rotate-left"></i> Purchase History</h3>
-                        <p>Track and manage your recent orders.</p>
-                    </div>
+                <div class="data-card">
                     <div class="table-responsive">
-                        <table class="order-table-modern" id="user-order-table">
+                        <table id="admin-product-table">
+                            <thead>
+                                <tr>
+                                    <th>Visual</th>
+                                    <th>Designation</th>
+                                    <th>House/Cat</th>
+                                    <th>Valuation</th>
+                                    <th>Reserves</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Order Fulfillment -->
+            <div id="admin-orders" class="dashboard-section" style="display: none;">
+                <div class="section-header-modern">
+                    <div>
+                        <h1>Order Fulfillment</h1>
+                        <p>Monitor and manage the lifecycle of every transaction.</p>
+                    </div>
+                </div>
+                <div class="data-card">
+                    <div class="table-responsive">
+                        <table id="admin-full-order-table">
                             <thead>
                                 <tr>
                                     <th>Reference</th>
                                     <th>Date</th>
-                                    <th>Product Details</th>
+                                    <th>Client Detail</th>
                                     <th>Amount</th>
-                                    <th>Tracking Status</th>
+                                    <th>Fulfillment</th>
+                                    <th>Control</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Orders injected by JS -->
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: User Registry -->
+            <div id="admin-users" class="dashboard-section" style="display: none;">
+                <div class="section-header-modern">
+                    <div>
+                        <h1>Citizen Registry</h1>
+                        <p>Managing access and memberships for the Alina Circle.</p>
+                    </div>
+                </div>
+                <div class="data-card">
+                    <div class="table-responsive">
+                        <table id="admin-user-table">
+                            <thead>
+                                <tr>
+                                    <th>Identifier</th>
+                                    <th>Contact</th>
+                                    <th>Authority</th>
+                                    <th>Control</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Injected by JS -->
                             </tbody>
                         </table>
                     </div>
@@ -291,6 +497,61 @@
             </div>
 
         </main>
+    </div>
+
+    <!-- Premium Product Modal (shared for Admin Inventory) -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content admin-modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Product Configuration</h2>
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+            </div>
+            <form id="product-form" onsubmit="saveProduct(event)">
+                <input type="hidden" id="edit-id">
+                <div class="modal-body">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>Product Designation</label>
+                            <input type="text" id="edit-name" placeholder="e.g. Signature Silk Saree" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Design House / Brand</label>
+                            <input type="text" id="edit-brand" placeholder="e.g. Alina Boutique" required>
+                        </div>
+                    </div>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>Price (NPR)</label>
+                            <input type="number" id="edit-price" placeholder="0.00" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Inventory Reserves</label>
+                            <input type="number" id="edit-stock" placeholder="0" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Category</label>
+                        <select id="edit-cat">
+                            <option value="Tops">Tops & Shirts</option>
+                            <option value="Bottoms">Pants & Bottoms</option>
+                            <option value="Dresses">Dresses</option>
+                            <option value="Outerwear">Outerwear</option>
+                            <option value="Footwear">Footwear</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Nepali Heritage">Nepali Heritage</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Imagery URL</label>
+                        <input type="text" id="edit-image" placeholder="https://...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeProductModal()">Discard</button>
+                    <button type="submit" class="btn-confirm">Authorize Changes</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="script.js"></script>
@@ -302,23 +563,15 @@
                  return;
              }
              
-             // If admin is visiting, show the Admin Panel link
+             // UNIFIED DASHBOARD LOGIC
              if (user.role === 'admin') {
-                 const dashboardGrid = document.querySelector('.dashboard-grid-3');
-                 const adminCard = document.createElement('div');
-                 adminCard.className = 'section-wrapper-mini';
-                 adminCard.innerHTML = `
-                    <div class="dash-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border: none; box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);">
-                        <div class="dash-header-modern">
-                            <h3 style="color: #fff;"><i class="fa-solid fa-shield-halved" style="color: var(--primary-color);"></i> Sovereign Access</h3>
-                        </div>
-                        <div style="margin-top: 15px;">
-                            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">You have administrative authority. Access the inventory vault and order management systems.</p>
-                            <button onclick="window.location.href='admin-dashboard.html'" class="normal" style="width: 100%; background: var(--primary-color); border: none; font-weight: 800; letter-spacing: 1px;">ADMIN PANEL</button>
-                        </div>
-                    </div>
-                 `;
-                 if (dashboardGrid) dashboardGrid.prepend(adminCard);
+                 // Show sidebar for David Scot
+                 document.getElementById('admin-sidebar').style.display = 'flex';
+                 document.querySelector('.dashboard-layout-container').classList.add('admin-active');
+                 
+                 // Initial Administrative Render
+                 renderAdminDashboard();
+                 document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
              }
 
              // Initial greeting
@@ -328,7 +581,7 @@
              // Set Role Badge
              const roleBadge = document.getElementById('user-role-badge');
              if (user.role === 'admin') {
-                 roleBadge.innerHTML = `<i class="fa-solid fa-user-shield"></i> Admin`;
+                 roleBadge.innerHTML = `<i class="fa-solid fa-user-shield"></i> Sovereign Admin`;
                  roleBadge.className = 'role-badge role-admin';
              } else {
                  roleBadge.innerHTML = `<i class="fa-solid fa-user"></i> User`;
@@ -340,25 +593,7 @@
                  document.getElementById('avatar-preview').innerHTML = `<img src="${user.profilePic}" alt="Profile">`;
              }
              
-             // Update Stats Summary
-             const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-             const userOrders = allOrders.filter(o => o.userEmail === user.email);
-             const wishlistCount = JSON.parse(localStorage.getItem('wishlist'))?.length || 0;
-             const totalSpent = userOrders.reduce((sum, o) => sum + o.total, 0);
-
-             document.getElementById('count-orders').innerText = userOrders.length;
-             document.getElementById('count-wishlist').innerText = wishlistCount;
-             document.getElementById('count-spent').innerText = `NPR ${totalSpent}`;
-             
-             // Loyalty System Logic
-             const points = Math.floor(totalSpent / 100);
-             document.getElementById('loyalty-points').innerText = points;
-             const progress = (points % 500) / 5;
-             document.getElementById('points-progress').style.width = progress + "%";
-             const needed = 500 - (points % 500);
-             document.getElementById('points-needed').innerText = `Earn ${needed} more points to reach the next tier!`;
-
-             // Fill settings form
+             // Fill personal settings form
              document.getElementById('set-name').value = user.name || "";
              document.getElementById('set-email').value = user.email || "";
              document.getElementById('set-phone').value = user.phone || "";
@@ -397,7 +632,7 @@
                      localStorage.setItem('users', JSON.stringify(allUsers));
                  }
 
-                 showToast('Profile updated successfully!');
+                 showToast('Configuration Updated Successfully');
                  document.getElementById('user-greeting-large').innerText = `Hello, ${updatedUser.name}!`;
              });
 
@@ -421,7 +656,7 @@
                              allUsers[userIndex].profilePic = dataUrl;
                              localStorage.setItem('users', JSON.stringify(allUsers));
                          }
-                         showToast('Profile picture updated!');
+                         showToast('Avatar Synced');
                      };
                      reader.readAsDataURL(file);
                  }
@@ -430,102 +665,56 @@
              renderUserOrders(user.email);
              renderDashboardCart();
              renderDashboardWishlist();
+             
+             // Metrics for Admin
+             const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+             const userOrders = allOrders.filter(o => o.userEmail === user.email);
+             const wishlistCount = JSON.parse(localStorage.getItem('wishlist'))?.length || 0;
+             const totalSpent = userOrders.reduce((sum, o) => sum + o.total, 0);
+
+             document.getElementById('count-orders').innerText = userOrders.length;
+             document.getElementById('count-wishlist').innerText = wishlistCount;
+             document.getElementById('count-spent').innerText = `NPR ${totalSpent}`;
+             
+             // Loyalty
+             const points = Math.floor(totalSpent / 100);
+             document.getElementById('loyalty-points').innerText = points;
+             const progress = (points % 500) / 5;
+             document.getElementById('points-progress').style.width = progress + "%";
+             const needed = 500 - (points % 500);
+             document.getElementById('points-needed').innerText = `Earn ${needed} more points to reach the next tier!`;
         });
 
-        function renderDashboardCart() {
-            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-            const container = document.getElementById('mini-cart-list');
-            if (!container) return;
+        function switchDashboardView(viewId) {
+            const sections = document.querySelectorAll('.dashboard-section');
+            
+            // Fade out current
+            sections.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    el.style.display = 'none';
+                }, 300);
+            });
+            
+            // Switch & Fade in
+            setTimeout(() => {
+                let target;
+                if (viewId === 'personal') target = document.getElementById('personal-view');
+                else target = document.getElementById(viewId);
 
-            if (cartItems.length === 0) {
-                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your cart is empty.</p>';
-                return;
-            }
+                if(target) {
+                    target.style.display = 'block';
+                    setTimeout(() => {
+                        target.style.opacity = '1';
+                        target.style.transform = 'translateY(0)';
+                    }, 50);
+                }
+            }, 305);
 
-            container.innerHTML = cartItems.slice(0, 3).map(item => `
-                <div class="mini-item">
-                    <img src="${item.image || 'image/product/f1.jpg'}" alt="${item.name}" onerror="this.onerror=null;this.src='image/product/f1.jpg';">
-                    <div class="mini-item-info">
-                        <h4>${item.name}</h4>
-                        <p>${item.quantity} x NPR ${item.price}</p>
-                    </div>
-                </div>
-            `).join('');
-            if (cartItems.length > 3) {
-                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${cartItems.length - 3} more items</p>`;
-            }
-        }
-
-        function renderDashboardWishlist() {
-            const wishlistIds = JSON.parse(localStorage.getItem('wishlist')) || [];
-            const container = document.getElementById('mini-wishlist-list');
-            if (!container) return;
-
-            if (wishlistIds.length === 0) {
-                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your wishlist is empty.</p>';
-                return;
-            }
-
-            const allProducts = JSON.parse(localStorage.getItem('products')) || [];
-            const wishlistItems = wishlistIds.map(id => allProducts.find(p => p.id === id)).filter(p => p);
-
-            container.innerHTML = wishlistItems.slice(0, 3).map(item => `
-                <div class="mini-item">
-                    <img src="${item.image || 'image/product/f1.jpg'}" alt="${item.name}" onerror="this.onerror=null;this.src='image/product/f1.jpg';">
-                    <div class="mini-item-info">
-                        <h4>${item.name}</h4>
-                        <p>${item.brand}</p>
-                    </div>
-                </div>
-            `).join('');
-            if (wishlistItems.length > 3) {
-                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${wishlistItems.length - 3} more items</p>`;
-            }
-        }
-
-        function trackOrder() {
-            const trackId = document.getElementById('track-id-input').value.trim().replace('#', '');
-            const resultArea = document.getElementById('track-result');
-            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-            const order = allOrders.find(o => o.id.toString() === trackId);
-
-            if (!order) {
-                resultArea.innerHTML = '<p style="color: #ef4444; font-size: 13px; margin-top: 15px;">Order ID not found.</p>';
-                return;
-            }
-
-            const steps = ['placed', 'shipped', 'completed'];
-            const currentIdx = steps.indexOf(order.status.toLowerCase());
-
-            resultArea.innerHTML = `
-                <div class="tracking-visual">
-                    <div class="track-step ${currentIdx >= 0 ? 'active' : ''}">Placed</div>
-                    <div class="track-step ${currentIdx >= 1 ? 'active' : ''}">Shipped</div>
-                    <div class="track-step ${currentIdx >= 2 ? 'active' : ''}">Delivered</div>
-                </div>
-                <p style="font-size: 13px; margin-top: 15px; font-weight: 600;">Status: ${order.status.toUpperCase()}</p>
-            `;
-        }
-
-        function renderUserOrders(userEmail) {
-            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-            const userOrders = allOrders.filter(o => o.userEmail === userEmail);
-            const tableBody = document.querySelector('#user-order-table tbody');
-
-            if (userOrders.length === 0) {
-                if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: #999;">You haven\'t placed any orders yet.</td></tr>';
-                return;
-            }
-
-            tableBody.innerHTML = userOrders.map(o => `
-                <tr>
-                    <td><strong>#${o.id}</strong></td>
-                    <td>${o.date}</td>
-                    <td>${o.items.length} Product(s)</td>
-                    <td><span class="price-text">NPR ${o.total}</span></td>
-                    <td><span class="status-badge status-${o.status}">${o.status}</span></td>
-                </tr>
-            `).join('');
+            // Sidebar Active State
+            document.querySelectorAll('.sidebar-nav li').forEach(el => el.classList.remove('active'));
+            if (event && event.currentTarget) event.currentTarget.classList.add('active');
         }
 
         function logoutUser() {

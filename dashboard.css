@@ -23,14 +23,30 @@ body.dark-mode {
     --dash-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
 }
 
-body {
-    background-color: var(--dash-bg);
-}
-
-.dashboard-container {
+/* --- Unified Dashboard Layout --- */
+.dashboard-layout-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
+    display: block; /* Default for users */
+}
+
+.dashboard-layout-container.admin-active {
+    display: flex;
+    max-width: 100%;
+    padding: 0;
+    height: calc(100vh - 70px);
+}
+
+.dashboard-layout-container.admin-active .main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 50px;
+    background: #f8fafc;
+}
+
+.dashboard-section {
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Animations */
