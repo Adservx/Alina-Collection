@@ -178,6 +178,126 @@
                 </div>
             </div>
 
+            <!-- 2. Settings Section (Account Setting) -->
+            <div id="settings-section" class="section-wrapper">
+                <div class="dash-card advanced-settings">
+                    <div class="settings-header">
+                        <h3><i class="fa-solid fa-user-gear"></i> Personal Configuration</h3>
+                        <p>Keep your profile up to date for a better shopping experience.</p>
+                    </div>
+                    
+                    <form id="profile-form">
+                        <div class="settings-grid">
+                            <!-- Personal Details -->
+                            <div class="settings-section">
+                                <h4 class="section-title">Identity</h4>
+                                <div class="input-group">
+                                    <label>Full Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-signature"></i>
+                                        <input type="text" id="set-name" placeholder="Enter your full name">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Email Address</label>
+                                    <div class="input-wrapper disabled">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input type="email" id="set-email" disabled>
+                                        <i class="fa-solid fa-lock lock-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Phone Number</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <input type="tel" id="set-phone" placeholder="Enter phone number">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>Date of Birth</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            <input type="date" id="set-dob">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Gender</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-venus-mars"></i>
+                                            <select id="set-gender">
+                                                <option value="">Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address Information -->
+                            <div class="settings-section">
+                                <h4 class="section-title">Delivery Address</h4>
+                                <div class="input-row">
+                                    <div class="input-group" style="flex: 1;">
+                                        <label>House / Flat No.</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-house-user"></i>
+                                            <input type="text" id="set-house" placeholder="#101">
+                                        </div>
+                                    </div>
+                                    <div class="input-group" style="flex: 2;">
+                                        <label>Street Address</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-road"></i>
+                                            <input type="text" id="set-address" placeholder="e.g. Main Street, Ward 4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>City</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-city"></i>
+                                            <input type="text" id="set-city" placeholder="e.g. Kathmandu">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Province / State</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-map"></i>
+                                            <input type="text" id="set-province" placeholder="e.g. Bagmati">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>Country</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-earth-americas"></i>
+                                            <select id="set-country">
+                                                <option value="Nepal">Nepal</option>
+                                                <option value="India">India</option>
+                                                <option value="USA">USA</option>
+                                                <option value="UK">UK</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-modern">
+                            <button type="submit" class="normal btn-save-modern">
+                                <span>Save Changes</span>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <!-- Purchase History -->
             <div id="orders-section" class="section-wrapper">
                 <div class="dash-card">
