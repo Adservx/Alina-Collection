@@ -3,142 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Alina Collection</title>
+    <title>Sovereign Admin Panel - Alina Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
-<body>
-    <section id="header">
-      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
+<body class="admin-body">
+    <!-- Premium Admin Navigation -->
+    <section id="header" class="admin-header">
+      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection"/></a>
       <div class="header-search">
-        <input type="text" placeholder="Search system..." id="header-search-input">
-        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search Inventory, Orders, or Users..." id="admin-search-input">
       </div>
-      <div>
-        <ul id="navbar">
-          <li><a href="index.html">View Site</a></li>
-          <li><a class="active" href="admin-dashboard.html">Admin Home</a></li>
-          <li><a href="#" onclick="logoutAdmin()">Logout <i class="fa-solid fa-sign-out-alt"></i></a></li>
-        </ul>
+      <div class="admin-profile-top">
+          <div class="admin-info">
+              <span class="admin-name">David Scot</span>
+              <span class="admin-status"><i class="fas fa-circle"></i> Sole Authority</span>
+          </div>
+          <div class="admin-avatar-mini">DS</div>
+          <button class="logout-pill" onclick="logoutAdmin()"><i class="fa-solid fa-sign-out-alt"></i></button>
       </div>
     </section>
 
     <div class="admin-layout">
-        <nav class="admin-sidebar">
-            <h2>Admin Panel</h2>
-            <ul>
-                <li class="active" onclick="showSection('dashboard')"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
-                <li onclick="showSection('products')"><i class="fa-solid fa-box"></i> Products</li>
-                <li onclick="showSection('orders')"><i class="fa-solid fa-clipboard-list"></i> Orders</li>
-                <li onclick="showSection('users')"><i class="fa-solid fa-users"></i> Users</li>
-                <li onclick="logoutAdmin()"><i class="fa-solid fa-sign-out-alt"></i> Logout</li>
+        <!-- Modern Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>Control Center</h3>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="active" onclick="showSection('dashboard')">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Executive Overview</span>
+                </li>
+                <li onclick="showSection('products')">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <span>Inventory Vault</span>
+                </li>
+                <li onclick="showSection('orders')">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Order Management</span>
+                </li>
+                <li onclick="showSection('users')">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>User Registry</span>
+                </li>
             </ul>
-        </nav>
+            <div class="sidebar-footer">
+                <p>© 2026 Sovereign Access</p>
+            </div>
+        </aside>
 
         <main class="admin-main">
-            <!-- Dashboard Section -->
+            <!-- 1. Executive Overview -->
             <div id="dashboard" class="admin-section fade-in">
-                <h2 style="margin-bottom: 20px; font-size: 24px;">Dashboard Overview</h2>
+                <div class="section-header-modern">
+                    <div>
+                        <h1>System Intelligence</h1>
+                        <p>Real-time analytics and performance metrics for Alina Collection.</p>
+                    </div>
+                    <div class="date-display" id="current-date">January 21, 2026</div>
+                </div>
+
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div class="stat-card premium">
+                        <div class="stat-icon"><i class="fa-solid fa-coins"></i></div>
                         <div class="stat-info">
+                            <p>Gross Revenue</p>
                             <h3 id="stat-total-sales">NPR 0</h3>
-                            <p>Total Sales</p>
                         </div>
+                        <div class="stat-trend positive">+12.5%</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <div class="stat-icon"><i class="fa-solid fa-shopping-bag"></i></div>
                         <div class="stat-info">
+                            <p>Total Acquisitions</p>
                             <h3 id="stat-total-orders">0</h3>
-                            <p>Total Orders</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fa-solid fa-user-group"></i></div>
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
                         <div class="stat-info">
+                            <p>Global Members</p>
                             <h3 id="stat-total-users">0</h3>
-                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card alert">
+                        <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="stat-info">
+                            <p>Low Stock Alerts</p>
+                            <h3 id="stat-low-stock">0</h3>
                         </div>
                     </div>
                 </div>
 
-                <div class="data-card">
-                    <div class="card-header">
-                        <h3>Recent Orders</h3>
+                <div class="dashboard-split-grid">
+                    <div class="data-card">
+                        <div class="card-header">
+                            <h3>Recent Order Activity</h3>
+                            <button class="view-all-link" onclick="showSection('orders')">View All</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="admin-recent-order-table">
+                                <thead>
+                                    <tr>
+                                        <th>Ref ID</th>
+                                        <th>Client</th>
+                                        <th>Valuation</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Injected by JS -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <table id="admin-order-table">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Customer</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="data-card">
+                        <div class="card-header">
+                            <h3>Inventory Performance</h3>
+                        </div>
+                        <div id="inventory-summary-list">
                             <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Products Section (Hidden) -->
+            <!-- 2. Inventory Vault (Products) -->
             <div id="products" class="admin-section fade-in" style="display:none;">
-                <div class="data-card">
-                     <div class="card-header">
-                        <h3>Product Management</h3>
-                        <button class="normal" onclick="openProductModal()">Add New Product</button>
+                <div class="section-header-modern">
+                    <div>
+                        <h1>Inventory Vault</h1>
+                        <p>Curate, add, or refine the Alina Collection catalogue.</p>
                     </div>
-                    <table id="admin-product-table">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Data injected by JS -->
-                        </tbody>
-                    </table>
+                    <button class="premium-btn" onclick="openProductModal()">
+                        <i class="fas fa-plus"></i> New Addition
+                    </button>
+                </div>
+
+                <div class="data-card">
+                    <div class="table-responsive">
+                        <table id="admin-product-table">
+                            <thead>
+                                <tr>
+                                    <th>Visual</th>
+                                    <th>Designation</th>
+                                    <th>House/Cat</th>
+                                    <th>Valuation</th>
+                                    <th>Reserves</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-             <!-- Orders Section (Hidden) -->
-             <div id="orders" class="admin-section fade-in" style="display:none;">
+
+            <!-- 3. Order Management -->
+            <div id="orders" class="admin-section fade-in" style="display:none;">
+                <div class="section-header-modern">
+                    <div>
+                        <h1>Order Fulfillment</h1>
+                        <p>Monitor and manage the lifecycle of every transaction.</p>
+                    </div>
+                </div>
                 <div class="data-card">
-                    <h3>All Orders</h3>
-                    <p>Manage all customer orders here.</p>
+                    <div class="table-responsive">
+                        <table id="admin-full-order-table">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Date</th>
+                                    <th>Client Detail</th>
+                                    <th>Amount</th>
+                                    <th>Fulfillment</th>
+                                    <th>Control</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-             <!-- Users Section (Hidden) -->
-             <div id="users" class="admin-section fade-in" style="display:none;">
+
+            <!-- 4. User Registry -->
+            <div id="users" class="admin-section fade-in" style="display:none;">
+                <div class="section-header-modern">
+                    <div>
+                        <h1>Citizen Registry</h1>
+                        <p>Managing access and memberships for the Alina Circle.</p>
+                    </div>
+                </div>
                 <div class="data-card">
-                    <h3>Registered Users</h3>
-                    <table id="admin-user-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="admin-user-table">
+                            <thead>
+                                <tr>
+                                    <th>Identifier</th>
+                                    <th>Contact</th>
+                                    <th>Authority</th>
+                                    <th>Control</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
+    <!-- Premium Product Modal -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content admin-modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Product Configuration</h2>
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+            </div>
+            <form id="product-form" onsubmit="saveProduct(event)">
+                <input type="hidden" id="edit-id">
+                <div class="modal-body">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>Product Designation</label>
+                            <input type="text" id="edit-name" placeholder="e.g. Signature Silk Saree" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Design House / Brand</label>
+                            <input type="text" id="edit-brand" placeholder="e.g. Alina Boutique" required>
+                        </div>
+                    </div>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>Price (NPR)</label>
+                            <input type="number" id="edit-price" placeholder="0.00" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Inventory Reserves</label>
+                            <input type="number" id="edit-stock" placeholder="0" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Category</label>
+                        <select id="edit-cat">
+                            <option value="Tops">Tops & Shirts</option>
+                            <option value="Bottoms">Pants & Bottoms</option>
+                            <option value="Dresses">Dresses</option>
+                            <option value="Outerwear">Outerwear</option>
+                            <option value="Footwear">Footwear</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Nepali Heritage">Nepali Heritage</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Imagery URL</label>
+                        <input type="text" id="edit-image" placeholder="https://...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeProductModal()">Discard</button>
+                    <button type="submit" class="btn-confirm">Authorize Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
+        // SOVEREIGN SECURITY CHECK
+        document.addEventListener('DOMContentLoaded', () => {
+             const user = JSON.parse(localStorage.getItem('currentUser'));
+             // Strictly check for David Scot
+             if (!user || user.name !== 'David Scot' || user.role !== 'admin') {
+                 // Unauthorized attempt detected
+                 document.body.innerHTML = `
+                    <div style="height:100vh; display:flex; align-items:center; justify-content:center; flex-direction:column; font-family:'Spartan',sans-serif; text-align:center; background:#0f172a; color:#fff; padding:20px;">
+                        <i class="fas fa-shield-alt" style="font-size:80px; color:#dd2d4a; margin-bottom:30px;"></i>
+                        <h1 style="font-size:32px; margin-bottom:15px;">Access Revoked</h1>
+                        <p style="color:#94a3b8; max-width:500px; margin-bottom:30px;">This terminal is reserved exclusively for sovereign administrative authority (David Scot). Unauthorized access has been logged.</p>
+                        <a href="index.html" style="color:#fff; text-decoration:none; background:#dd2d4a; padding:15px 40px; border-radius:50px; font-weight:700;">Return to Safety</a>
+                    </div>
+                 `;
+                 setTimeout(() => { window.location.href = 'index.html'; }, 5000);
+                 return;
+             }
+             
+             // Populate Dashboard
+             renderAdminDashboard();
+             document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        });
+
         function showSection(id) {
             const sections = document.querySelectorAll('.admin-section');
             sections.forEach(el => {
@@ -155,14 +318,6 @@
             document.querySelectorAll('.admin-sidebar li').forEach(el => el.classList.remove('active'));
             if (event) event.currentTarget.classList.add('active');
         }
-
-        // Check Auth
-        document.addEventListener('DOMContentLoaded', () => {
-             const user = JSON.parse(localStorage.getItem('currentUser'));
-             if (!user || user.role !== 'admin') {
-                 window.location.href = 'login.html';
-             }
-        });
 
         function logoutAdmin() {
             localStorage.removeItem('currentUser');

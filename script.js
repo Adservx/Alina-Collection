@@ -210,9 +210,9 @@ function handleAuth() {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-pass').value;
 
-            // Admin Hardcoded Check (for demo) or check in allUsers
-            if (email === "admin@alina.com" && password === "admin123") {
-                const adminUser = { name: "Admin", email, role: "admin" };
+            // Sovereign Admin Access (Exclusively for David Scot)
+            if (email === "david@alinacollection.com" && password === "david123") {
+                const adminUser = { name: "David Scot", email, role: "admin" };
                 localStorage.setItem('currentUser', JSON.stringify(adminUser));
                 window.location.href = 'admin-dashboard.html';
                 return;
@@ -721,81 +721,174 @@ function updateCartTotals(sub) {
     if (totEl) totEl.innerText = convertPrice(sub);
 }
 
-// === 6. Admin Panel CRUD & Analytics ===
+// === 6. Sovereign Admin Panel CRUD & Intelligence ===
 function renderAdminDashboard() {
-    const salesEl = document.getElementById('stat-total-sales');
-    if (salesEl) salesEl.innerText = convertPrice(allOrders.reduce((sum, o) => sum + o.total, 0));
-    const ordersEl = document.getElementById('stat-total-orders');
-    if (ordersEl) ordersEl.innerText = allOrders.length;
-    const usersEl = document.getElementById('stat-total-users');
-    if (usersEl) usersEl.innerText = allUsers.length + 1;
+    // 1. Executive Metrics
+    const totalSales = allOrders.reduce((sum, o) => sum + o.total, 0);
+    const lowStockCount = allProducts.filter(p => p.stock < 10).length;
 
+    if (document.getElementById('stat-total-sales')) document.getElementById('stat-total-sales').innerText = convertPrice(totalSales);
+    if (document.getElementById('stat-total-orders')) document.getElementById('stat-total-orders').innerText = allOrders.length;
+    if (document.getElementById('stat-total-users')) document.getElementById('stat-total-users').innerText = allUsers.length + 1; // +1 for the Admin
+    if (document.getElementById('stat-low-stock')) document.getElementById('stat-low-stock').innerText = lowStockCount;
+
+    // 2. Inventory Vault (Products)
     const pTable = document.querySelector('#admin-product-table tbody');
     if (pTable) {
         pTable.innerHTML = allProducts.map(p => `
             <tr>
-                <td><img src="${p.image}" onerror="this.onerror=null;this.src='${UNIVERSAL_FALLBACK_IMAGE}';" width="40"></td>
-                <td>${p.name}</td>
-                <td>${p.cat}</td>
-                <td>${convertPrice(p.price)}</td>
-                <td>${p.stock}</td>
+                <td><img src="${p.image}" class="inventory-img" onerror="this.onerror=null;this.src='${UNIVERSAL_FALLBACK_IMAGE}';"></td>
                 <td>
-                    <a href="#" class="action-btn btn-edit" onclick="openProductModal(${p.id})">Edit</a>
-                    <a href="#" class="action-btn btn-delete" onclick="deleteProduct(${p.id})">Delete</a>
+                    <div style="font-weight:800;">${p.name}</div>
+                    <div style="font-size:11px; color:var(--text-muted);">ID: #ALN-${p.id}</div>
+                </td>
+                <td>
+                    <span class="badge-cat">${p.cat}</span>
+                    <div style="font-size:11px; margin-top:4px;">${p.brand}</div>
+                </td>
+                <td><span class="price-text">${convertPrice(p.price)}</span></td>
+                <td>
+                    <div class="stock-status ${p.stock < 10 ? 'low' : 'healthy'}">
+                        ${p.stock} units
+                    </div>
+                </td>
+                <td>
+                    <div class="action-flex">
+                        <button class="action-btn btn-edit" onclick="openProductModal(${p.id})"><i class="fas fa-edit"></i> Refine</button>
+                        <button class="action-btn btn-delete" onclick="deleteProduct(${p.id})"><i class="fas fa-trash-alt"></i> Expunge</button>
+                    </div>
                 </td>
             </tr>`).join('');
     }
 
-    const uTable = document.querySelector('#admin-user-table tbody');
-    if (uTable) {
-        // Ensure David Scot is admin if present
-        let updated = false;
-        allUsers.forEach(u => {
-            if (u.name === "David Scot" && u.role !== 'admin') {
-                u.role = 'admin';
-                updated = true;
-            }
-        });
-        if (updated) localStorage.setItem('users', JSON.stringify(allUsers));
+    // 3. Order Management (Full & Recent)
+    renderAdminOrders();
 
-        uTable.innerHTML = allUsers.map(u => `
+    // 4. Inventory Performance (Summary List)
+    const invSummary = document.getElementById('inventory-summary-list');
+    if (invSummary) {
+        invSummary.innerHTML = allProducts.slice(0, 5).map(p => `
+            <div class="mini-item">
+                <img src="${p.image}" alt="">
+                <div class="mini-item-info">
+                    <h4>${p.name}</h4>
+                    <p>Price: ${convertPrice(p.price)} | Stock: ${p.stock}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 5. User Registry
+    renderAdminUsers();
+}
+
+function renderAdminOrders() {
+    const fullOrderTable = document.querySelector('#admin-full-order-table tbody');
+    const recentOrderTable = document.querySelector('#admin-recent-order-table tbody');
+
+    const ordersHTML = allOrders.slice().reverse().map(o => `
+        <tr>
+            <td><strong>#${o.id}</strong></td>
+            <td>${o.date}</td>
+            <td>
+                <div>${o.userEmail}</div>
+                <div style="font-size:11px; color:#94a3b8;">${o.items.length} unique assets</div>
+            </td>
+            <td><strong>${convertPrice(o.total)}</strong></td>
+            <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+            <td>
+                <select class="status-control" onchange="updateOrderStatus(${o.id}, this.value)">
+                    <option value="" disabled selected>Update Status</option>
+                    <option value="placed">Placed</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </td>
+        </tr>
+    `).join('');
+
+    if (fullOrderTable) fullOrderTable.innerHTML = ordersHTML;
+    
+    if (recentOrderTable) {
+        recentOrderTable.innerHTML = allOrders.slice().reverse().slice(0, 5).map(o => `
             <tr>
-                <td>${u.name}</td>
-                <td>${u.email}</td>
-                <td><span class="role-badge role-${u.role}">${u.role}</span></td>
-                <td>
-                    ${u.role !== 'admin' ? `<a href="#" class="action-btn btn-edit" onclick="promoteToAdmin('${u.email}')">Make Admin</a>` : 'Admin Access'}
-                </td>
-            </tr>`).join('');
+                <td>#${o.id}</td>
+                <td>${o.userEmail.split('@')[0]}</td>
+                <td>${convertPrice(o.total)}</td>
+                <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+            </tr>
+        `).join('');
     }
 }
 
-function promoteToAdmin(email) {
-    const user = allUsers.find(u => u.email === email);
-    if (user) {
-        user.role = 'admin';
+function updateOrderStatus(id, newStatus) {
+    const order = allOrders.find(o => o.id === id);
+    if (order) {
+        order.status = newStatus;
+        localStorage.setItem('orders', JSON.stringify(allOrders));
+        renderAdminDashboard();
+        showToast(`Order #${id} status updated to ${newStatus}`);
+    }
+}
+
+function renderAdminUsers() {
+    const uTable = document.querySelector('#admin-user-table tbody');
+    if (!uTable) return;
+
+    // David Scot is the Sovereign, always top
+    let usersList = [{ name: "David Scot", email: "david@alinacollection.com", role: "admin" }, ...allUsers.filter(u => u.name !== "David Scot")];
+
+    uTable.innerHTML = usersList.map(u => `
+        <tr>
+            <td>
+                <div style="font-weight:800;">${u.name}</div>
+                <div style="font-size:11px; color:#94a3b8;">${u.email}</div>
+            </td>
+            <td>${u.phone || 'Contact Private'}</td>
+            <td><span class="role-badge role-${u.role}">${u.role}</span></td>
+            <td>
+                ${u.name !== 'David Scot' ? `<button class="action-btn btn-delete" onclick="expungeUser('${u.email}')">Expunge Access</button>` : '<span style="font-size:11px; color:#22c55e; font-weight:800;"><i class="fas fa-crown"></i> SOVEREIGN</span>'}
+            </td>
+        </tr>
+    `).join('');
+}
+
+function expungeUser(email) {
+    if (confirm('Permanently revoke all access for this user?')) {
+        allUsers = allUsers.filter(u => u.email !== email);
         localStorage.setItem('users', JSON.stringify(allUsers));
         renderAdminDashboard();
-        showToast(`${user.name} promoted to Admin`);
+        showToast('User access revoked');
     }
 }
 
-function deleteProduct(id) { if(confirm('Delete product?')) { allProducts = allProducts.filter(p => p.id !== id); localStorage.setItem('products', JSON.stringify(allProducts)); renderAdminDashboard(); showToast('Deleted'); } }
+function deleteProduct(id) {
+    if(confirm('Permanently expunge this product from the inventory vault?')) {
+        allProducts = allProducts.filter(p => p.id !== id);
+        localStorage.setItem('products', JSON.stringify(allProducts));
+        renderAdminDashboard();
+        showToast('Product Expunged');
+    }
+}
 
 function openProductModal(id = null) {
     const modal = document.getElementById('product-modal');
     if (!modal) return;
     modal.classList.add('active');
+    
     if (id) {
         const p = allProducts.find(prod => prod.id == id);
-        document.getElementById('modal-title').innerText = "Edit Product";
+        document.getElementById('modal-title').innerText = "Refine Asset Configuration";
         document.getElementById('edit-id').value = p.id;
         document.getElementById('edit-name').value = p.name;
+        document.getElementById('edit-brand').value = p.brand || "";
         document.getElementById('edit-price').value = p.price;
         document.getElementById('edit-cat').value = p.cat;
         document.getElementById('edit-stock').value = p.stock;
+        document.getElementById('edit-image').value = p.image;
     } else {
-        document.getElementById('modal-title').innerText = "Add Product";
+        document.getElementById('modal-title').innerText = "Authorize New Inventory Addition";
         document.getElementById('product-form').reset();
         document.getElementById('edit-id').value = "";
     }
@@ -807,18 +900,24 @@ function saveProduct(e) {
     e.preventDefault();
     const id = document.getElementById('edit-id').value;
     const name = document.getElementById('edit-name').value;
+    const brand = document.getElementById('edit-brand').value;
     const price = parseInt(document.getElementById('edit-price').value);
     const cat = document.getElementById('edit-cat').value;
     const stock = parseInt(document.getElementById('edit-stock').value);
+    const image = document.getElementById('edit-image').value || 'image/product/f1.jpg';
+
     if (id) {
         const idx = allProducts.findIndex(p => p.id == id);
-        allProducts[idx] = { ...allProducts[idx], name, price, cat, stock };
+        allProducts[idx] = { ...allProducts[idx], name, brand, price, cat, stock, image };
     } else {
         const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
-        allProducts.push({ id: newId, name, price, cat, stock, brand: 'Alina', image: 'image/product/f1.jpg' });
+        allProducts.push({ id: newId, name, brand, price, cat, stock, image, rating: "5.0", reviewCount: 0 });
     }
+    
     localStorage.setItem('products', JSON.stringify(allProducts));
-    renderAdminDashboard(); closeProductModal(); showToast('Saved Successfully!');
+    renderAdminDashboard(); 
+    closeProductModal(); 
+    showToast('Vault Updated Successfully!');
 }
 
 // === 7. Specialized Features ===
