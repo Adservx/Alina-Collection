@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cancellations - Alina Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsiveHome.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <section id="header">
-        <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection"/></a>
+        <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection" /></a>
         <div class="header-search">
             <input type="text" placeholder="Search premium fashion..." id="header-search-input">
             <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
@@ -85,10 +88,12 @@
             <!-- Cancellations List -->
             <div class="cancellations-list" id="cancellations-list">
                 <div class="empty-state" style="text-align: center; padding: 60px 20px; color: var(--dash-text-muted);">
-                    <i class="fas fa-check-circle" style="font-size: 48px; margin-bottom: 20px; opacity: 0.3; color: #22c55e;"></i>
+                    <i class="fas fa-check-circle"
+                        style="font-size: 48px; margin-bottom: 20px; opacity: 0.3; color: #22c55e;"></i>
                     <h3>No Cancellations</h3>
                     <p>You haven't cancelled any orders. That's great!</p>
-                    <a href="my-orders.html" class="normal" style="margin-top: 20px; display: inline-block;">View My Orders</a>
+                    <a href="my-orders.html" class="normal" style="margin-top: 20px; display: inline-block;">View My
+                        Orders</a>
                 </div>
             </div>
         </div>
@@ -110,18 +115,18 @@
             const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
             const cancelledOrders = allOrders.filter(o => o.userEmail === userEmail && o.status === 'cancelled');
             const allProducts = JSON.parse(localStorage.getItem('products')) || [];
-            
+
             // Update summary stats
             const totalCancellations = cancelledOrders.length;
             const totalRefunded = cancelledOrders.reduce((sum, order) => sum + order.total, 0);
             const pendingRefunds = cancelledOrders.filter(o => !o.refunded).length;
-            
+
             document.getElementById('total-cancellations-count').textContent = totalCancellations;
             document.getElementById('refunded-amount').textContent = `NPR ${totalRefunded}`;
             document.getElementById('pending-refunds-count').textContent = pendingRefunds;
 
             const container = document.getElementById('cancellations-list');
-            
+
             if (cancelledOrders.length === 0) {
                 return; // Keep empty state
             }
@@ -169,22 +174,22 @@
                                 <h4>Refund Information</h4>
                                 <p><strong>Refund Status:</strong> ${refundStatus}</p>
                                 <p><strong>Refund Amount:</strong> NPR ${order.total}</p>
-                                ${order.refunded ? 
-                                    `<p><strong>Refund Method:</strong> Original Payment Method</p>
+                                ${order.refunded ?
+                        `<p><strong>Refund Method:</strong> Original Payment Method</p>
                                      <p><strong>Processing Time:</strong> 3-5 business days</p>` :
-                                    `<p style="color: #f97316;"><strong>Expected Refund:</strong> 3-5 business days after cancellation</p>`
-                                }
+                        `<p style="color: #f97316;"><strong>Expected Refund:</strong> 3-5 business days after cancellation</p>`
+                    }
                             </div>
                         </div>
                         <div class="order-actions">
                             <button class="btn-primary" onclick="reorderCancelledItems(${order.id})">
                                 <i class="fas fa-redo"></i> Reorder Items
                             </button>
-                            ${!order.refunded ? 
-                                `<button class="btn-secondary" onclick="checkRefundStatus(${order.id})">
+                            ${!order.refunded ?
+                        `<button class="btn-secondary" onclick="checkRefundStatus(${order.id})">
                                     <i class="fas fa-info-circle"></i> Check Refund Status
                                 </button>` : ''
-                            }
+                    }
                             <button class="btn-secondary" onclick="downloadCancellationReceipt(${order.id})">
                                 <i class="fas fa-download"></i> Download Receipt
                             </button>
@@ -197,11 +202,11 @@
         function reorderCancelledItems(orderId) {
             const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
             const order = allOrders.find(o => o.id === orderId);
-            
+
             if (order) {
                 // Add all items from this cancelled order to cart
                 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                
+
                 order.items.forEach(item => {
                     const existingItem = cart.find(cartItem => cartItem.id === item.id);
                     if (existingItem) {
@@ -210,10 +215,10 @@
                         cart.push({ ...item });
                     }
                 });
-                
+
                 localStorage.setItem('cart', JSON.stringify(cart));
                 showToast('Items added to cart successfully!');
-                
+
                 // Redirect to cart
                 setTimeout(() => {
                     window.location.href = 'cart.html';
@@ -230,4 +235,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Configuration - Sovereign Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsiveHome.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body class="dashboard-body">
     <!-- Premium Navigation -->
     <section id="header">
-      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection"/></a>
-      <div class="header-search">
-        <input type="text" placeholder="Search..." id="header-search-input">
-        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
-      </div>
-      <div>
-        <ul id="navbar">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="user-dashboard.html">My Account</a></li>
-          <li><a href="#" onclick="logoutUser()">Logout <i class="fa-solid fa-sign-out-alt"></i></a></li>
-        </ul>
-      </div>
+        <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection" /></a>
+        <div class="header-search">
+            <input type="text" placeholder="Search..." id="header-search-input">
+            <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user-dashboard.html">My Account</a></li>
+                <li><a href="#" onclick="logoutUser()">Logout <i class="fa-solid fa-sign-out-alt"></i></a></li>
+            </ul>
+        </div>
     </section>
 
     <div class="dashboard-container">
@@ -41,7 +44,7 @@
             <div class="dash-card">
                 <form id="config-product-form">
                     <input type="hidden" id="edit-id">
-                    
+
                     <div class="settings-section">
                         <h4 class="section-title">Product Details</h4>
                         <div class="input-grid">
@@ -97,22 +100,31 @@
 
                     <div class="settings-section">
                         <h4 class="section-title">Visuals & Content</h4>
-                        
-                        <div class="product-image-config" style="display: flex; gap: 30px; margin-bottom: 30px; align-items: flex-start;">
-                            <div class="image-preview-box" id="product-preview-container" style="width: 200px; height: 250px; background: var(--dash-bg); border-radius: 20px; border: 2px dashed var(--dash-border); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
-                                <img id="product-preview-img" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
-                                <div id="preview-placeholder" style="text-align: center; color: var(--dash-text-muted);">
-                                    <i class="fa-solid fa-cloud-arrow-up" style="font-size: 40px; margin-bottom: 10px;"></i>
+
+                        <div class="product-image-config"
+                            style="display: flex; gap: 30px; margin-bottom: 30px; align-items: flex-start;">
+                            <div class="image-preview-box" id="product-preview-container"
+                                style="width: 200px; height: 250px; background: var(--dash-bg); border-radius: 20px; border: 2px dashed var(--dash-border); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                                <img id="product-preview-img" src="" alt="Preview"
+                                    style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                                <div id="preview-placeholder"
+                                    style="text-align: center; color: var(--dash-text-muted);">
+                                    <i class="fa-solid fa-cloud-arrow-up"
+                                        style="font-size: 40px; margin-bottom: 10px;"></i>
                                     <p style="font-size: 12px; font-weight: 700;">No Image</p>
                                 </div>
                             </div>
-                            
+
                             <div class="image-upload-actions" style="flex: 1;">
                                 <label>Product Imagery</label>
-                                <p style="font-size: 13px; color: var(--dash-text-muted); margin-bottom: 15px;">Capture a new photo using your camera or select an image from your device storage.</p>
-                                
-                                <input type="file" id="product-image-upload" accept="image/*" capture="environment" style="display: none;">
-                                <button type="button" class="normal" onclick="document.getElementById('product-image-upload').click()" style="padding: 12px 25px; border-radius: 12px; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                                <p style="font-size: 13px; color: var(--dash-text-muted); margin-bottom: 15px;">Capture
+                                    a new photo using your camera or select an image from your device storage.</p>
+
+                                <input type="file" id="product-image-upload" accept="image/*" capture="environment"
+                                    style="display: none;">
+                                <button type="button" class="normal"
+                                    onclick="document.getElementById('product-image-upload').click()"
+                                    style="padding: 12px 25px; border-radius: 12px; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;">
                                     <i class="fa-solid fa-camera"></i>
                                     <span>Upload or Capture</span>
                                 </button>
@@ -121,7 +133,8 @@
                                     <label>Or manually paste URL</label>
                                     <div class="input-wrapper">
                                         <i class="fa-solid fa-link"></i>
-                                        <input type="text" id="edit-image" placeholder="https://..." oninput="updatePreviewFromUrl(this.value)">
+                                        <input type="text" id="edit-image" placeholder="https://..."
+                                            oninput="updatePreviewFromUrl(this.value)">
                                     </div>
                                 </div>
                             </div>
@@ -129,12 +142,15 @@
 
                         <div class="input-group">
                             <label>Product Description</label>
-                            <textarea id="edit-desc" rows="6" placeholder="Describe the materials, fit, and elegance of this piece..." style="width: 100%; padding: 20px; border-radius: 20px; border: 2px solid var(--dash-bg); background: var(--dash-bg); font-family: inherit; font-size: 15px; font-weight: 600; outline: none; transition: var(--transition); resize: vertical;"></textarea>
+                            <textarea id="edit-desc" rows="6"
+                                placeholder="Describe the materials, fit, and elegance of this piece..."
+                                style="width: 100%; padding: 20px; border-radius: 20px; border: 2px solid var(--dash-bg); background: var(--dash-bg); font-family: inherit; font-size: 15px; font-weight: 600; outline: none; transition: var(--transition); resize: vertical;"></textarea>
                         </div>
                     </div>
 
                     <div class="form-actions-modern" style="justify-content: flex-end; gap: 20px;">
-                        <button type="button" class="btn-cancel" onclick="window.location.href='admin-inventory.html'">Discard Changes</button>
+                        <button type="button" class="btn-cancel"
+                            onclick="window.location.href='admin-inventory.html'">Discard Changes</button>
                         <button type="submit" class="premium-btn" style="padding: 16px 50px;">
                             <span>Authorize & Save</span>
                             <i class="fa-solid fa-check"></i>
@@ -172,11 +188,11 @@
 
             // Image Upload Handling
             const fileInput = document.getElementById('product-image-upload');
-            fileInput.addEventListener('change', function(e) {
+            fileInput.addEventListener('change', function (e) {
                 const file = e.target.files[0];
                 if (file) {
                     const reader = new FileReader();
-                    reader.onload = function(event) {
+                    reader.onload = function (event) {
                         const dataUrl = event.target.result;
                         document.getElementById('edit-image').value = dataUrl;
                         updatePreviewFromUrl(dataUrl);
@@ -209,4 +225,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>My Account - Alina Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsiveHome.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body class="dashboard-body">
     <!-- Premium Navigation -->
     <section id="header">
-      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection"/></a>
-      <div class="header-search">
-        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
-        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
-      </div>
-      <div>
-        <ul id="navbar">
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
-                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
-                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
-                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
-                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
-                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+        <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Alina Collection" /></a>
+        <div class="header-search">
+            <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+            <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+                        <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+                        <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+                        <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+                        <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+                        <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
-          </li>
-          <li><a href="about.html">Our Story</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+        </div>
+        <div id="mobile">
+            <i class="fas fa-search" id="mobile-search-btn"></i>
+            <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
+            <div id="bar">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </section>
 
     <div class="dashboard-container">
         <main class="main-content fade-in">
-            
+
             <!-- 1. Profile Header (Welcome) -->
             <div class="profile-header-card">
                 <div class="profile-bg-overlay"></div>
@@ -80,12 +93,15 @@
 
             <!-- Administrative Sovereign Suite (Visible only to David Scot) -->
             <div id="sovereign-suite" style="display: none; margin-bottom: 40px;">
-                <div class="dash-card loyalty-card" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); margin-bottom: 30px; color: #fff; border: none; box-shadow: 0 15px 30px rgba(221, 45, 74, 0.2);">
+                <div class="dash-card loyalty-card"
+                    style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); margin-bottom: 30px; color: #fff; border: none; box-shadow: 0 15px 30px rgba(221, 45, 74, 0.2);">
                     <div class="loyalty-content">
-                        <div class="loyalty-icon" style="background: rgba(255,255,255,0.2);"><i class="fas fa-shield-halved" style="color: #fff;"></i></div>
+                        <div class="loyalty-icon" style="background: rgba(255,255,255,0.2);"><i
+                                class="fas fa-shield-halved" style="color: #fff;"></i></div>
                         <div class="loyalty-text">
                             <h3 style="color: #fff;">Admin Control Panel</h3>
-                            <p style="color: rgba(255,255,255,0.8);">Quick links to manage your shop's inventory, orders, and users.</p>
+                            <p style="color: rgba(255,255,255,0.8);">Quick links to manage your shop's inventory,
+                                orders, and users.</p>
                         </div>
                         <div class="stats-grid" style="display: flex; gap: 30px; margin: 0;">
                             <div class="stat-mini">
@@ -107,8 +123,10 @@
                         <div class="dash-header-modern">
                             <h3><i class="fa-solid fa-boxes-stacked"></i> Products</h3>
                         </div>
-                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Add new clothes, change prices, and check how many items are left in stock.</p>
-                        <button onclick="window.location.href='admin-inventory.html'" class="normal" style="width:100%; border-radius:12px;">Manage Products</button>
+                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Add new clothes, change
+                            prices, and check how many items are left in stock.</p>
+                        <button onclick="window.location.href='admin-inventory.html'" class="normal"
+                            style="width:100%; border-radius:12px;">Manage Products</button>
                     </div>
 
                     <!-- Fulfillment Module -->
@@ -116,8 +134,10 @@
                         <div class="dash-header-modern">
                             <h3><i class="fa-solid fa-receipt"></i> Orders</h3>
                         </div>
-                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Track all customer purchases and update shipping or delivery status.</p>
-                        <button onclick="window.location.href='admin-orders.html'" class="normal" style="width:100%; border-radius:12px;">Manage Orders</button>
+                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">Track all customer
+                            purchases and update shipping or delivery status.</p>
+                        <button onclick="window.location.href='admin-orders.html'" class="normal"
+                            style="width:100%; border-radius:12px;">Manage Orders</button>
                     </div>
 
                     <!-- Registry Module -->
@@ -125,12 +145,15 @@
                         <div class="dash-header-modern">
                             <h3><i class="fa-solid fa-user-shield"></i> Users</h3>
                         </div>
-                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">View list of all registered customers and manage staff account roles.</p>
-                        <button onclick="window.location.href='admin-users.html'" class="normal" style="width:100%; border-radius:12px;">Manage Users</button>
+                        <p style="font-size:13px; color:var(--dash-text-muted); margin: 15px 0;">View list of all
+                            registered customers and manage staff account roles.</p>
+                        <button onclick="window.location.href='admin-users.html'" class="normal"
+                            style="width:100%; border-radius:12px;">Manage Users</button>
                     </div>
                 </div>
 
-                <div class="dashboard-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                <div class="dashboard-grid-2"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
                     <!-- Quick Stats & Recent Activity -->
                     <div class="data-card dash-card">
                         <div class="card-header">
@@ -139,7 +162,12 @@
                         <div class="table-responsive">
                             <table id="admin-recent-order-table">
                                 <thead>
-                                    <tr><th>Ref</th><th>Client</th><th>Value</th><th>Status</th></tr>
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Client</th>
+                                        <th>Value</th>
+                                        <th>Status</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
@@ -185,7 +213,7 @@
                         <h3><i class="fa-solid fa-user-gear"></i> Personal Configuration</h3>
                         <p>Keep your profile up to date for a better shopping experience.</p>
                     </div>
-                    
+
                     <form id="profile-form">
                         <div class="settings-grid">
                             <!-- Personal Details -->
@@ -316,7 +344,15 @@
                     </div>
                     <div class="table-responsive">
                         <table class="order-table-modern" id="user-order-table">
-                            <thead><tr><th>Reference</th><th>Date</th><th>Products</th><th>Amount</th><th>Status</th></tr></thead>
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Date</th>
+                                    <th>Products</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
                             <tbody></tbody>
                         </table>
                     </div>
@@ -400,47 +436,48 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-             const user = JSON.parse(localStorage.getItem('currentUser'));
-             if (!user) { window.location.href = 'login.html'; return; }
-             
-             // SOVEREIGN ADMIN INTEGRATION
-             if (user.role === 'admin') {
-                 document.getElementById('sovereign-suite').style.display = 'block';
-                 renderAdminDashboard();
-             }
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            if (!user) { window.location.href = 'login.html'; return; }
 
-             // Initial greeting & UI
-             document.getElementById('user-greeting-large').innerText = `Hello, ${user.name}!`;
-             document.getElementById('user-email-small').innerText = user.email;
-             const roleBadge = document.getElementById('user-role-badge');
-             if (user.role === 'admin') {
-                 roleBadge.innerHTML = `<i class="fa-solid fa-user-shield"></i> Sovereign Admin`;
-                 roleBadge.className = 'role-badge role-admin';
-             } else {
-                 roleBadge.innerHTML = `<i class="fa-solid fa-user"></i> User`;
-                 roleBadge.className = 'role-badge role-user';
-             }
+            // SOVEREIGN ADMIN INTEGRATION
+            if (user.role === 'admin') {
+                document.getElementById('sovereign-suite').style.display = 'block';
+                renderAdminDashboard();
+            }
 
-             if (user.profilePic) document.getElementById('avatar-preview').innerHTML = `<img src="${user.profilePic}" alt="Profile">`;
-             
-             // Fill form
-             if(document.getElementById('set-name')) document.getElementById('set-name').value = user.name || "";
-             if(document.getElementById('set-email')) document.getElementById('set-email').value = user.email || "";
-             if(document.getElementById('set-phone')) document.getElementById('set-phone').value = user.phone || "";
-             if(document.getElementById('set-dob')) document.getElementById('set-dob').value = user.dob || "";
-             if(document.getElementById('set-gender')) document.getElementById('set-gender').value = user.gender || "";
-             if(document.getElementById('set-municipality')) document.getElementById('set-municipality').value = user.municipality || "";
-             if(document.getElementById('set-ward')) document.getElementById('set-ward').value = user.ward || "";
-             if(document.getElementById('set-address')) document.getElementById('set-address').value = user.address || "";
-             if(document.getElementById('set-city')) document.getElementById('set-city').value = user.city || "";
-             if(document.getElementById('set-province')) document.getElementById('set-province').value = user.province || "";
-             if(document.getElementById('set-country')) document.getElementById('set-country').value = user.country || "Nepal";
+            // Initial greeting & UI
+            document.getElementById('user-greeting-large').innerText = `Hello, ${user.name}!`;
+            document.getElementById('user-email-small').innerText = user.email;
+            const roleBadge = document.getElementById('user-role-badge');
+            if (user.role === 'admin') {
+                roleBadge.innerHTML = `<i class="fa-solid fa-user-shield"></i> Sovereign Admin`;
+                roleBadge.className = 'role-badge role-admin';
+            } else {
+                roleBadge.innerHTML = `<i class="fa-solid fa-user"></i> User`;
+                roleBadge.className = 'role-badge role-user';
+            }
 
-             // Form Submission
-             document.getElementById('profile-form').addEventListener('submit', (e) => {
-                 e.preventDefault();
-                 const updatedUser = { ...user, 
-                    name: document.getElementById('set-name').value, 
+            if (user.profilePic) document.getElementById('avatar-preview').innerHTML = `<img src="${user.profilePic}" alt="Profile">`;
+
+            // Fill form
+            if (document.getElementById('set-name')) document.getElementById('set-name').value = user.name || "";
+            if (document.getElementById('set-email')) document.getElementById('set-email').value = user.email || "";
+            if (document.getElementById('set-phone')) document.getElementById('set-phone').value = user.phone || "";
+            if (document.getElementById('set-dob')) document.getElementById('set-dob').value = user.dob || "";
+            if (document.getElementById('set-gender')) document.getElementById('set-gender').value = user.gender || "";
+            if (document.getElementById('set-municipality')) document.getElementById('set-municipality').value = user.municipality || "";
+            if (document.getElementById('set-ward')) document.getElementById('set-ward').value = user.ward || "";
+            if (document.getElementById('set-address')) document.getElementById('set-address').value = user.address || "";
+            if (document.getElementById('set-city')) document.getElementById('set-city').value = user.city || "";
+            if (document.getElementById('set-province')) document.getElementById('set-province').value = user.province || "";
+            if (document.getElementById('set-country')) document.getElementById('set-country').value = user.country || "Nepal";
+
+            // Form Submission
+            document.getElementById('profile-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const updatedUser = {
+                    ...user,
+                    name: document.getElementById('set-name').value,
                     phone: document.getElementById('set-phone').value,
                     dob: document.getElementById('set-dob').value,
                     gender: document.getElementById('set-gender').value,
@@ -450,66 +487,66 @@
                     city: document.getElementById('set-city').value,
                     province: document.getElementById('set-province').value,
                     country: document.getElementById('set-country').value
-                 };
-                 localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-                 let allUsers = JSON.parse(localStorage.getItem('users')) || [];
-                 const uIdx = allUsers.findIndex(u => u.email === updatedUser.email);
-                 if (uIdx !== -1) { allUsers[uIdx] = updatedUser; localStorage.setItem('users', JSON.stringify(allUsers)); }
-                 showToast('Configuration Saved');
-                 document.getElementById('user-greeting-large').innerText = `Hello, ${updatedUser.name}!`;
-             });
+                };
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+                let allUsers = JSON.parse(localStorage.getItem('users')) || [];
+                const uIdx = allUsers.findIndex(u => u.email === updatedUser.email);
+                if (uIdx !== -1) { allUsers[uIdx] = updatedUser; localStorage.setItem('users', JSON.stringify(allUsers)); }
+                showToast('Configuration Saved');
+                document.getElementById('user-greeting-large').innerText = `Hello, ${updatedUser.name}!`;
+            });
 
-             // Avatar Upload
-             document.getElementById('profile-upload').addEventListener('change', function(e) {
-                 const file = e.target.files[0];
-                 if (file) {
-                     const reader = new FileReader();
-                     reader.onload = function(event) {
-                         const dataUrl = event.target.result;
-                         document.getElementById('avatar-preview').innerHTML = `<img src="${dataUrl}">`;
-                         const cUser = JSON.parse(localStorage.getItem('currentUser'));
-                         cUser.profilePic = dataUrl;
-                         localStorage.setItem('currentUser', JSON.stringify(cUser));
-                         let aUsers = JSON.parse(localStorage.getItem('users')) || [];
-                         const idx = aUsers.findIndex(u => u.email === cUser.email);
-                         if (idx !== -1) { aUsers[idx].profilePic = dataUrl; localStorage.setItem('users', JSON.stringify(aUsers)); }
-                         showToast('Avatar Updated');
-                     };
-                     reader.readAsDataURL(file);
-                 }
-             });
+            // Avatar Upload
+            document.getElementById('profile-upload').addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        const dataUrl = event.target.result;
+                        document.getElementById('avatar-preview').innerHTML = `<img src="${dataUrl}">`;
+                        const cUser = JSON.parse(localStorage.getItem('currentUser'));
+                        cUser.profilePic = dataUrl;
+                        localStorage.setItem('currentUser', JSON.stringify(cUser));
+                        let aUsers = JSON.parse(localStorage.getItem('users')) || [];
+                        const idx = aUsers.findIndex(u => u.email === cUser.email);
+                        if (idx !== -1) { aUsers[idx].profilePic = dataUrl; localStorage.setItem('users', JSON.stringify(aUsers)); }
+                        showToast('Avatar Updated');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
 
-             renderUserOrders(user.email);
-             renderDashboardCart();
-             renderDashboardWishlist();
-             renderDashboardOrders(user.email);
-             renderDashboardCancellations(user.email);
-             
-             // Update Stats
-             const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-             const userOrders = allOrders.filter(o => o.userEmail === user.email);
-             const wishlistCount = JSON.parse(localStorage.getItem('wishlist'))?.length || 0;
-             const totalSpent = userOrders.reduce((sum, o) => sum + o.total, 0);
-             document.getElementById('count-orders').innerText = userOrders.length;
-             document.getElementById('count-wishlist').innerText = wishlistCount;
-             document.getElementById('count-spent').innerText = `NPR ${totalSpent}`;
-             const points = Math.floor(totalSpent / 100);
-             document.getElementById('loyalty-points').innerText = points;
-                                       document.getElementById('points-progress').style.width = ((points % 500) / 5) + "%";
-                                       document.getElementById('points-needed').innerText = `Earn ${500 - (points % 500)} more points for next tier!`;      
-                                  });
-                          
-                                  function renderDashboardCart() {
-                                      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-                                      const container = document.getElementById('mini-cart-list');
-                                      if (!container) return;
-                          
-                                      if (cartItems.length === 0) {
-                                          container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your cart is empty.</p>';
-                                          return;
-                                      }
-                          
-                                      container.innerHTML = cartItems.slice(0, 3).map(item => `
+            renderUserOrders(user.email);
+            renderDashboardCart();
+            renderDashboardWishlist();
+            renderDashboardOrders(user.email);
+            renderDashboardCancellations(user.email);
+
+            // Update Stats
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = allOrders.filter(o => o.userEmail === user.email);
+            const wishlistCount = JSON.parse(localStorage.getItem('wishlist'))?.length || 0;
+            const totalSpent = userOrders.reduce((sum, o) => sum + o.total, 0);
+            document.getElementById('count-orders').innerText = userOrders.length;
+            document.getElementById('count-wishlist').innerText = wishlistCount;
+            document.getElementById('count-spent').innerText = `NPR ${totalSpent}`;
+            const points = Math.floor(totalSpent / 100);
+            document.getElementById('loyalty-points').innerText = points;
+            document.getElementById('points-progress').style.width = ((points % 500) / 5) + "%";
+            document.getElementById('points-needed').innerText = `Earn ${500 - (points % 500)} more points for next tier!`;
+        });
+
+        function renderDashboardCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('mini-cart-list');
+            if (!container) return;
+
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your cart is empty.</p>';
+                return;
+            }
+
+            container.innerHTML = cartItems.slice(0, 3).map(item => `
                                           <div class="mini-item">
                                               <img src="${item.image || 'image/product/f1.jpg'}" alt="${item.name}" onerror="this.onerror=null;this.src='image/product/f1.jpg';">
                                               <div class="mini-item-info">
@@ -518,25 +555,25 @@
                                               </div>
                                           </div>
                                       `).join('');
-                                      if (cartItems.length > 3) {
-                                          container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${cartItems.length - 3} more items</p>`;
-                                      }
-                                  }
-                          
-                                  function renderDashboardWishlist() {
-                                      const wishlistIds = JSON.parse(localStorage.getItem('wishlist')) || [];
-                                      const container = document.getElementById('mini-wishlist-list');
-                                      if (!container) return;
-                          
-                                      if (wishlistIds.length === 0) {
-                                          container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your wishlist is empty.</p>';
-                                          return;
-                                      }
-                          
-                                      const allProducts = JSON.parse(localStorage.getItem('products')) || [];
-                                      const wishlistItems = wishlistIds.map(id => allProducts.find(p => p.id === id)).filter(p => p);
-                          
-                                      container.innerHTML = wishlistItems.slice(0, 3).map(item => `
+            if (cartItems.length > 3) {
+                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${cartItems.length - 3} more items</p>`;
+            }
+        }
+
+        function renderDashboardWishlist() {
+            const wishlistIds = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const container = document.getElementById('mini-wishlist-list');
+            if (!container) return;
+
+            if (wishlistIds.length === 0) {
+                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">Your wishlist is empty.</p>';
+                return;
+            }
+
+            const allProducts = JSON.parse(localStorage.getItem('products')) || [];
+            const wishlistItems = wishlistIds.map(id => allProducts.find(p => p.id === id)).filter(p => p);
+
+            container.innerHTML = wishlistItems.slice(0, 3).map(item => `
                                           <div class="mini-item">
                                               <img src="${item.image || 'image/product/f1.jpg'}" alt="${item.name}" onerror="this.onerror=null;this.src='image/product/f1.jpg';">
                                               <div class="mini-item-info">
@@ -545,26 +582,26 @@
                                               </div>
                                           </div>
                                       `).join('');
-                                      if (wishlistItems.length > 3) {
-                                          container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${wishlistItems.length - 3} more items</p>`;
-                                      }
-                                  }
-                          
-                                  function trackOrder() {
-                                      const trackId = document.getElementById('track-id-input').value.trim().replace('#', '');
-                                      const resultArea = document.getElementById('track-result');
-                                      const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-                                      const order = allOrders.find(o => o.id.toString() === trackId);
-                          
-                                      if (!order) {
-                                          resultArea.innerHTML = '<p style="color: #ef4444; font-size: 13px; margin-top: 15px;">Order ID not found.</p>';
-                                          return;
-                                      }
-                          
-                                      const steps = ['placed', 'shipped', 'completed'];
-                                      const currentIdx = steps.indexOf(order.status.toLowerCase());
-                          
-                                      resultArea.innerHTML = `
+            if (wishlistItems.length > 3) {
+                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${wishlistItems.length - 3} more items</p>`;
+            }
+        }
+
+        function trackOrder() {
+            const trackId = document.getElementById('track-id-input').value.trim().replace('#', '');
+            const resultArea = document.getElementById('track-result');
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = allOrders.find(o => o.id.toString() === trackId);
+
+            if (!order) {
+                resultArea.innerHTML = '<p style="color: #ef4444; font-size: 13px; margin-top: 15px;">Order ID not found.</p>';
+                return;
+            }
+
+            const steps = ['placed', 'shipped', 'completed'];
+            const currentIdx = steps.indexOf(order.status.toLowerCase());
+
+            resultArea.innerHTML = `
                                           <div class="tracking-visual">
                                               <div class="track-step ${currentIdx >= 0 ? 'active' : ''}">Placed</div>
                                               <div class="track-step ${currentIdx >= 1 ? 'active' : ''}">Shipped</div>
@@ -572,44 +609,44 @@
                                           </div>
                                           <p style="font-size: 13px; margin-top: 15px; font-weight: 600;">Status: ${order.status.toUpperCase()}</p>
                                       `;
-                                  }
-                          
-                                  function renderUserOrders(userEmail) {
-                                      const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-                                      const userOrders = allOrders.filter(o => o.userEmail === userEmail);
-                                      const tableBody = document.querySelector('#user-order-table tbody');
-                          
-                                      if (userOrders.length === 0) {
-                                          if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: #999;">You haven\'t placed any orders yet.</td></tr>';
-                                          return;
-                                      }
-                          
-                                      tableBody.innerHTML = userOrders.map(o => `
+        }
+
+        function renderUserOrders(userEmail) {
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = allOrders.filter(o => o.userEmail === userEmail);
+            const tableBody = document.querySelector('#user-order-table tbody');
+
+            if (userOrders.length === 0) {
+                if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: #999;">You haven\'t placed any orders yet.</td></tr>';
+                return;
+            }
+
+            tableBody.innerHTML = userOrders.map(o => `
                                           <tr>
-                                              <td><strong>#${o.id}</strong></td>
-                                              <td>${o.date}</td>
-                                              <td>${o.items.length} Product(s)</td>
-                                              <td><span class="price-text">NPR ${o.total}</span></td>
-                                              <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                                              <td data-label="REFERENCE"><strong>#${o.id}</strong></td>
+                                              <td data-label="DATE">${o.date}</td>
+                                              <td data-label="PRODUCTS">${o.items.length} Product(s)</td>
+                                              <td data-label="AMOUNT"><span class="price-text">NPR ${o.total}</span></td>
+                                              <td data-label="STATUS"><span class="status-badge status-${o.status}">${o.status}</span></td>
                                           </tr>
                                       `).join('');
-                                  }
+        }
 
-                                  function renderDashboardOrders(userEmail) {
-                                      const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-                                      const userOrders = allOrders.filter(o => o.userEmail === userEmail);
-                                      const container = document.getElementById('mini-orders-list');
-                                      if (!container) return;
-                          
-                                      if (userOrders.length === 0) {
-                                          container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">No recent orders.</p>';
-                                          return;
-                                      }
-                          
-                                      const allProducts = JSON.parse(localStorage.getItem('products')) || [];
-                                      container.innerHTML = userOrders.slice(0, 3).map(order => {
-                                          const firstProduct = allProducts.find(p => p.id === order.items[0]?.id);
-                                          return `
+        function renderDashboardOrders(userEmail) {
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = allOrders.filter(o => o.userEmail === userEmail);
+            const container = document.getElementById('mini-orders-list');
+            if (!container) return;
+
+            if (userOrders.length === 0) {
+                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">No recent orders.</p>';
+                return;
+            }
+
+            const allProducts = JSON.parse(localStorage.getItem('products')) || [];
+            container.innerHTML = userOrders.slice(0, 3).map(order => {
+                const firstProduct = allProducts.find(p => p.id === order.items[0]?.id);
+                return `
                                               <div class="mini-item">
                                                   <img src="${firstProduct?.image || 'image/product/f1.jpg'}" alt="Order #${order.id}" onerror="this.onerror=null;this.src='image/product/f1.jpg';">
                                                   <div class="mini-item-info">
@@ -618,27 +655,27 @@
                                                   </div>
                                               </div>
                                           `;
-                                      }).join('');
-                                      if (userOrders.length > 3) {
-                                          container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${userOrders.length - 3} more orders</p>`;
-                                      }
-                                  }
+            }).join('');
+            if (userOrders.length > 3) {
+                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${userOrders.length - 3} more orders</p>`;
+            }
+        }
 
-                                  function renderDashboardCancellations(userEmail) {
-                                      const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
-                                      const cancelledOrders = allOrders.filter(o => o.userEmail === userEmail && o.status === 'cancelled');
-                                      const container = document.getElementById('mini-cancellations-list');
-                                      if (!container) return;
-                          
-                                      if (cancelledOrders.length === 0) {
-                                          container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">No cancellations.</p>';
-                                          return;
-                                      }
-                          
-                                      const allProducts = JSON.parse(localStorage.getItem('products')) || [];
-                                      container.innerHTML = cancelledOrders.slice(0, 3).map(order => {
-                                          const firstProduct = allProducts.find(p => p.id === order.items[0]?.id);
-                                          return `
+        function renderDashboardCancellations(userEmail) {
+            const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+            const cancelledOrders = allOrders.filter(o => o.userEmail === userEmail && o.status === 'cancelled');
+            const container = document.getElementById('mini-cancellations-list');
+            if (!container) return;
+
+            if (cancelledOrders.length === 0) {
+                container.innerHTML = '<p style="padding: 10px; color: #999; font-size: 13px;">No cancellations.</p>';
+                return;
+            }
+
+            const allProducts = JSON.parse(localStorage.getItem('products')) || [];
+            container.innerHTML = cancelledOrders.slice(0, 3).map(order => {
+                const firstProduct = allProducts.find(p => p.id === order.items[0]?.id);
+                return `
                                               <div class="mini-item" style="opacity: 0.7;">
                                                   <img src="${firstProduct?.image || 'image/product/f1.jpg'}" alt="Cancelled Order #${order.id}" onerror="this.onerror=null;this.src='image/product/f1.jpg';" style="filter: grayscale(100%);">
                                                   <div class="mini-item-info">
@@ -647,10 +684,12 @@
                                                   </div>
                                               </div>
                                           `;
-                                      }).join('');
-                                      if (cancelledOrders.length > 3) {
-                                          container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${cancelledOrders.length - 3} more cancellations</p>`;
-                                      }
-                                  }
-                              </script>             </body>
-             </html>
+            }).join('');
+            if (cancelledOrders.length > 3) {
+                container.innerHTML += `<p style="font-size: 11px; margin-top: 10px; color: var(--primary-color);">+ ${cancelledOrders.length - 3} more cancellations</p>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

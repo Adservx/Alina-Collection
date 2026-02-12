@@ -1,226 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
-    <link rel="shortcut icon" href="../assets/icon.png" type="image/.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="responsiveHome.css" />
-    <link rel="stylesheet" href="contact.css" />
-    <link rel="stylesheet" href="support.css" />
-  </head>
-  <body>
-    <section id="header">
-      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
-      <div class="header-search">
-        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
-        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+  <link rel="shortcut icon" href="../assets/icon.png" type="image/.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsiveHome.css" />
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="support.css" />
+</head>
+
+<body>
+  <section id="header">
+    <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji" /></a>
+    <div class="header-search">
+      <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+      <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+            <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+            <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+            <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+            <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+            <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
+        <li>
+          <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
+        </li>
+        <li class="nav-select">
+          <select name="currency" id="currency-select">
+            <option value="NPR">NPR</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </li>
+        <a href="#" id="close"><i class="far fa-times"></i></a>
+      </ul>
+    </div>
+    <div id="mobile">
+      <i class="fas fa-search" id="mobile-search-btn"></i>
+      <i id="bar" class="fas fa-bars"></i>
+    </div>
+  </section>
+  <div id="search-popup">
+    <div class="search-box">
+      <input type="text" placeholder="Search here...">
+      <button><i class="fas fa-search"></i></button>
+      <i class="fas fa-times" id="close-search"></i>
+    </div>
+  </div>
+
+  <div class="back-btn-container" style="margin-top: 40px;">
+    <a href="javascript:history.back()" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+  </div>
+
+
+  <section id="contact-details" class="section-p1">
+    <div class="details">
+      <span>GET IN TOUCH</span>
+      <h2>Visit one of our store or contact us today</h2>
+      <h3>Head Office</h3>
+      <div>
+        <li>
+          <i class="fa-solid fa-map-pin"></i>
+          <p>Ithari BP Chowk, Nepal</p>
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          <p>alinacollection@gmail.com</p>
+        </li>
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          <p>+977 970-5978322 / +977 9811561225</p>
+        </li>
+        <li>
+          <i class="fa-solid fa-clock"></i>
+          <p>Sunday to Friday: 9.00am to 16.00pm</p>
+        </li>
+      </div>
+    </div>
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114086.59774971982!2d87.18279753237684!3d26.673887630726966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef6c66e80fbfa9%3A0x38094d1a7c974283!2sItahari!5e0!3m2!1sen!2snp!4v1767023116870!5m2!1sen!2snp"
+        width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+  <section id="support-options" class="section-p1">
+    <h3>Contact Support</h3>
+    <div class="support-grid">
+      <div class="support-card">
+        <i class="fas fa-envelope"></i>
+        <h4>Email Us</h4>
+        <p>support@alinacollection.com</p>
+        <span>Typical response: 24 hours</span>
+      </div>
+      <div class="support-card">
+        <i class="fab fa-whatsapp"></i>
+        <h4>WhatsApp Support</h4>
+        <p>+977 970-5978322</p>
+        <span>Available: 9 AM - 6 PM</span>
+      </div>
+      <div class="support-card">
+        <i class="fas fa-phone-alt"></i>
+        <h4>Call Center</h4>
+        <p>+977 9811561225</p>
+        <span>Available: Sun - Fri</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="form-details">
+    <form action="">
+      <span>LEAVE A MESSAGE</span>
+      <h2>We love to hear from you</h2>
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Your E-Mail" />
+      <input type="text" placeholder="Subject" />
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <button type="submit" class="normal">Submit</button>
+    </form>
+    <div class="people">
+      <div>
+        <img src="image/people/1.png" alt="P-1" />
+        <p>
+          <span>Ramu kaka</span> Senior Marketing Manager <br />Phone: +000
+          123 000 77 88 <br />Email: contact@gmail.com
+        </p>
       </div>
       <div>
-        <ul id="navbar">
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
-                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
-                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
-                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
-                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
-                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
-            </ul>
-          </li>
-          <li><a href="about.html">Our Story</a></li>
-          <li><a class="active" href="contact.html">Contact</a></li>
-          <li>
-            <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
-          </li>
-          <li class="nav-select">
-            <select name="currency" id="currency-select">
-                <option value="NPR">NPR</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-          </li>
-          <a href="#" id="close"><i class="far fa-times"></i></a>
-        </ul>
+        <img src="image/people/2.png" alt="P-1" />
+        <p>
+          <span>Shamu Kaka</span> Senior Marketing Manager <br />Phone: +000
+          123 000 77 88 <br />Email: contact@gmail.com
+        </p>
       </div>
-      <div id="mobile">
-        <i class="fas fa-search" id="mobile-search-btn"></i>
-        <i id="bar" class="fas fa-bars"></i>
+      <div>
+        <img src="image/people/3.png" alt="P-1" />
+        <p>
+          <span>Sita kaki</span> Senior Marketing Manager <br />Phone: +000
+          123 000 77 88 <br />Email: contact@gmail.com
+        </p>
       </div>
-    </section>
-    <div id="search-popup">
-        <div class="search-box">
-            <input type="text" placeholder="Search here...">
-            <button><i class="fas fa-search"></i></button>
-            <i class="fas fa-times" id="close-search"></i>
-        </div>
     </div>
-
-    <div class="back-btn-container" style="margin-top: 40px;">
-        <a href="javascript:history.back()" class="back-btn">
-            <i class="fa-solid fa-arrow-left"></i> Back
-        </a>
-    </div>
-
-
-    <section id="contact-details" class="section-p1">
-      <div class="details">
-        <span>GET IN TOUCH</span>
-        <h2>Visit one of our store or contact us today</h2>
-        <h3>Head Office</h3>
-        <div>
-          <li>
-            <i class="fa-solid fa-map-pin"></i>
-            <p>Ithari BP Chowk, Nepal</p>
-          </li>
-          <li>
-            <i class="fa-solid fa-envelope"></i>
-            <p>alinacollection@gmail.com</p>
-          </li>
-          <li>
-            <i class="fa-solid fa-phone"></i>
-            <p>+977 970-5978322 / +977 9811561225</p>
-          </li>
-          <li>
-            <i class="fa-solid fa-clock"></i>
-            <p>Sunday to Friday: 9.00am to 16.00pm</p>
-          </li>
-        </div>
-      </div>
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114086.59774971982!2d87.18279753237684!3d26.673887630726966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef6c66e80fbfa9%3A0x38094d1a7c974283!2sItahari!5e0!3m2!1sen!2snp!4v1767023116870!5m2!1sen!2snp"
-          width="600"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-    </section>
-    <section id="support-options" class="section-p1">
-        <h3>Contact Support</h3>
-        <div class="support-grid">
-            <div class="support-card">
-                <i class="fas fa-envelope"></i>
-                <h4>Email Us</h4>
-                <p>support@alinacollection.com</p>
-                <span>Typical response: 24 hours</span>
-            </div>
-            <div class="support-card">
-                <i class="fab fa-whatsapp"></i>
-                <h4>WhatsApp Support</h4>
-                <p>+977 970-5978322</p>
-                <span>Available: 9 AM - 6 PM</span>
-            </div>
-            <div class="support-card">
-                <i class="fas fa-phone-alt"></i>
-                <h4>Call Center</h4>
-                <p>+977 9811561225</p>
-                <span>Available: Sun - Fri</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="form-details">
-      <form action="">
-        <span>LEAVE A MESSAGE</span>
-        <h2>We love to hear from you</h2>
-        <input type="text" placeholder="Your Name" />
-        <input type="email" placeholder="Your E-Mail" />
-        <input type="text" placeholder="Subject" />
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <button type="submit" class="normal">Submit</button>
-      </form>
-      <div class="people">
-        <div>
-          <img src="image/people/1.png" alt="P-1" />
-          <p>
-            <span>Ramu kaka</span> Senior Marketing Manager <br />Phone: +000
-            123 000 77 88 <br />Email: contact@gmail.com
-          </p>
-        </div>
-        <div>
-          <img src="image/people/2.png" alt="P-1" />
-          <p>
-            <span>Shamu Kaka</span> Senior Marketing Manager <br />Phone: +000
-            123 000 77 88 <br />Email: contact@gmail.com
-          </p>
-        </div>
-        <div>
-          <img src="image/people/3.png" alt="P-1" />
-          <p>
-            <span>Sita kaki</span> Senior Marketing Manager <br />Phone: +000
-            123 000 77 88 <br />Email: contact@gmail.com
-          </p>
-        </div>
-      </div>
-    </section>
-    <footer class="section-p1">
-      <div class="footer-container">
-        <div class="col footer-brand">
-          <img src="image/Logo/logo.png" class="logo" alt="Alina Collection" />
-          <p>Elevating everyday style with curated premium fashion. Experience the blend of tradition and contemporary elegance.</p>
-          <div class="follow">
-            <h4>Connect With Us</h4>
-            <div class="icon">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-tiktok"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
+  </section>
+  <footer class="section-p1">
+    <div class="footer-container">
+      <div class="col footer-brand">
+        <img src="image/Logo/logo.png" class="logo" alt="Alina Collection" />
+        <p>Elevating everyday style with curated premium fashion. Experience the blend of tradition and contemporary
+          elegance.</p>
+        <div class="follow">
+          <h4>Connect With Us</h4>
+          <div class="icon">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
-
-        <div class="col">
-          <h4>The Company</h4>
-          <a href="about.html">Our Story</a>
-          <a href="shop.html">The Collection</a>
-          <a href="flash-sale.html">Exclusive Deals</a>
-          <a href="contact.html">Contact Us</a>
-        </div>
-
-        <div class="col">
-          <h4>Customer Care</h4>
-          <a href="support.html">Help Center</a>
-          <a href="shipping.html">Shipping Info</a>
-          <a href="returns.html">Returns & Exchanges</a>
-          <a href="support.html#faq">FAQs</a>
-        </div>
-
-        <div class="col">
-          <h4>My Account</h4>
-          <a href="login.html">Sign In / Register</a>
-          <a href="cart.html">View My Cart</a>
-          <a href="user-dashboard.html">Order History</a>
-          <a href="shop.html?cat=nepali">Nepali Heritage</a>
-        </div>
-
-        <div class="col footer-contact">
-          <h4>Get In Touch</h4>
-          <p><i class="fas fa-map-marker-alt"></i> Ithari BP Chowk, Nepal</p>
-          <p><i class="fas fa-phone-alt"></i> +977 970-5978322</p>
-          <p><i class="fas fa-envelope"></i> hello@alinacollection.com</p>
-          <p><i class="fas fa-clock"></i> 8:00 AM - 6:00 PM, Sun-Fri</p>
-        </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="divider"></div>
-        <div class="footer-bottom-content">
-          <p>© 2026 Alina Collection. Crafted for Elegance.</p>
-        </div>
+      <div class="col">
+        <h4>The Company</h4>
+        <a href="about.html">Our Story</a>
+        <a href="shop.html">The Collection</a>
+        <a href="flash-sale.html">Exclusive Deals</a>
+        <a href="contact.html">Contact Us</a>
       </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+
+      <div class="col">
+        <h4>Customer Care</h4>
+        <a href="support.html">Help Center</a>
+        <a href="shipping.html">Shipping Info</a>
+        <a href="returns.html">Returns & Exchanges</a>
+        <a href="support.html#faq">FAQs</a>
+      </div>
+
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In / Register</a>
+        <a href="cart.html">View My Cart</a>
+        <a href="user-dashboard.html">Order History</a>
+        <a href="shop.html?cat=nepali">Nepali Heritage</a>
+      </div>
+
+      <div class="col footer-contact">
+        <h4>Get In Touch</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Ithari BP Chowk, Nepal</p>
+        <p><i class="fas fa-phone-alt"></i> +977 970-5978322</p>
+        <p><i class="fas fa-envelope"></i> hello@alinacollection.com</p>
+        <p><i class="fas fa-clock"></i> 8:00 AM - 6:00 PM, Sun-Fri</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="divider"></div>
+      <div class="footer-bottom-content">
+        <p>© 2026 Alina Collection. Crafted for Elegance.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
 </html>

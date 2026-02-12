@@ -3,11 +3,23 @@ const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
 
+if (bar) {
+    bar.addEventListener('click', () => {
+        nav.classList.add('active');
+    });
+}
+
+if (close) {
+    close.addEventListener('click', () => {
+        nav.classList.remove('active');
+    });
+}
+
 // === 1. State Management & Data ===
 const PRODUCT_VERSION = "3.9"; // Granular "Name-Wise" Visual Accuracy Overhaul
 
 const categoriesList = [
-    "Signature Blouses", "Ethereal Maxi Dresses", "Artisan Sundresses", "Vanguard Evening Gowns", 
+    "Signature Blouses", "Ethereal Maxi Dresses", "Artisan Sundresses", "Vanguard Evening Gowns",
     "Refined Cocktail Dresses", "Minimalist Midi Skirts", "Structured Pencil Skirts", "Architectural High-Waist Jeans",
     "Essential Silk Camisoles", "Heritage Cashmere Sweaters", "Iconic Tailored Blazers", "Urban Denim Jackets",
     "Artisan Leather Handbags", "Signature Stiletto Heels", "Refined Ankle Boots", "Ethereal Silk Scarves",
@@ -62,25 +74,25 @@ function generateDefaultProducts() {
     const adjectives = ["Essential", "Vanguard", "Architectural", "Heritage", "Artisan", "Refined", "Signature", "Iconic", "Ethereal", "Structured", "Urban", "Classic", "Avant-Garde", "Timeless", "Modernist", "Luxury", "Tailored", "Sovereign", "Zenith", "Minimalist"];
     const materials = ["Premium Cotton", "Raw Silk", "Distressed Denim", "Merino Wool", "Organic Linen", "Nappa Leather", "Crushed Velvet", "Pure Cashmere", "Italian Satin", "Heavy Jersey"];
     const styles = ["Edition", "Series", "Silhouette", "Draft", "Collective", "Edit", "Archive", "Manifesto", "Concept", "Ensemble"];
-    
+
     let products = [];
     let id = 1;
     categoriesList.forEach((cat) => {
         const pool = categoryImagePools[cat] || categoryImagePools["Signature Blouses"];
-        const baseCat = cat.split(" ").pop().replace(/s$/, ""); 
-        
+        const baseCat = cat.split(" ").pop().replace(/s$/, "");
+
         for (let i = 1; i <= 20; i++) {
             const adj = adjectives[(i + id) % adjectives.length];
             const mat = materials[(i + id) % materials.length];
             const style = styles[(i * id) % styles.length];
-            
+
             // Precise Selection: Match image content to the product name
             const photoId = pool[i % pool.length];
             // Ensure 100% uniqueness via unique ID seed
             const uniqueImageURL = `https://images.unsplash.com/photo-${photoId}.jpg?auto=format&fit=crop&w=600&h=800&q=80&sig=${id}`;
-            
+
             const brand = premiumBrands[(i + id) % premiumBrands.length];
-            
+
             products.push({
                 id: id++,
                 name: `${adj} ${cat}`,
@@ -103,10 +115,10 @@ const defaultProducts = generateDefaultProducts();
 let allProducts = JSON.parse(localStorage.getItem('products')) || defaultProducts;
 
 // Force update if flash data is missing, count is wrong, or version changed
-if (allProducts.length > 0 && 
-    (!allProducts[0].hasOwnProperty('isFlash') || 
-     allProducts.length < categoriesList.length * 15 ||
-     localStorage.getItem('productVersion') !== PRODUCT_VERSION)) {
+if (allProducts.length > 0 &&
+    (!allProducts[0].hasOwnProperty('isFlash') ||
+        allProducts.length < categoriesList.length * 15 ||
+        localStorage.getItem('productVersion') !== PRODUCT_VERSION)) {
     allProducts = defaultProducts;
     localStorage.setItem('products', JSON.stringify(allProducts));
     localStorage.setItem('productVersion', PRODUCT_VERSION);
@@ -186,12 +198,12 @@ function handleAuth() {
             const modal = document.getElementById('verify-modal');
             const title = document.getElementById('verify-title');
             const desc = document.getElementById('verify-desc');
-            
+
             if (modal) {
                 title.innerText = "Sending Code...";
                 desc.innerText = `Please wait while we send the code to ${identifier}...`;
                 modal.classList.add('active');
-                
+
                 // Simulation: Delay arrival
                 setTimeout(() => {
                     title.innerText = `Verify via ${method.toUpperCase()}`;
@@ -199,7 +211,7 @@ function handleAuth() {
                     showMockNotification(method, identifier, otp);
                 }, 2000);
             }
-            
+
             window.pendingUser = { name, email, phone, password, method, role: 'user' };
         });
     }
@@ -233,7 +245,7 @@ function handleAuth() {
     if (confirmVerify) {
         confirmVerify.onclick = () => {
             const enteredOTP = Array.from(document.querySelectorAll('.otp-field')).map(i => i.value).join('');
-            
+
             if (enteredOTP === window.generatedOTP) {
                 if (window.pendingUser) {
                     allUsers.push(window.pendingUser);
@@ -264,13 +276,13 @@ function handleAuth() {
             window.generatedOTP = otp;
             const method = regMethod.value || 'email';
             const identifier = method === 'email' ? regEmail.value : regPhone.value;
-            
+
             const title = document.getElementById('verify-title');
             const desc = document.getElementById('verify-desc');
-            
+
             if (title) title.innerText = "Resending Code...";
             if (desc) desc.innerText = `Please wait while we resend the code to ${identifier}...`;
-            
+
             setTimeout(() => {
                 if (title) title.innerText = `Verify via ${method.toUpperCase()}`;
                 if (desc) desc.innerText = `We've sent a new 6-digit verification code to ${identifier}.`;
@@ -301,8 +313,8 @@ function handleAuth() {
             const modal = document.getElementById('social-auth-modal');
             const header = document.getElementById('social-header');
             if (modal && header) {
-                const type = btn.querySelector('i').classList.contains('fa-google-plus-g') ? 'Google' : 
-                             btn.querySelector('i').classList.contains('fa-facebook-f') ? 'Facebook' : 'LinkedIn';
+                const type = btn.querySelector('i').classList.contains('fa-google-plus-g') ? 'Google' :
+                    btn.querySelector('i').classList.contains('fa-facebook-f') ? 'Facebook' : 'LinkedIn';
                 header.innerText = `Sign in with ${type}`;
                 modal.classList.add('active');
             }
@@ -332,7 +344,7 @@ function handleAuth() {
 function updateNavbarAuth() {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
-    
+
     // Remove existing auth related buttons if they exist
     const existingAuthBtn = document.getElementById('auth-btn');
     if (existingAuthBtn) existingAuthBtn.remove();
@@ -350,7 +362,7 @@ function updateNavbarAuth() {
         aDashboard.href = 'user-dashboard.html';
         aDashboard.innerHTML = `<i class="fa-solid fa-user"></i> ${currentUser.name}`;
         authLi.appendChild(aDashboard);
-        
+
         // 2. Logout Link
         const logoutLi = document.createElement('li');
         logoutLi.id = 'logout-nav-btn';
@@ -402,10 +414,10 @@ const itemsPerPage = 12;
 function renderProducts(containerId, limit = null, category = null, search = null) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     // Clear container
     container.innerHTML = "";
-    
+
     let list = [...allProducts];
 
     // Apply Active Filters
@@ -427,7 +439,7 @@ function renderProducts(containerId, limit = null, category = null, search = nul
         }
     }
     if (search) list = list.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.brand.toLowerCase().includes(search.toLowerCase()));
-    
+
     // Sorting Logic
     const sortVal = document.getElementById('sort-select')?.value || 'default';
     if (sortVal === 'low-high') {
@@ -446,10 +458,10 @@ function renderProducts(containerId, limit = null, category = null, search = nul
     if (containerId === 'dynamic-all-pro' && !limit) {
         const totalPages = Math.ceil(list.length / itemsPerPage);
         if (currentPage > totalPages) currentPage = 1;
-        
+
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        
+
         const paginatedList = list.slice(start, end);
         renderPagination(totalPages);
         list = paginatedList;
@@ -466,7 +478,7 @@ function renderProducts(containerId, limit = null, category = null, search = nul
     const htmlBuffer = list.map(p => {
         const isWishlisted = wishlist.includes(p.id);
         const showFlashBadge = isFlashContainer; // Only show flash styling in flash container
-        
+
         return `
             <div class="pro">
                 <div class="pro-img-wrapper">
@@ -517,33 +529,33 @@ function generateStarRating(rating) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    
+
     let starsHTML = '';
     for (let i = 0; i < fullStars; i++) starsHTML += '<i class="fas fa-star"></i>';
     if (hasHalfStar) starsHTML += '<i class="fas fa-star-half-alt"></i>';
     for (let i = 0; i < emptyStars; i++) starsHTML += '<i class="far fa-star"></i>';
-    
+
     return starsHTML;
 }
 
 function renderPagination(totalPages) {
     const paginationContainer = document.getElementById('pagination');
     if (!paginationContainer) return;
-    
+
     if (totalPages <= 1) {
         paginationContainer.innerHTML = "";
         return;
     }
 
     let html = '';
-    
+
     if (currentPage > 1) {
         html += `<a href="#" onclick="changePage(${currentPage - 1}); return false;"><i class="fas fa-long-arrow-alt-left"></i></a>`;
     }
 
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, startPage + 4);
-    
+
     if (endPage - startPage < 4) {
         startPage = Math.max(1, endPage - 4);
     }
@@ -564,7 +576,7 @@ function changePage(page) {
     const params = new URLSearchParams(window.location.search);
     renderProducts('dynamic-all-pro', null, params.get('cat'), params.get('search'));
     const container = document.getElementById('shop-container');
-    if(container) container.scrollIntoView({ behavior: 'smooth' });
+    if (container) container.scrollIntoView({ behavior: 'smooth' });
 }
 
 function openQuickView(id) {
@@ -598,7 +610,7 @@ function openQuickView(id) {
 function buyNow(productId, qty = 1) {
     const product = allProducts.find(p => p.id === productId);
     if (!product || product.stock <= 0) { showToast('Out of Stock!'); return; }
-    
+
     // Direct redirect with parameters for immediate purchase isolation
     window.location.href = `checkout.html?buy_now=true&id=${productId}&qty=${qty}`;
 }
@@ -614,10 +626,10 @@ function applyFilters() {
     currentPage = 1;
     const brands = Array.from(document.querySelectorAll('.brand-filter:checked')).map(cb => cb.value);
     localStorage.setItem('filterBrands', JSON.stringify(brands));
-    
+
     const params = new URLSearchParams(window.location.search);
     renderProducts('dynamic-all-pro', null, params.get('cat'), params.get('search'));
-    
+
     updateActiveFilterTags();
     showToast('Filters Applied');
 }
@@ -672,11 +684,11 @@ function removeBrandFilter(brand) {
 function addToCart(productId, qty = 1) {
     const product = allProducts.find(p => p.id === productId);
     if (!product || product.stock <= 0) { showToast('Out of Stock!'); return; }
-    
+
     // Fly animation logic
     const proEl = event?.target?.closest('.pro') || document.querySelector('.single-pro-img');
     const cartIcon = document.querySelector('.fa-bag-shopping') || document.querySelector('.cart-link');
-    
+
     if (proEl && cartIcon) {
         const flyingImg = document.createElement('img');
         flyingImg.src = product.image;
@@ -685,22 +697,22 @@ function addToCart(productId, qty = 1) {
         flyingImg.style.width = '100px';
         flyingImg.style.borderRadius = '50%';
         flyingImg.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        
+
         const rect = proEl.getBoundingClientRect();
         flyingImg.style.top = rect.top + 'px';
         flyingImg.style.left = rect.left + 'px';
-        
+
         document.body.appendChild(flyingImg);
-        
+
         const cartRect = cartIcon.getBoundingClientRect();
-        
+
         setTimeout(() => {
             flyingImg.style.top = cartRect.top + 'px';
             flyingImg.style.left = cartRect.left + 'px';
             flyingImg.style.width = '20px';
             flyingImg.style.opacity = '0';
         }, 10);
-        
+
         setTimeout(() => flyingImg.remove(), 800);
     }
 
@@ -709,7 +721,7 @@ function addToCart(productId, qty = 1) {
     localStorage.setItem('cart', JSON.stringify(cart));
     showToast(`${product.name} added!`);
     updateCartIconCount();
-    if(window.location.pathname.includes('cart.html')) renderCart();
+    if (window.location.pathname.includes('cart.html')) renderCart();
     else toggleSideCart();
 }
 
@@ -718,7 +730,7 @@ function updateCartIconCount() {
     document.querySelectorAll('.cart-link, .fa-cart-shopping, .fa-bag-shopping').forEach(el => {
         const target = el.classList.contains('cart-link') ? el : el.parentElement;
         if (!target || target.tagName !== 'A') return;
-        
+
         let b = target.querySelector('.cart-badge');
         if (!b) { b = document.createElement('span'); b.className = 'cart-badge'; target.appendChild(b); }
         b.innerText = count; b.style.display = count > 0 ? 'flex' : 'none';
@@ -735,19 +747,19 @@ function renderCart() {
         subtotal += total;
         tableBody.innerHTML += `
             <tr>
-                <td><a href="#" onclick="removeFromCart(${item.id})"><i class="fa-regular fa-circle-xmark"></i></a></td>
-                <td><img src="${item.image}" onerror="this.onerror=null;this.src='${UNIVERSAL_FALLBACK_IMAGE}';" width="70"></td>
-                <td>${item.name}</td>
-                <td>${convertPrice(item.price)}</td>
-                <td><input type="number" value="${item.quantity}" onchange="updateCartQty(${item.id}, this.value)"></td>
-                <td>${convertPrice(total)}</td>
+                <td data-label="REMOVE"><a href="#" onclick="removeFromCart(${item.id})"><i class="fa-regular fa-circle-xmark"></i></a></td>
+                <td data-label="IMAGES"><img src="${item.image}" onerror="this.onerror=null;this.src='${UNIVERSAL_FALLBACK_IMAGE}';" width="70"></td>
+                <td data-label="PRODUCTS">${item.name}</td>
+                <td data-label="PRICE">${convertPrice(item.price)}</td>
+                <td data-label="QUANTITY"><input type="number" value="${item.quantity}" onchange="updateCartQty(${item.id}, this.value)"></td>
+                <td data-label="SUBTOTAL">${convertPrice(total)}</td>
             </tr>`;
     });
     updateCartTotals(subtotal);
 }
 
 function removeFromCart(id) { cart = cart.filter(i => i.id !== id); localStorage.setItem('cart', JSON.stringify(cart)); renderCart(); updateCartIconCount(); }
-function updateCartQty(id, val) { const i = cart.find(item => item.id === id); if(i) i.quantity = parseInt(val); localStorage.setItem('cart', JSON.stringify(cart)); renderCart(); updateCartIconCount(); }
+function updateCartQty(id, val) { const i = cart.find(item => item.id === id); if (i) i.quantity = parseInt(val); localStorage.setItem('cart', JSON.stringify(cart)); renderCart(); updateCartIconCount(); }
 function updateCartTotals(sub) {
     const subEl = document.querySelector('#sub-total table tr:nth-child(1) td:last-child');
     const totEl = document.querySelector('#sub-total table tr:nth-child(3) td:last-child strong');
@@ -830,15 +842,15 @@ function renderAdminOrders() {
 
     const ordersHTML = allOrders.slice().reverse().map(o => `
         <tr>
-            <td><strong>#${o.id}</strong></td>
-            <td>${o.date}</td>
-            <td>
+            <td data-label="REF"><strong>#${o.id}</strong></td>
+            <td data-label="DATE">${o.date}</td>
+            <td data-label="CLIENT">
                 <div>${o.userEmail}</div>
                 <div style="font-size:11px; color:#94a3b8;">${o.items.length} unique assets</div>
             </td>
-            <td><strong>${convertPrice(o.total)}</strong></td>
-            <td><span class="status-badge status-${o.status}">${o.status}</span></td>
-            <td>
+            <td data-label="TOTAL"><strong>${convertPrice(o.total)}</strong></td>
+            <td data-label="STATUS"><span class="status-badge status-${o.status}">${o.status}</span></td>
+            <td data-label="ACTION">
                 <select class="status-control" onchange="updateOrderStatus(${o.id}, this.value)">
                     <option value="" disabled selected>Update Status</option>
                     <option value="placed">Placed</option>
@@ -851,14 +863,14 @@ function renderAdminOrders() {
     `).join('');
 
     if (fullOrderTable) fullOrderTable.innerHTML = ordersHTML;
-    
+
     if (recentOrderTable) {
         recentOrderTable.innerHTML = allOrders.slice().reverse().slice(0, 5).map(o => `
             <tr>
-                <td>#${o.id}</td>
-                <td>${o.userEmail.split('@')[0]}</td>
-                <td>${convertPrice(o.total)}</td>
-                <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+                <td data-label="REF">#${o.id}</td>
+                <td data-label="CLIENT">${o.userEmail.split('@')[0]}</td>
+                <td data-label="VALUE">${convertPrice(o.total)}</td>
+                <td data-label="STATUS"><span class="status-badge status-${o.status}">${o.status}</span></td>
             </tr>
         `).join('');
     }
@@ -883,13 +895,13 @@ function renderAdminUsers() {
 
     uTable.innerHTML = usersList.map(u => `
         <tr>
-            <td>
+            <td data-label="NAME">
                 <div style="font-weight:800;">${u.name}</div>
                 <div style="font-size:11px; color:#94a3b8;">${u.email}</div>
             </td>
-            <td>${u.phone || 'Contact Private'}</td>
-            <td><span class="role-badge role-${u.role}">${u.role}</span></td>
-            <td>
+            <td data-label="PHONE">${u.phone || 'Contact Private'}</td>
+            <td data-label="ROLE"><span class="role-badge role-${u.role}">${u.role}</span></td>
+            <td data-label="ACTION">
                 ${u.name !== 'David Scot' ? `<button class="action-btn btn-delete" onclick="expungeUser('${u.email}')">Remove User</button>` : '<span style="font-size:11px; color:#22c55e; font-weight:800;"><i class="fas fa-crown"></i> OWNER</span>'}
             </td>
         </tr>
@@ -906,7 +918,7 @@ function expungeUser(email) {
 }
 
 function deleteProduct(id) {
-    if(confirm('Are you sure you want to delete this product?')) {
+    if (confirm('Are you sure you want to delete this product?')) {
         allProducts = allProducts.filter(p => p.id !== id);
         localStorage.setItem('products', JSON.stringify(allProducts));
         renderAdminDashboard();
@@ -922,9 +934,9 @@ function openProductModal(id = null) {
     }
 }
 
-function closeProductModal() { 
+function closeProductModal() {
     if (document.getElementById('product-modal')) {
-        document.getElementById('product-modal').classList.remove('active'); 
+        document.getElementById('product-modal').classList.remove('active');
     } else {
         window.location.href = 'admin-inventory.html';
     }
@@ -948,7 +960,7 @@ function saveProduct(e) {
         const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
         allProducts.push({ id: newId, name, brand, price, cat, stock, description, image, rating: "5.0", reviewCount: 0 });
     }
-    
+
     localStorage.setItem('products', JSON.stringify(allProducts));
     showToast('Vault Updated Successfully!');
 }
@@ -987,8 +999,8 @@ function initTiltEffect() {
     document.querySelectorAll('.banner-box').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width/2)/10;
-            const y = (e.clientY - rect.top - rect.height/2)/10;
+            const x = (e.clientX - rect.left - rect.width / 2) / 10;
+            const y = (e.clientY - rect.top - rect.height / 2) / 10;
             card.style.transform = `perspective(1000px) rotateX(${-y}deg) rotateY(${x}deg) scale3d(1.02, 1.02, 1.02)`;
         });
         card.addEventListener('mouseleave', () => { card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; });
@@ -998,7 +1010,7 @@ function initTiltEffect() {
 function startCountdown() {
     const daysEl = document.getElementById('days');
     if (!daysEl) return;
-    let deadline = new Date(); deadline.setDate(deadline.getDate() + 3); 
+    let deadline = new Date(); deadline.setDate(deadline.getDate() + 3);
     const timer = setInterval(() => {
         const dist = deadline - new Date().getTime();
         if (dist < 0) { clearInterval(timer); return; }
@@ -1015,15 +1027,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNavbarAuth();
     handleAuth();
     updateCartIconCount();
-    
+
     const params = new URLSearchParams(window.location.search);
     renderProducts('dynamic-featured-pro', 8);
     renderProducts('dynamic-new-pro', 4);
     renderProducts('dynamic-all-pro', null, params.get('cat'), params.get('search'));
-    renderProducts('dynamic-flash-mini', 6); 
-    
+    renderProducts('dynamic-flash-mini', 6);
+
     renderHomeCategories(); // Render category-specific sections on home page
-    
+
     renderSProduct();
     renderCart();
     renderAdminDashboard();
@@ -1046,20 +1058,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const sTrigger = document.getElementById('search-trigger');
     const mSTrigger = document.getElementById('mobile-search-btn');
     const sPopup = document.getElementById('search-popup');
-    
+
     if (sTrigger) sTrigger.onclick = (e) => { e.preventDefault(); sPopup.classList.add('active'); };
-    if (mSTrigger) mSTrigger.onclick = () => { 
+    if (mSTrigger) mSTrigger.onclick = () => {
         sPopup.classList.add('active');
         document.querySelector('#search-popup input').focus();
     };
-    
+
     const closeS = document.getElementById('close-search');
     if (closeS) closeS.onclick = () => sPopup.classList.remove('active');
 
     // Header Search Logic
     const headerSearchBtn = document.getElementById('header-search-btn');
     const headerSearchInput = document.getElementById('header-search-input');
-    
+
     const performSearch = () => {
         const query = headerSearchInput.value.trim();
         if (query) {
@@ -1073,7 +1085,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') performSearch();
         };
     }
-    
+
     // Support Widget
     const wa = document.createElement('a');
     wa.href = "https://wa.me/9779705978322";
@@ -1117,7 +1129,7 @@ function renderSProduct() {
     if (!product) return;
 
     document.getElementById('mainImg').src = product.image;
-    document.getElementById('mainImg').onerror = function() { this.onerror=null; this.src=UNIVERSAL_FALLBACK_IMAGE; };
+    document.getElementById('mainImg').onerror = function () { this.onerror = null; this.src = UNIVERSAL_FALLBACK_IMAGE; };
     document.getElementById('pro-name').innerText = product.name;
     document.getElementById('pro-price').innerText = convertPrice(product.price);
     document.getElementById('pro-category-path').innerText = `Home / ${product.cat}`;
@@ -1154,7 +1166,7 @@ function renderReviews(product) {
     const section = document.createElement('section');
     section.id = 'product-reviews';
     section.className = 'section-p1';
-    
+
     const reviewerNames = ["Eleanor Vance", "Julian Thorne", "Seraphina Moore", "Alistair Grey", "Isolde Bell"];
     const reviewTexts = [
         "The attention to detail on this piece is remarkable. The fit is perfect and the material feels incredibly premium.",
@@ -1186,7 +1198,7 @@ function renderReviews(product) {
         const text = reviewTexts[i % reviewTexts.length];
         const date = new Date();
         date.setDate(date.getDate() - (i * 5 + 2));
-        
+
         reviewsHTML += `
             <div class="review-item" style="padding-bottom: 30px; border-bottom: 1px solid #eee;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
@@ -1206,7 +1218,7 @@ function renderReviews(product) {
 
     reviewsHTML += '</div>';
     section.innerHTML = reviewsHTML;
-    
+
     // Insert before related products
     const relatedSection = document.getElementById('product1'); // The related pro section
     if (relatedSection) {
@@ -1249,7 +1261,7 @@ function initLiveSearch() {
         }
 
         const matches = allProducts.filter(p => p.name.toLowerCase().includes(query) || p.cat.toLowerCase().includes(query)).slice(0, 5);
-        
+
         if (matches.length > 0) {
             resultsDiv.innerHTML = matches.map(p => `
                 <div class="search-item" onclick="window.location.href='sproduct.html?id=${p.id}'">
@@ -1300,7 +1312,7 @@ function initPremiumEffects() {
         if (hero) {
             hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
         }
-        
+
         const banner = document.getElementById('banner');
         if (banner) {
             banner.style.backgroundPositionY = -(scrolled * 0.2) + 'px';
@@ -1311,7 +1323,7 @@ function initPremiumEffects() {
     window.addEventListener('scroll', () => {
         const header = document.getElementById('header');
         const scrollProgress = document.getElementById('scroll-progress');
-        
+
         // Progress Bar
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1348,24 +1360,24 @@ function showMockNotification(method, target, otp) {
     setTimeout(() => notif.classList.add('active'), 100);
     setTimeout(() => {
         notif.classList.remove('active');
-        setTimeout(() => { if(notif.parentNode) notif.remove(); }, 500);
+        setTimeout(() => { if (notif.parentNode) notif.remove(); }, 500);
     }, 8000);
 }
 
 function showToast(m) {
     const t = document.createElement('div'); t.className = 'toast'; t.innerHTML = m; document.body.appendChild(t);
     setTimeout(() => t.classList.add('show'), 100);
-    setTimeout(() => { t.classList.remove('show'); if(t.parentNode) document.body.removeChild(t); }, 8000);
+    setTimeout(() => { t.classList.remove('show'); if (t.parentNode) document.body.removeChild(t); }, 8000);
 }// Filter Portal Logic
 function toggleFilterPortal() {
     const portal = document.getElementById('filter-portal');
     const container = document.getElementById('portal-filter-container');
     const sidebarInner = document.querySelector('.sidebar-inner');
-    
+
     if (!portal || !container || !sidebarInner) return;
-    
+
     portal.classList.toggle('active');
-    
+
     if (portal.classList.contains('active')) {
         // Move sidebar into portal
         container.appendChild(sidebarInner);
@@ -1395,10 +1407,10 @@ function initFAQ() {
         if (question) {
             question.addEventListener('click', () => {
                 const isOpen = item.classList.contains('active');
-                
+
                 // Close all other items
                 faqItems.forEach(i => i.classList.remove('active'));
-                
+
                 // Toggle current item
                 if (!isOpen) item.classList.add('active');
             });
@@ -1565,62 +1577,62 @@ function initDarkMode() {
 
 function initCustomDropdowns() {
     const originalSelects = document.querySelectorAll('#currency-select');
-    
+
     originalSelects.forEach(select => {
         // Prevent double initialization
         if (select.nextElementSibling && select.nextElementSibling.classList.contains('custom-select-wrapper')) return;
 
         const wrapper = document.createElement('div');
         wrapper.className = 'custom-select-wrapper';
-        
+
         const trigger = document.createElement('div');
         trigger.className = 'custom-select-trigger';
         trigger.innerHTML = `<span>${select.value}</span> <div class="custom-arrow"></div>`;
-        
+
         const optionsContainer = document.createElement('div');
         optionsContainer.className = 'custom-options';
-        
+
         // Generate options from original select
         Array.from(select.options).forEach(opt => {
             const optionDiv = document.createElement('span');
             optionDiv.className = `custom-option ${opt.value === select.value ? 'selected' : ''}`;
             optionDiv.dataset.value = opt.value;
             optionDiv.textContent = opt.textContent;
-            
-            optionDiv.addEventListener('click', function() {
+
+            optionDiv.addEventListener('click', function () {
                 // Update original select
                 select.value = this.dataset.value;
-                
+
                 // Update UI
                 trigger.querySelector('span').textContent = this.textContent;
                 optionsContainer.querySelectorAll('.custom-option').forEach(o => o.classList.remove('selected'));
                 this.classList.add('selected');
-                
+
                 // Close dropdown
                 wrapper.classList.remove('open');
-                
+
                 // Trigger change event manually
                 select.dispatchEvent(new Event('change'));
             });
-            
+
             optionsContainer.appendChild(optionDiv);
         });
-        
+
         wrapper.appendChild(trigger);
         wrapper.appendChild(optionsContainer);
-        
+
         // Hide original
         select.style.display = 'none';
-        
+
         // Insert custom
         select.parentNode.insertBefore(wrapper, select.nextSibling);
-        
+
         // Toggle logic
         trigger.addEventListener('click', (e) => {
             e.stopPropagation(); // Stop bubble so document click doesn't close it immediately
             // Close other open dropdowns
             document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
-                if(w !== wrapper) w.classList.remove('open');
+                if (w !== wrapper) w.classList.remove('open');
             });
             wrapper.classList.toggle('open');
         });

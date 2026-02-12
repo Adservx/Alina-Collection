@@ -1,274 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop</title>
-    <link rel="shortcut icon" href="../assets/icon.png" type="image/.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="responsiveHome.css" />
-    <link rel="stylesheet" href="filter-portal.css" />
-    <link rel="stylesheet" href="shop.css" />
-  </head>
-  <body>
-    <section id="header">
-      <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji"/></a>
-      <div class="header-search">
-        <input type="text" placeholder="Search premium fashion..." id="header-search-input">
-        <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
-      </div>
-      <div>
-        <ul id="navbar">
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a class="active" href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
-                <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
-                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
-                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
-                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
-                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
-            </ul>
-          </li>
-          <li><a href="about.html">Our Story</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li>
-            <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
-          </li>
-          <li class="nav-select">
-            <select name="currency" id="currency-select">
-                <option value="NPR">NPR</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-          </li>
-          <a href="#" id="close"><i class="far fa-times"></i></a>
-        </ul>
-      </div>
-      <div id="mobile">
-        <i class="fas fa-search" id="mobile-search-btn"></i>
-        <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
-        <i id="bar" class="fas fa-bars"></i>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Shop</title>
+  <link rel="shortcut icon" href="../assets/icon.png" type="image/.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsiveHome.css" />
+  <link rel="stylesheet" href="filter-portal.css" />
+  <link rel="stylesheet" href="shop.css" />
+</head>
+
+<body>
+  <section id="header">
+    <a href="index.html"><img src="image/Logo/logo.png" class="logo" alt="Vanji" /></a>
+    <div class="header-search">
+      <input type="text" placeholder="Search premium fashion..." id="header-search-input">
+      <button type="button" id="header-search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a class="active" href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="shop.html?cat=Tops">Tops & Shirts</a></li>
+            <li><a href="shop.html?cat=Bottoms">Pants & Bottoms</a></li>
+            <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+            <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+            <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+            <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
+        </li>
+        <li class="nav-select">
+          <select name="currency" id="currency-select">
+            <option value="NPR">NPR</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </li>
+        <a href="#" id="close"><i class="far fa-times"></i></a>
+      </ul>
+    </div>
+    <div id="mobile">
+      <i class="fas fa-search" id="mobile-search-btn"></i>
+      <a href="cart.html" class="cart-link"><i class="fa-solid fa-bag-shopping"></i> <span>My Cart</span></a>
+      <i id="bar" class="fas fa-bars"></i>
+    </div>
+  </section>
+
+  <div class="back-btn-container">
+    <a href="javascript:history.back()" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+  </div>
+
+  <div id="search-popup">
+    <div class="search-box">
+      <input type="text" placeholder="Search here...">
+      <button><i class="fas fa-search"></i></button>
+      <i class="fas fa-times" id="close-search"></i>
+    </div>
+  </div>
+
+  <!-- == For Category Sub-Navbar == -->
+  <div class="category-container">
+    <h2 class="category-header">Categories</h2>
+    <section id="sub-navbar">
+      <ul>
+        <li><a href="shop.html?cat=Tops">Tops</a></li>
+        <li><a href="shop.html?cat=Bottoms">Bottoms</a></li>
+        <li><a href="shop.html?cat=Dresses">Dresses</a></li>
+        <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+        <li><a href="shop.html?cat=Activewear">Activewear</a></li>
+        <li><a href="shop.html?cat=Sleepwear">Sleepwear</a></li>
+        <li><a href="shop.html?cat=Footwear">Footwear</a></li>
+        <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+        <li><a href="shop.html?cat=Formal">Formal</a></li>
+        <li><a href="shop.html?cat=Seasonal">Seasonal</a></li>
+      </ul>
     </section>
-    
-    <div class="back-btn-container">
-        <a href="javascript:history.back()" class="back-btn">
-            <i class="fa-solid fa-arrow-left"></i> Back
-        </a>
-    </div>
+  </div>
 
-    <div id="search-popup">
-        <div class="search-box">
-            <input type="text" placeholder="Search here...">
-            <button><i class="fas fa-search"></i></button>
-            <i class="fas fa-times" id="close-search"></i>
+
+  <section id="shop-container" class="advanced-layout">
+    <!-- Sidebar - Refined & Sticky -->
+    <aside class="filter-sidebar">
+      <div class="sidebar-inner">
+        <div class="filter-header">
+          <h3>Discovery</h3>
+          <button class="clear-btn" onclick="clearAllFilters()">Reset Filters</button>
         </div>
-    </div>
 
-    <!-- == For Category Sub-Navbar == -->
-    <div class="category-container">
-        <h2 class="category-header">Categories</h2>
-        <section id="sub-navbar">
-            <ul>
-                <li><a href="shop.html?cat=Tops">Tops</a></li>
-                <li><a href="shop.html?cat=Bottoms">Bottoms</a></li>
-                <li><a href="shop.html?cat=Dresses">Dresses</a></li>
-                <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
-                <li><a href="shop.html?cat=Activewear">Activewear</a></li>
-                <li><a href="shop.html?cat=Sleepwear">Sleepwear</a></li>
-                <li><a href="shop.html?cat=Footwear">Footwear</a></li>
-                <li><a href="shop.html?cat=Accessories">Accessories</a></li>
-                <li><a href="shop.html?cat=Formal">Formal</a></li>
-                <li><a href="shop.html?cat=Seasonal">Seasonal</a></li>
-            </ul>
-        </section>
-    </div>
+        <div class="active-filters" id="active-filters-container"></div>
 
-    
-    <section id="shop-container" class="advanced-layout">
-        <!-- Sidebar - Refined & Sticky -->
-        <aside class="filter-sidebar">
-            <div class="sidebar-inner">
-                <div class="filter-header">
-                    <h3>Discovery</h3>
-                    <button class="clear-btn" onclick="clearAllFilters()">Reset Filters</button>
-                </div>
-                
-                <div class="active-filters" id="active-filters-container"></div>
-
-                <div class="filter-section">
-                    <label class="section-label">Price Architecture</label>
-                    <div class="range-container">
-                        <input type="range" id="price-range" min="0" max="10000" step="100" value="10000" oninput="updatePriceFilter(this.value)">
-                        <div class="range-display">
-                            <span>NPR 0</span>
-                            <span id="price-val" class="highlight">NPR 10000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter-section">
-                    <label class="section-label">Design Houses</label>
-                    <div class="brand-grid">
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Nike" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Nike</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Adidas" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Adidas</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Zara" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Zara</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="H&M" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">H&M</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Shein" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Shein</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Levi’s" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Levi’s</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Alo Yoga" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Alo Yoga</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Halara" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Halara</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="KTM CTY" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">KTM CTY</span>
-                        </label>
-                        <label class="premium-check">
-                            <input type="checkbox" class="brand-filter" value="Black Horse" checked> 
-                            <span class="box"></span> 
-                            <span class="label-text">Black Horse</span>
-                        </label>
-                    </div>
-                </div>
-                <button class="apply-selection-btn" onclick="applyFilters()">Refresh Gallery</button>
-            </div>
-        </aside>
-        
-        <!-- Main Product Gallery -->
-        <div class="shop-main">
-            <div class="gallery-controls">
-                <div class="results-info">
-                    <button id="open-filter-btn" class="filter-trigger-btn" onclick="toggleFilterPortal()">
-                        <i class="fas fa-filter"></i> Filters
-                    </button>
-                    <span id="product-count" class="count-pill">Calculating...</span>
-                    <span class="status-indicator"></span>
-                </div>
-                <div class="sort-wrapper">
-                    <label for="sort-select">Sort by:</label>
-                    <select id="sort-select" onchange="applyFilters()">
-                        <option value="default">Curation (Default)</option>
-                        <option value="low-high">Value: Low to High</option>
-                        <option value="high-low">Value: High to Low</option>
-                        <option value="newest">Latest Arrivals</option>
-                    </select>
-                </div>
-            </div>
-            <div class="pro-container" id="dynamic-all-pro">
-                <!-- Advanced Product Cards Injected by script.js -->
-            </div>
-        </div>
-    </section>
-    <footer class="section-p1">
-      <div class="footer-container">
-        <div class="col footer-brand">
-          <img src="image/Logo/logo.png" class="logo" alt="Alina Collection" />
-          <p>Elevating everyday style with curated premium fashion. Experience the blend of tradition and contemporary elegance.</p>
-          <div class="follow">
-            <h4>Connect With Us</h4>
-            <div class="icon">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-tiktok"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
+        <div class="filter-section">
+          <label class="section-label">Price Architecture</label>
+          <div class="range-container">
+            <input type="range" id="price-range" min="0" max="10000" step="100" value="10000"
+              oninput="updatePriceFilter(this.value)">
+            <div class="range-display">
+              <span>NPR 0</span>
+              <span id="price-val" class="highlight">NPR 10000</span>
             </div>
           </div>
         </div>
 
-        <div class="col">
-          <h4>The Company</h4>
-          <a href="about.html">Our Story</a>
-          <a href="shop.html">The Collection</a>
-          <a href="flash-sale.html">Exclusive Deals</a>
-          <a href="contact.html">Contact Us</a>
+        <div class="filter-section">
+          <label class="section-label">Design Houses</label>
+          <div class="brand-grid">
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Nike" checked>
+              <span class="box"></span>
+              <span class="label-text">Nike</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Adidas" checked>
+              <span class="box"></span>
+              <span class="label-text">Adidas</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Zara" checked>
+              <span class="box"></span>
+              <span class="label-text">Zara</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="H&M" checked>
+              <span class="box"></span>
+              <span class="label-text">H&M</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Shein" checked>
+              <span class="box"></span>
+              <span class="label-text">Shein</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Levi’s" checked>
+              <span class="box"></span>
+              <span class="label-text">Levi’s</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Alo Yoga" checked>
+              <span class="box"></span>
+              <span class="label-text">Alo Yoga</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Halara" checked>
+              <span class="box"></span>
+              <span class="label-text">Halara</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="KTM CTY" checked>
+              <span class="box"></span>
+              <span class="label-text">KTM CTY</span>
+            </label>
+            <label class="premium-check">
+              <input type="checkbox" class="brand-filter" value="Black Horse" checked>
+              <span class="box"></span>
+              <span class="label-text">Black Horse</span>
+            </label>
+          </div>
         </div>
+        <button class="apply-selection-btn" onclick="applyFilters()">Refresh Gallery</button>
+      </div>
+    </aside>
 
-        <div class="col">
-          <h4>Customer Care</h4>
-          <a href="support.html">Help Center</a>
-          <a href="shipping.html">Shipping Info</a>
-          <a href="returns.html">Returns & Exchanges</a>
-          <a href="support.html#faq">FAQs</a>
+    <!-- Main Product Gallery -->
+    <div class="shop-main">
+      <div class="gallery-controls">
+        <div class="results-info">
+          <button id="open-filter-btn" class="filter-trigger-btn" onclick="toggleFilterPortal()">
+            <i class="fas fa-filter"></i> Filters
+          </button>
+          <span id="product-count" class="count-pill">Calculating...</span>
+          <span class="status-indicator"></span>
         </div>
-
-        <div class="col">
-          <h4>My Account</h4>
-          <a href="login.html">Sign In / Register</a>
-          <a href="cart.html">View My Cart</a>
-          <a href="user-dashboard.html">Order History</a>
-          <a href="shop.html?cat=nepali">Nepali Heritage</a>
+        <div class="sort-wrapper">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select" onchange="applyFilters()">
+            <option value="default">Curation (Default)</option>
+            <option value="low-high">Value: Low to High</option>
+            <option value="high-low">Value: High to Low</option>
+            <option value="newest">Latest Arrivals</option>
+          </select>
         </div>
-
-        <div class="col footer-contact">
-          <h4>Get In Touch</h4>
-          <p><i class="fas fa-map-marker-alt"></i> Ithari BP Chowk, Nepal</p>
-          <p><i class="fas fa-phone-alt"></i> +977 970-5978322</p>
-          <p><i class="fas fa-envelope"></i> hello@alinacollection.com</p>
-          <p><i class="fas fa-clock"></i> 8:00 AM - 6:00 PM, Sun-Fri</p>
+      </div>
+      <div class="pro-container" id="dynamic-all-pro">
+        <!-- Advanced Product Cards Injected by script.js -->
+      </div>
+    </div>
+  </section>
+  <footer class="section-p1">
+    <div class="footer-container">
+      <div class="col footer-brand">
+        <img src="image/Logo/logo.png" class="logo" alt="Alina Collection" />
+        <p>Elevating everyday style with curated premium fashion. Experience the blend of tradition and contemporary
+          elegance.</p>
+        <div class="follow">
+          <h4>Connect With Us</h4>
+          <div class="icon">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="divider"></div>
-        <div class="footer-bottom-content">
-          <p>© 2026 Alina Collection. Crafted for Elegance.</p>
-        </div>
+      <div class="col">
+        <h4>The Company</h4>
+        <a href="about.html">Our Story</a>
+        <a href="shop.html">The Collection</a>
+        <a href="flash-sale.html">Exclusive Deals</a>
+        <a href="contact.html">Contact Us</a>
       </div>
-    </footer>
 
-    <!-- Filter Portal -->
-    <div id="filter-portal" class="filter-portal">
-        <div class="portal-overlay" onclick="toggleFilterPortal()"></div>
-        <div class="portal-content">
-            <div class="portal-header">
-                <h3>Refine Collection</h3>
-                <button class="close-portal" onclick="toggleFilterPortal()">&times;</button>
-            </div>
-            <div id="portal-filter-container">
-                <!-- Filter content will be moved here or duplicated -->
-            </div>
-        </div>
+      <div class="col">
+        <h4>Customer Care</h4>
+        <a href="support.html">Help Center</a>
+        <a href="shipping.html">Shipping Info</a>
+        <a href="returns.html">Returns & Exchanges</a>
+        <a href="support.html#faq">FAQs</a>
+      </div>
+
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In / Register</a>
+        <a href="cart.html">View My Cart</a>
+        <a href="user-dashboard.html">Order History</a>
+        <a href="shop.html?cat=nepali">Nepali Heritage</a>
+      </div>
+
+      <div class="col footer-contact">
+        <h4>Get In Touch</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Ithari BP Chowk, Nepal</p>
+        <p><i class="fas fa-phone-alt"></i> +977 970-5978322</p>
+        <p><i class="fas fa-envelope"></i> hello@alinacollection.com</p>
+        <p><i class="fas fa-clock"></i> 8:00 AM - 6:00 PM, Sun-Fri</p>
+      </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div class="footer-bottom">
+      <div class="divider"></div>
+      <div class="footer-bottom-content">
+        <p>© 2026 Alina Collection. Crafted for Elegance.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Filter Portal -->
+  <div id="filter-portal" class="filter-portal">
+    <div class="portal-overlay" onclick="toggleFilterPortal()"></div>
+    <div class="portal-content">
+      <div class="portal-header">
+        <h3>Refine Collection</h3>
+        <button class="close-portal" onclick="toggleFilterPortal()">&times;</button>
+      </div>
+      <div id="portal-filter-container">
+        <!-- Filter content will be moved here or duplicated -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
